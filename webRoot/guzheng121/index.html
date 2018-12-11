@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/public.css">
+    <style type="text/css">
+        #boxes {
+            width: 90%;
+            height: 95%;
+            margin-left: 5%;
+
+        }
+        #header > div {
+
+            width: 15%;
+            height: 100%;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        #myicon {
+            font-size: 1.4em;
+        }
+        #kejian:hover {
+            color: white;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 2%;
+            background-color: #0C0C0C;
+            z-index: -100;
+        }
+
+        img:hover {
+            box-shadow: 0 0 100px #2196F3;
+        }
+
+        #kejian {
+            color: #92A6EF;
+        }
+
+
+
+        #line2 {
+            width: 21%;
+            height: 4%;
+            background-color: white;
+        }
+
+        #header_right {
+            margin-left: 40%;
+            float: right;
+            color: white;
+            width: 15%;
+            height: 80px;
+            line-height: 80px;
+        }
+
+        #searchClick {
+            color: #92A6EF;
+        }
+
+        #myTitle {
+            margin-top: 8%;
+            display: flex;
+            flex-direction: row;
+            background-color: #757DAE;
+            text-align: center;
+
+            border: hidden;
+            color: white;
+            font-size: 0.7em;
+            letter-spacing: 2px;
+
+        }
+
+        #box_nav {
+
+            display: flex;
+            position: relative;
+            text-align: center;
+            margin: auto;
+            flex-direction: column;
+        }
+
+        #title {
+            font-size: 38px;
+            color: white;
+            margin-top: 2%;
+            letter-spacing: 5px;
+            width: 108%;
+
+        }
+
+        #title_english {
+            bottom: 0;
+            position: absolute;
+            font-size: 28px;
+            font-family: 微软雅黑;
+            color: #FFFFFF;
+        }
+
+        #teachPng {
+            width: 44px;
+            height: 44px;
+            margin-top: 18px;
+            margin-left: 22px;
+            background-color: transparent;
+        }
+
+
+
+        #line_div {
+            width: 60%;
+            height: 90%;
+            margin: auto;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px white;
+        }
+
+        #header_right > button {
+            width: 65%;
+            height: 70%;
+            float: right;
+            margin-right: 18px;
+        }
+
+        #my {
+            margin-top: 2px;
+            letter-spacing: 5px;
+
+        }
+
+        #header {
+            margin-top: 92px;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            flex-direction: row;
+            color: white;
+            font-size: 32px;
+            letter-spacing: 1px;
+            line-height: 80px;
+        }
+
+        #user {
+            margin-top: 2px;
+            margin-left: 18px;
+            width: 32px;
+            height: 32px;
+            z-index: 9999;
+            background-color: transparent;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body >
+
+
+<div id="boxes">
+
+    <div id="header">
+        <div id="searchClick">
+            <i id="myicon" class="icon iconfont">&#xe632;</i>
+        </div>
+        <div id="box_nav">
+
+            <img id="teachPng" src="static/images/zither.png"/>
+            <a style="color: white" id="titleTeach">教学库</a>
+            <div id="line">
+                <div id="line_div"></div>
+            </div>
+        </div>
+        <div id="kejian"><i id="myicon" class="icon iconfont">&#xe6ec;</i> &nbsp;课件</div>
+        <div id="header_right">
+            <button id="myTitle" class=" layui-btn layui-btn-radius layui-btn-primary">
+                <img id="user" src="static/images/user.png"/>
+                &nbsp;<div id="my" style="color: white;">我的</div>
+            </button>
+        </div>
+
+
+    </div>
+
+
+    <div id="content">
+        <div id="boxes_top">
+            <div id="one" class="btn  btn-border-o">
+
+                <div id="black_border">
+                <img src="static/images/card1.png">
+                <div id="cover">
+                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>
+                    <div id="title">关于古筝</div>
+                    <div id="title_english">About &nbsp; zither</div>
+
+                </div>
+                </div>
+            </div>
+            <div id="two" class="btn  btn-border-o">
+                <div id="black_border">
+                <img src="static/images/card2.png">
+                <div id="cover">
+                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>
+                    <div id="title">第一单元<br>基本弹奏指法</div>
+                    <div id="title_english">Chapter 1</div>
+
+                </div>
+                </div>
+
+            </div>
+            <div id="three" class="btn  btn-border-o">
+                <div id="black_border">
+                <img src="static/images/card3.png">
+                <div id="cover">
+                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>
+                    <div id="title">第二单元<br>连托、连抹、连勾及刮奏</div>
+                    <div id="title_english">Chapter 2</div>
+
+                </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="boxes_bottom">
+            <div id="four" class="btn  btn-border-o">
+                <div id="black_border">
+                <img src="static/images/card4.png">
+                <div id="cover">
+                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>
+                    <div id="title">第三单元<br>撮弦与和弦</div>
+                    <div id="title_english">Chapter 3</div>
+
+                </div>
+                </div>
+            </div>
+            <div id="five" class="btn  btn-border-o">
+                <div id="black_border">
+                <img src="static/images/card5.png">
+
+                <div id="cover">
+                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>
+                    <div id="title">第四单元<br>遥指</div>
+                    <div id="title_english">Chapter 4</div>
+
+                </div>
+                </div>
+            </div>
+            <div id="six" class="btn  btn-border-o">
+                <div id="black_border">
+                <img src="static/images/card6.png">
+                <div id="cover">
+                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>
+                    <div id="title">第五单元<br>滑音及按音</div>
+                    <div id="title_english">Chapter 5</div>
+
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="static/js/jquery.min.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
+<script type="text/javascript" src="static/js/vue.min.js"></script>
+
+<script type="text/javascript">
+    $("#searchClick").click(function () {
+        window.location.href = "search.html";
+    });
+    $(document).ready(function () {
+        $("#kejian").click(function () {
+            window.location.href="courseware.html";
+        });
+        $("#one").click(function () {
+            window.location.href = "quku.html?chapterId=6";
+        });
+        $("#two").click(function () {
+            window.location.href = "quku.html?chapterId=1";
+        });
+        $("#three").click(function () {
+            window.location.href = "quku.html?chapterId=2";
+        });
+        $("#four").click(function () {
+            window.location.href = "quku.html?chapterId=3";
+        });
+        $("#five").click(function () {
+            window.location.href = "quku.html?chapterId=4";
+        });
+        $("#six").click(function () {
+            window.location.href = "quku.html?chapterId=5";
+        });
+        $("#search").click(function () {
+            $("#search").css("margin-left", "0px");
+        });
+    });
+
+
+</script>
+</html>

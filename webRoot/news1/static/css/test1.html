@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery媒体插件</title>
+    <meta name="description" content="本站致力于收集jQuery插件和提供各种jQuery特效的详细使用方法,在线预览，jQuery插件下载及教程"/>
+    <meta name="keywords" content="jQuery,jQuery特效,jQuery ui,jQuery插件,jQuery 教程,css3,网页特效,JS特效"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/fonts/font-awesome.min.css" rel="stylesheet" media="screen">
+    <link rel="Shortcut icon" href="http://www.jq22.com/favicon.ico"/>
+    <!--[if lt IE 9]>
+    <script src="/js/respond.min.js"></script>
+    <script src="/js/html5shiv.min.js"></script>
+    <![endif]-->
+    <style>
+        @charset "utf-8";
+        body {
+            background-color: #F4F4F4;
+            font-family: "微软雅黑";
+        }
+
+        .top51 {
+            margin-top: 50px;
+        }
+
+        .top70 {
+            margin-top: 70px;
+        }
+
+        .top10 {
+            margin-top: 10px;
+        }
+
+        .top20 {
+            margin-top: 20px;
+        }
+
+        .l10 {
+            margin-left: 10px;
+        }
+
+        .z14 {
+            font-size: 14px;
+        }
+
+        .z12 {
+            font-size: 12px;
+        }
+
+        .z20 {
+            font-size: 20px;
+        }
+
+        .z30 {
+            font-size: 30px;
+        }
+
+        .og {
+            color: #fd953e;
+        }
+
+        .f {
+            float: left
+        }
+
+        .r {
+            float: right
+        }
+
+        .df {
+            clear: left;
+        }
+
+        .dr {
+            clear: right;
+        }
+
+        .banner {
+            height: 204px;
+            background-position: center 0%;
+            background-repeat: no-repeat;
+            background-color: #17181c;
+            position: fixed;
+            width: 100%;
+            z-index: 1;
+            top: 50px;
+        }
+
+        .navbar {
+            border-bottom-width: 0px;
+        }
+
+        .col-md-3 img {
+            width: 100%;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            transition: all 1s ease 0s;
+        }
+
+        .col-md-3 a {
+            display: block;
+        }
+
+        .col-md-3 {
+            margin-bottom: 20px;
+            background-color: #FFF;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+            position: relative;
+            transition: all 1s ease 0s;
+            overflow: hidden
+        }
+
+        .col-md-3:hover {
+            background-color: #fff;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+        }
+
+        .col-md-3:hover img {
+            -webkit-filter: brightness(.5);
+            filter: brightness(.5);
+            -moz-transform: scale(1.05);
+            -webkit-transform: scale(1.05);
+        }
+
+        .myNav a {
+            display: inline-block;
+            font-size: 14px;
+            padding-left: 10px;
+            padding-right: 10px;
+            line-height: 40px;
+        }
+
+        .col-lg-9, .col-lg-2 {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        .m, .mn {
+            z-index: 2;
+            position: relative;
+            margin-top: 255px;
+            background-color: #F4F4F4;
+            z-index: 2;
+            position: relative;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 20px;
+        }
+
+        .mn {
+            margin-top: 50px;
+        }
+
+        .m0 {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .cover-info {
+            padding: 6px 15px 28px;
+            height: 80px;
+            overflow: hidden;
+        }
+
+        .cover-info h4 {
+            font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: keep-all;
+            white-space: nowrap;
+            display: block;
+            font-weight: bold;
+            line-height: 18px;
+            margin-top: 7px;
+            margin-bottom: 5px;
+        }
+
+        .cover-info a {
+            color: #60BDE8;
+        }
+
+        .cover-info small {
+            color: #838383;
+            padding-bottom: 10px;
+        }
+
+        .cover-fields {
+            bottom: 34px;
+            font-size: 12px;
+            height: 35px;
+            left: 10px;
+            line-height: 35px;
+            max-width: 210px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .cover-stat {
+            background-color: #f6f6f6;
+            border-radius: 0 0 3px 3px;
+            border-top: 1px solid #e7e7e7;
+            box-shadow: 0 1px 0 0 #fff inset;
+            padding: 7px 15px 7px 15px;
+            color: #8B8B8C;
+            position: relative;
+        }
+
+        .cover-stat span {
+            font-size: 10px;
+            font-family: "Arial";
+        }
+
+        .cover-yh {
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            border-left: 1px solid #ddd;
+            color: #aaa;
+            cursor: default;
+            width: 29px;
+            line-height: 34px;
+            height: 35px;
+            transition: color 0.15s linear;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .cover-yh a {
+            color: #8B8B8C;
+        }
+
+        .cover-yh a:hover {
+            color: #2D2D2D;
+            text-decoration: none;
+        }
+
+        .f10 {
+            padding-right: 12px;
+        }
+
+        .cover-fields a, .jz a {
+            color: #69696d;
+        }
+
+        .cover-fields a:hover, .jz a:hover {
+            color: #1769ff;
+            text-decoration: none;
+        }
+
+        .popover-content {
+            padding: 5px 5px;
+        }
+
+        .popover.top > .arrow:after {
+            bottom: 5px;
+            margin-left: 2px;
+            content: " ";
+            border-top-color: #000;
+            border-bottom-width: 0;
+        }
+
+        .popover > .arrow:after {
+            content: "";
+            border-width: 7px;
+        }
+
+        .popover > .arrow {
+            border-width: 0px;
+        }
+
+        .popover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1060;
+            display: none;
+            max-width: 276px;
+            padding: 1px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: left;
+            white-space: normal;
+            background-color: #0B0B0B;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            border-radius: 6px;
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+            color: #FFF;
+            border: 1px solid #000;
+        }
+
+        .nav-bg, .nav-bgn {
+            height: 50px;
+            background-color: #FFF;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+            z-index: 5;
+            position: relative;
+            top: 255px;
+        }
+
+        .nav-bgn {
+            top: 50px;
+        }
+
+        .jz {
+            text-align: center;
+            line-height: 50px;
+            font-size: 15px;
+            color: #C8C8C8;
+            position: relative;
+        }
+
+        .sort {
+            cursor: pointer;
+            display: inline-block;
+            padding-right: 30px;
+            max-width: 33%;
+            position: relative;
+            text-align: left;
+            padding-left: 30px;
+            transition: all 1s ease 0s;
+        }
+
+        .menuFixed {
+            position: fixed;
+            left: 0;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .navbar-logo {
+            float: left;
+            height: 50px;
+            padding: 10px 0px;
+            font-size: 18px;
+            line-height: 20px;
+        }
+
+        .nav > li > a {
+            font-size: 12px;
+        }
+
+        .mh {
+            -webkit-backface-visibility: hidden;
+            -webkit-filter: blur(5px);
+            filter: blur(5px);
+            opacity: 0.9;
+            -webkit-animation: nvfadeInDown 1s .1s ease both;
+            -moz-animation: nvfadeInDown .3s .1s ease both;
+        }
+
+        .ty {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+        }
+
+        .nav-zi {
+            position: absolute;
+            top: 50px;
+            left: 0px;
+            background-color: #fff;
+            height: auto;
+            width: 100%;
+            text-align: left;
+            border-top: 1px solid #E8E8E8;
+        }
+
+        .nav-zi ul {
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+
+        .nav-zi li {
+            width: 280px;
+        }
+
+        .nav-zi a {
+            border: 1px solid #EDEDED;
+            padding-left: 40px;
+            margin-left: 10px;
+            padding-right: 20px;
+            margin-right: 10px;
+            display: block;
+            line-height: 40px;
+            -webkit-transition: all 0.6s ease-in;
+            -moz-transition: all 0.6s ease-in;
+            -ms-transition: all 0.6s ease-in;
+            -o-transition: all 0.6s ease-in;
+            transition: all 0.6s ease-in;
+        }
+
+        .nav-zi a:hover {
+            border: 1px solid #367dff;
+        }
+
+        .nav-zi i {
+            padding-right: 10px;
+            font-size: 18px;
+        }
+
+        .nav-bs {
+            color: #FFF;
+        }
+
+        .ls {
+            color: #1769ff;
+        }
+
+        .dltx {
+            width: 37px;
+            height: 37px;
+            border-radius: 37px;
+        }
+
+        .nav-zibg {
+            border-bottom: 2px solid #007AFB;
+            padding-bottom: 13px;
+        }
+
+        .search-wrap {
+            position: relative;
+        }
+
+        .search-wrap .search-txt {
+            width: 100%;
+            border-radius: 5px;
+            padding-left: 30px;
+            outline: none;
+        }
+
+        .search-btn {
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            color: #A5A5A5;
+            cursor: pointer;
+            background: none;
+            border: 0;
+        }
+
+        .bod {
+            padding-bottom: 50px;
+        }
+
+        .foot {
+            height: 32px;
+            border-top: 1px solid #303030;
+        }
+
+        .foot ul {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .foot li {
+            line-height: 32px;
+            color: #939393;
+            font-size: 12px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .footer-ss {
+            border-right: 1px solid #000;
+            box-shadow: 1px 0 0 #303030;
+            padding-right: 12px;
+        }
+
+        .project {
+            background: #fafafa;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            width: 96%;
+            margin-left: 2%;
+            margin-right: 2%;
+            position: relative;
+        }
+
+        .project-header {
+            border-bottom: 1px solid #e8e8e8;
+            border-radius: 3px 3px 0 0;
+            border-top: 1px solid #fff;
+            height: auto;
+            margin: auto;
+            padding: 20px 25px 0;
+            position: relative;
+        }
+
+        .project-header h1 {
+            margin-top: 0px;
+            font-size: 28px;
+            color: #262626;
+        }
+
+        .project-header p {
+            color: dimgray;
+        }
+
+        .project-header span {
+            border-right: 1px solid #e8e8e8;
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+            margin-right: 10px;
+            padding-right: 10px;
+        }
+
+        .project-content {
+            background-color: #FFF;
+            padding-top: 30px;
+            padding-right: 7.1%;
+            padding-left: 7.1%;
+            padding-bottom: 30px;
+            border-radius: 4px;
+            line-height: 1.8;
+            font-size: 16px
+        }
+
+        .project-content h4 {
+            font-size: 1.5em;
+            padding-top: 10px;
+            font-weight: 400;
+        }
+
+        .thumbile {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .thumbile a {
+            width: 22%;
+            margin-left: 1%;
+            margin-right: 1%;
+            font-size: 1.5rem;
+            line-height: 30px;
+        }
+
+        .in100, .in2 {
+            border-radius: 3px 3px 0 0;
+            border-top: 1px solid #e8e8e8;
+            height: auto;
+            margin: auto;
+            padding: 20px 6px;
+            position: relative;
+        }
+
+        .in2 {
+            padding: 20px 25px;
+        }
+
+        .pl {
+            width: 90%;
+            border: 1px solid #e8e8e8;
+            padding: 4px;
+            border-radius: 5px;
+            margin-left: 8%;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .pl p {
+            padding: 0px;
+            margin: 0px;
+            line-height: 26px
+        }
+
+        .pl ul {
+            padding: 0px 20px;
+            line-height: 26px;
+        }
+
+        .tx {
+            position: absolute;
+            top: 0px;
+            left: -55px;
+            width: 55px;
+            height: 50px;
+            background-image: url(../img/tx.png);
+            background-repeat: no-repeat;
+            background-position: right 10px;
+            padding-right: 12px;
+        }
+
+        .tx2 {
+            width: 45px;
+            left: -45px;
+        }
+
+        .tx img {
+            width: 100%;
+            border-radius: 45px;
+        }
+
+        .plbg {
+            background-color: #eff6f9;
+        }
+
+        .zuo {
+            border: 1px solid #e8e8e8;
+            background-color: #FFF;
+            padding: 15px;
+            width: 200px;
+            border-radius: 5px;
+        }
+
+        .zuo h6 {
+            margin-top: 0px;
+            color: #A7A7A7;
+        }
+
+        .zuo h4 {
+            font-size: 14px;
+            padding-top: 0px;
+            margin-top: 3px;
+        }
+
+        .zuo img {
+            display: block;
+            margin-right: 10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            float: left
+        }
+
+        .zuo span {
+            font-family: "Arial", sans-serif;
+        }
+
+        .zuox {
+            width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .btn-z {
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc;
+            width: 100%;
+        }
+
+        .cjms {
+            color: #5E5E5E;
+            background-color: #fafaf9;
+            font-size: 15px;
+            font-weight: 600;
+            border-left: 4px solid #dedede;
+            border-right: 1px solid #F0F0F0;
+            border-bottom: 1px solid #F0F0F0;
+            border-top: 1px solid #F0F0F0;
+            border-radius: 0px;
+            box-shadow: 1px 3px #f9f9f9;
+        }
+
+        .tcc {
+            height: 568px;
+            background-image: url(../img/tcbg.png);
+        }
+
+        .modal {
+            border: 0px;
+        }
+
+        .modal-content2 {
+            position: relative;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            border: 1px solid #999;
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: 6px;
+            outline: 0;
+            -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+            box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+        }
+
+        .modal-header2 {
+            min-height: 16.43px;
+            padding: 15px;
+        }
+
+        .tcck, .tcck2 {
+            padding-top: 174px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        .tcck2 {
+            padding-top: 20px;
+        }
+
+        .input-group, .input-group .form-control {
+            height: 50px
+        }
+
+        .input-group-lg > .input-group-btn > .btn {
+            height: 50px;
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.3333333;
+            width: 100px;
+        }
+
+        .modal-footer2 {
+            padding-top: 0px;
+            padding-right: 40px;
+            padding-left: 40px;
+            padding-bottom: 15px;
+        }
+
+        .d3f {
+            text-align: center;
+        }
+
+        .d3f a {
+            width: 85px;
+            height: 85px;
+            border-radius: 85px;
+            border: 1px solid #E7E7E7;
+            margin-left: 10px;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .d3f a:hover {
+            -webkit-transition: all 0.2s ease-in;
+            -moz-transition: all 0.2s ease-in;
+            -ms-transition: all 0.2s ease-in;
+            -o-transition: all 0.3s ease-in;
+            transition: all 0.4s ease-in;
+            background-color: #fdd31c;
+            border: 1px solid #fdd31c;
+        }
+
+        .qq {
+            background-image: url(../img/qq.png);
+        }
+
+        .sina {
+            background-image: url(../img/sina.png);
+        }
+
+        .git {
+            background-image: url(../img/git.png);
+        }
+
+        .zfb {
+            background-image: url(../img/zfb.png);
+        }
+
+        .posts-nav-wrap {
+            text-align: center;
+            width: 100%;
+            height: 53px;
+            margin: 20px 0 0 0;
+            display: inline-block;
+            clear: both;
+        }
+
+        .posts-nav li {
+            margin: 0 13px 0 0;
+            display: inline-block;
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .05);
+        }
+
+        .posts-nav li a {
+            text-indent: -9999em;
+            text-align: left;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            display: inline-block;
+            -moz-transition: all .20s ease-in-out;
+            -webkit-transition: all .20s ease-in-out;
+            transition: all .20s ease-in-out;
+        }
+
+        .posts-nav .next a {
+            background: #999999 url(../img/ico-pagination-arrow-next.png) no-repeat center;
+            width: 144px;
+            height: 53px;
+            line-height: 53px;
+        }
+
+        .posts-nav .next a:hover {
+            text-decoration: none;
+            background: #ffe900 url(../img/ico-pagination-arrow-next.png) no-repeat 110px center;
+        }
+
+        .posts-nav .previous a {
+            width: 64px;
+            height: 53px;
+            line-height: 53px;
+            background-color: #999999;
+            background-image: url(../img/ico-pagination-arrow-previous.png);
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .posts-nav .previous a:hover {
+            text-decoration: none;
+            background: #ffe900 url(../img/ico-pagination-arrow-previous.png) no-repeat 12px center;
+        }
+
+        .en {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .dwontop {
+            margin-top: 45%;
+            overflow: hidden
+        }
+
+        .dwonbtbg {
+            background-color: #5bc0de;
+            color: #fff;
+        }
+
+        .dwonx {
+            border-top-width: 0px;
+            border-bottom-width: 0px;
+        }
+
+        .yuei {
+            text-align: center;
+        }
+
+        .yuei a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .yuei a:hover {
+            font-weight: bold;
+            background-color: #3f9dce;
+            border: 1px solid #3f9dce;
+            transition: all 1s ease 0s;
+            color: #fff200
+        }
+
+        .f20 {
+            padding-right: 20px
+        }
+
+        .xzsm {
+            display: inline-block;
+            width: 200px;
+            height: 60px;
+            min-height: 0px;
+            line-height: 60px;
+            text-align: center;
+            background-color: #fff;
+            border: 1px solid #5bc0de;
+            font-size: 18px;
+        }
+
+        .xza {
+            background-color: #5bc0de;
+        }
+
+        .menu ul, .menu li {
+            list-style-type: none;
+        }
+
+        .menu ul li {
+            float: left;
+            position: relative;
+        }
+
+        .menu ul li a, .menu ul li a:visited {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            width: 80px;
+            height: 30px;
+            color: #000;
+            line-height: 30px;
+            font-size: 12px;
+        }
+
+        .menu ul li ul {
+            display: none;
+        }
+
+        .menu ul li:hover a {
+        }
+
+        .menu ul li:hover ul {
+            display: block;
+            position: absolute;
+            top: 0px;
+            left: -41px;
+            width: 105px;
+        }
+
+        .menu ul li:hover ul li a {
+            display: block;
+            color: #000;
+        }
+
+        .menu ul li:hover ul li a:hover {
+            color: #000;
+            color: #000;
+        }
+
+        .tpa {
+            background-color: #F8F8F8;
+        }
+
+        .tpa a:hover {
+            background-color: #999999;
+        }
+
+        .dou {
+            -webkit-animation: dou 0.5s .2s ease both;
+            -moz-animation: dou 0.5s .2s ease both;
+        }
+
+        @-webkit-keyframes dou {
+            0%, 100% {
+                -webkit-transform: translateX(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                -webkit-transform: translateX(-5px);
+            }
+            20%, 40%, 60%, 80% {
+                -webkit-transform: translateX(5px);
+            }
+        }
+
+        @-moz-keyframes dou {
+            0%, 100% {
+                -moz-transform: translateX(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                -moz-transform: translateX(-5px);
+            }
+            20%, 40%, 60%, 80% {
+                -moz-transform: translateX(5px);
+            }
+        }
+
+        .dou2 {
+            -webkit-animation: dou2 1s .2s ease both;
+            -moz-animation: dou2 1s .2s ease both;
+        }
+
+        @-webkit-keyframes dou2 {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(20px)
+            }
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0)
+            }
+        }
+
+        @-moz-keyframes dou2 {
+            0% {
+                opacity: 0;
+                -moz-transform: translateY(20px)
+            }
+            100% {
+                opacity: 1;
+                -moz-transform: translateY(0)
+            }
+        }
+
+        .myleft {
+            margin-left: 0px;
+            margin-right: 0px;
+            background-color: #FAFAFA;
+            border-bottom-left-radius: 3px;
+            border-top-left-radius: 3px;
+        }
+
+        .mym {
+            margin-left: 0px;
+            margin-right: 0px;
+            background-color: #FAFAFA;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            border-bottom-left-radius: 3px;
+            border-top-left-radius: 3px;
+        }
+
+        .myright {
+            margin-left: 0px;
+            margin-right: 0px;
+            background-color: #fff;
+            border-bottom-right-radius: 3px;
+            border-top-right-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            background: white;
+        }
+
+        .myleft-n, .myright-n {
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        .imgr20 {
+            margin-right: 20px;
+            display: block;
+            border-radius: 15px;
+        }
+
+        .myleft-n button {
+            width: 100%;
+        }
+
+        .topx {
+            border-top: 1px solid #E0E0E0;
+            padding-top: 20px;
+        }
+
+        .t0b0 {
+            margin: 0px;
+            padding: 0px;
+            padding-left: 10px
+        }
+
+        .myNav {
+            text-align: center;
+        }
+
+        .myMinh {
+            min-height: 500px;
+        }
+
+        .txtr {
+            text-align: right;
+        }
+
+        .spjz {
+            margin-right: auto;
+        }
+
+        .x-top {
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: #d8e4e6;
+            padding-top: 10px;
+            margin-top: 30px;
+        }
+
+        .fy {
+            width: 50%;
+            overflow: hidden;
+            height: 25px;
+            font-size: 14px;
+        }
+
+        .txtRight {
+            text-align: right;
+        }
+
+        .mBottom {
+            margin-bottom: 20px;
+        }
+
+        .zhs {
+            color: #cdcdcd;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .PREVIOUS {
+            height: 25px;
+            padding-left: 35px;
+            background-image: url(../img/PREVIOUS.png);
+            background-repeat: no-repeat;
+            line-height: 25px;
+            background-position: left center;
+        }
+
+        .NEXT {
+            height: 25px;
+            background-image: url(../img/Next.png);
+            background-repeat: no-repeat;
+            line-height: 25px;
+            background-position: right center;
+            padding-right: 35px;
+        }
+
+        .NEXT a:hover {
+            color: #39F;
+        }
+
+        .jg20 {
+            padding-left: 20px;
+        }
+
+        .jg20r {
+            padding-right: 20px;
+        }
+
+        .jg35 {
+            padding-left: 35px;
+        }
+
+        .jg352 {
+            padding-right: 35px;
+        }
+
+        .err {
+            border-color: #A94442;
+            background-color: #ffe7e7
+        }
+
+        .errts {
+            padding: 5px;
+            padding-left: 20px;
+        }
+
+        .project-content img {
+            max-width: 100%
+        }
+
+        .red {
+            background-color: #FF4F4F;
+        }
+
+        .pwd {
+            width: 600px;
+            height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #FFFFFF;
+            padding: 20px;
+        }
+
+        .pwdbut {
+            line-height: 36px;
+        }
+
+        .jjk20 {
+            padding-left: 20px;
+            padding-bottom: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            margin-bottom: 10px;
+        }
+
+        .z16 {
+            font-size: 16px;
+        }
+
+        .cjnr {
+            padding-top: 10px;
+            padding-right: 30px;
+            padding-left: 30px;
+            padding-bottom: 0px;
+        }
+
+        .cjbg {
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+        }
+
+        .zxzf {
+            width: 990px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #FFF;
+            padding: 20px;
+            border: 1px solid #e3e3e3;
+            background-image: url(../img/zfbcz.png);
+            background-repeat: no-repeat;
+            background-position: center top;
+            padding-top: 60px
+        }
+
+        .zxzf2 {
+            width: 990px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #FFF;
+            padding: 20px;
+            border: 1px solid #e3e3e3;
+            padding-top: 133px
+        }
+
+        .msage {
+            background-color: #fff0f0;
+            border-bottom-width: 1px;
+            border-bottom-color: #f3d2d2;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            position: relative;
+            margin-bottom: 5px
+        }
+
+        .msclose {
+            position: absolute;
+            top: 0px;
+            right: 22px
+        }
+
+        pre {
+            display: block;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #333;
+            word-break: break-all;
+            word-wrap: break-word;
+            background-color: #fbfbfb;
+            border: 1px dotted #DADADA;
+            border-radius: 4px;
+            overflow: auto;
+            font-family: Verdana
+        }
+
+        .pl pre {
+            background-color: #FFFFFF;
+        }
+
+        .edui-combox-body .edui-button-body {
+            width: 140px;
+            font-size: 12px;
+            height: 20px;
+            line-height: 20px;
+            padding-left: 5px;
+            white-space: nowrap;
+            margin: 0 3px 0 0;
+        }
+
+        .pd10 {
+            padding-left: 10px;
+            padding-right: 10px
+        }
+
+        .adinfo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            height: 50px;
+            width: 320px;
+        }
+
+        .m10 {
+            margin-bottom: 10px
+        }
+
+        .jl {
+            color: #ff7800;
+            padding-left: 20px;
+            display: none
+        }
+
+        .on_changes2 {
+            width: 255px;
+            position: absolute;
+            top: 49px;
+            left: 51px;
+            list-style: none;
+            background: #FFF;
+            border: 1px solid #d3d3d3;
+            display: none;
+            padding: 10px;
+            z-index: 5
+        }
+
+        .on_changes2 li {
+            margin: 5px;
+            padding: 4px;
+        }
+
+        .on_changes2 li.active {
+            background: #CEE7FF;
+        }
+
+        .banseo {
+            width: 506px;
+            height: 34px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            position: absolute;
+            top: 56px
+        }
+
+        .bantxt {
+            width: 504px;
+            height: 34px;
+            border: 1px solid #2c2c2c;
+            background-color: #131418;
+            padding-left: 20px;
+            padding-right: 20px;
+            outline: none;
+            color: #B7B7B7;
+            border-radius: 34px;
+            opacity: 0.8;
+        }
+
+        ::-webkit-input-placeholder {
+            color: #666666;
+        }
+
+        :-moz-placeholder {
+            color: #666666;
+        }
+
+        ::-moz-placeholder {
+            color: #666666;
+        }
+
+        :-ms-input-placeholder {
+            color: #666666;
+        }
+
+        .banbutt {
+            position: absolute;
+            right: 0px;
+            background-color: transparent;
+            border-width: 0px;
+            outline: none;
+        }
+
+        .banbutt:hover {
+            color: #fff
+        }
+
+        .m5 {
+            margin-bottom: 5px
+        }
+
+        .hf {
+            float: right;
+            font-size: 12px;
+            line-height: 26px;
+        }
+
+        .lyhftxt {
+            width: 100%;
+            height: 200px;
+            padding: 10px 20px;
+            outline: none;
+            border: 1px solid #d2dadd;
+            background: #F8F8F8;
+            color: #3a3a3a;
+            font-size: 13px;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        .qxhf {
+            float: right;
+        }
+
+        .pl a {
+            color: #5d6c80;
+            text-decoration: none;
+            cursor: pointer
+        }
+
+        .qxhf a {
+            color: #5d6c80;
+            text-decoration: none;
+            cursor: pointer
+        }
+
+        .huif a {
+            color: #5d6c80;
+            text-decoration: none;
+            cursor: pointer
+        }
+
+        .myhome img {
+            width: 37px;
+            border-radius: 37px;
+            margin-top: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .myhome:hover .myhome-z {
+            display: block;
+        }
+
+        .myhome {
+            padding-bottom: 10px
+        }
+
+        .myhome-z {
+            top: 50px;
+            left: -50px;
+            position: absolute;
+            width: 107px;
+            line-height: 30px;
+            background-color: #FFF;
+            display: none
+        }
+
+        .myhome-z a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .myhome-z a:hover {
+            background-color: #FFF5C5;
+            font-weight: bold;
+        }
+
+        .bh {
+            -webkit-transition: all 0.4s ease-in;
+            -moz-transition: all 0.4s ease-in;
+            -ms-transition: all 0.4s ease-in;
+            -o-transition: all 0.3s ease-in;
+            transition: all 0.4s ease-in;
+        }
+
+        .huif {
+            width: 716px;
+            border-top: 1px solid #ebebeb;
+            padding-top: 10px;
+            position: absolute;
+            left: 130px;
+            display: none
+        }
+
+        .plbg2 {
+            background-color: #f1f1f1
+        }
+
+        .nadc {
+            -webkit-animation: nvfadeInDown .3s .1s ease both;
+            -moz-animation: nvfadeInDown .3s .1s ease both;
+        }
+
+        @-webkit-keyframes nvfadeInDown {
+            0% {
+                opacity: .2;
+            100% {
+                opacity: 1
+            }
+        }
+
+        100
+        %
+        {
+            opacity: 1
+        ;
+        }
+        }
+        @-moz-keyframes nvfadeInDown {
+            0% {
+                opacity: .2;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #nvanimation {
+            -webkit-animation: nvfadeOutUp 1s .2s ease both;
+            -moz-animation: nvfadeOutUp 1s .2s ease both;
+        }
+
+        @-webkit-keyframes nvfadeOutUp {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-moz-keyframes nvfadeOutUp {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .baniframe {
+            width: 100%;
+            height: 100%;
+            border-width: 0px;
+        }
+
+        .banbk {
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+        .banjz {
+            text-align: center;
+            padding-bottom: 10px
+        }
+
+        td, th {
+            border: 1px solid #EBEBEB;
+            padding: 6px;
+        }
+
+        .auto_hidden {
+            transition: all 1s ease 0s;
+            width: 204px;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            border-left: 1px solid #333;
+            border-right: 1px solid #333;
+            position: absolute;
+            display: none;
+        }
+
+        .auto_onmouseover {
+            transition: all .5s ease 0s;
+            color: #f5ffb1;
+            background-color: #4a1d1d;
+            width: 100%;
+            line-height: 30px;
+            padding-left: 20px;
+            padding-right: 15px;
+            font-weight: bold;
+            border-radius: 7px;
+            cursor: pointer
+        }
+
+        .auto_onmouseout {
+            color: #fff;
+            width: 100%;
+            line-height: 30px;
+            padding-left: 15px;
+            padding-right: 15px;
+            transition: all 1s ease 0s;
+        }
+
+        .auto_show {
+            width: 204px;
+            border: 1px solid #000;
+            position: fixed;
+            z-index: 9999;
+            background-color: #000;
+            display: block;
+            border-radius: 7px;
+            opacity: 0.9;
+            transition: all 1s ease 0s;
+            max-height: 510px;
+            overflow: hidden;
+            -webkit-animation: fadeInDown 0.5s .2s ease both;
+            -moz-animation: fadeInDown 0.5s .2s ease both;
+        }
+
+        @-webkit-keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                height: 0px;
+                -webkit-transform: translateY(-20px)
+            }
+            100% {
+                opacity: 1;
+                max-height: 510px;
+                -webkit-transform: translateY(0)
+            }
+        }
+
+        @-moz-keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                -moz-transform: translateY(-20px)
+            }
+            100% {
+                opacity: 1;
+                -moz-transform: translateY(0)
+            }
+        }
+
+        .inputElem {
+            height: 22px;
+            line-height: 22px;
+            border: 1px solid #ccc;
+        }
+
+        .parentCls {
+            width: 200px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .parentCls ul {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .auto-tip li {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            text-indent: 10px;
+            transition: all 0.5s ease 0s;
+            list-style: none;
+        }
+
+        .auto-tip li.hoverBg {
+            background: #a1e8ff;
+            cursor: pointer;
+            font-weight: bold;
+            text-indent: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .auto-tip {
+            background-color: #fff
+        }
+
+        .bdsharebuttonbox .ttqq, .bdsharebuttonbox .ttwx, .bdsharebuttonbox .ttqzone, .bdsharebuttonbox .ttbdhome, .bdsharebuttonbox .ttsina, .bdsharebuttonbox .ttbaidu, .bdsharebuttonbox .ttrenren, .bdsharebuttonbox .tttqq, .bdsharebuttonbox .tthuaban, .bdsharebuttonbox .ttfbook, .bdsharebuttonbox .ttmore {
+            background-repeat: no-repeat;
+            background-image: url(../img/fxtb.png);
+            background-position: 0px 0px;
+        }
+
+        .bdsharebuttonbox .ttwx {
+            background-position: 0px -24px;
+        }
+
+        .bdsharebuttonbox .ttqzone {
+            background-position: 0px -48px;
+        }
+
+        .bdsharebuttonbox .ttbdhome {
+            background-position: 0px -72px;
+        }
+
+        .bdsharebuttonbox .ttsina {
+            background-position: 0px -96px;
+        }
+
+        .bdsharebuttonbox .ttrenren {
+            background-position: 0px -120px;
+        }
+
+        .bdsharebuttonbox .tttqq {
+            background-position: 0px -144px;
+        }
+
+        .bdsharebuttonbox .tthuaban {
+            background-position: 0px -168px;
+        }
+
+        .bdsharebuttonbox .ttfbook {
+            background-position: 0px -192px;
+        }
+
+        .bdsharebuttonbox .ttmore {
+            background-position: 0px -216px;
+        }
+
+        .project-content h3 {
+            border-bottom: 1px solid #EBEBEB;
+            padding-bottom: 15px;
+        }
+
+        .project-content h4 {
+            font-size: 22px;
+            border-left: 2px solid #c7c7c7;
+            padding-left: 10px;
+            line-height: 18px;
+            margin-top: 20px;
+            padding-bottom: 10px;
+        }
+
+        .project-content table {
+            font-size: 15px
+        }
+
+        .project-content td {
+            padding-left: 15px
+        }
+
+        .c-btn {
+            color: #ffffff;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            height: 100%;
+        }
+
+        .c-btn:after {
+            content: '';
+            display: block;
+            position: absolute;
+        }
+
+        .c-btn:before {
+            content: '';
+            display: block;
+            position: absolute;
+        }
+
+        .c-btn--border-line {
+            background: none;
+            border: 0;
+            box-sizing: border-box;
+            box-shadow: inset 0 0 0 0px transparent;
+        }
+
+        .c-btn--border-line:after, .c-btn--border-line:before {
+            box-sizing: border-box;
+            border: 1px solid transparent;
+            width: 0;
+            height: 0;
+        }
+
+        .c-btn--border-line:after {
+            top: 0;
+            left: 0;
+            -webkit-transition: border-color 0s ease-in 0.8s, width 0.2s ease-in 0.6s, height 0.2s ease-in 0.4s;
+            transition: border-color 0s ease-in 0.8s, width 0.2s ease-in 0.6s, height 0.2s ease-in 0.4s;
+        }
+
+        .c-btn--border-line:before {
+            bottom: 0;
+            right: 0;
+            -webkit-transition: border-color 0s ease-in 0.4s, width 0.2s ease-in 0.2s, height 0.2s ease-in;
+            transition: border-color 0s ease-in 0.4s, width 0.2s ease-in 0.2s, height 0.2s ease-in;
+        }
+
+        .c-btn--border-line:hover:after, .c-btn--border-line:hover:before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .c-btn--border-line:hover:after {
+            border-top-color: #367dff;
+            border-right-color: #367dff;
+            -webkit-transition: width 0.2s ease-out, height 0.2s ease-out 0.2s;
+            transition: width 0.2s ease-out, height 0.2s ease-out 0.2s;
+        }
+
+        .c-btn--border-line:hover:before {
+            border-bottom-color: #367dff;
+            border-left-color: #367dff;
+            -webkit-transition: border-color 0s ease-out 0.4s, width 0.2s ease-out 0.4s, height 0.2s ease-out 0.6s;
+            transition: border-color 0s ease-out 0.4s, width 0.2s ease-out 0.4s, height 0.2s ease-out 0.6s;
+        }
+
+        .c-btn--line:after {
+            -webkit-transform-origin: right;
+            transform-origin: right;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            bottom: 0;
+            background-color: #367dff;
+            -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+            transition: -webkit-transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+            transition: transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+            transition: transform 0.6s cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+        }
+
+        .c-btn--line:hover:after {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            -webkit-transform-origin: left;
+            transform-origin: left;
+            -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+            transition: -webkit-transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+            transition: transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+            transition: transform 0.6s cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+        }
+
+        .zuox span {
+            font-size: 11px;
+            font-family: "微软雅黑";
+        }
+
+        .fx {
+            margin-bottom: 10px
+        }
+
+        @media (max-width: 1199) {
+        }
+
+        @media (max-width: 991px) {
+            .navxs {
+                display: none
+            }
+
+            .thumbile a {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .fx {
+                width: 100%;
+                margin-bottom: 10px;
+                float: left;
+                margin-top: 10px
+            }
+
+            .nav-zi li {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .sort {
+                padding-right: 7px;
+                padding-left: 7px;
+            }
+        }
+
+        .pla {
+            display: none
+        }
+
+        .plb {
+            display: block
+        }
+
+        .itop {
+            position: fixed;
+            right: 10px;
+            bottom: 40px;
+            display: none;
+            margin-bottom: 5px;
+            width: 40px;
+            height: 36px;
+            border-radius: 2px;
+            background: url(../img/iconsprite_btbar.png) 8px 6px no-repeat;
+            background-color: #444;
+            background-color: rgba(0, 0, 0, .6);
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+        }
+
+        .xyd {
+            width: 15px;
+            height: 15px;
+            background-color: #ff4343;
+            font-family: Arial;
+            font-size: .6em;
+            position: fixed;
+            right: 5px;
+            top: 3px;
+            z-index: 99;
+            text-align: center;
+            line-height: 15px;
+            border-radius: 15px;
+            color: #fff;
+            display: none;
+            -webkit-animation: bounce 1s .2s 3 ease both;
+            -moz-animation: bounce 1s .2s 3 ease both;
+        }
+
+        @-webkit-keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                -webkit-transform: translateY(0)
+            }
+            40% {
+                -webkit-transform: translateY(-5px)
+            }
+            60% {
+                -webkit-transform: translateY(-2px)
+            }
+        }
+
+        @-moz-keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                -moz-transform: translateY(0)
+            }
+            40% {
+                -moz-transform: translateY(-5px)
+            }
+            60% {
+                -moz-transform: translateY(-2px)
+            }
+        }
+
+        table tr:first-child {
+            background: #eaf9ff;
+            color: #000;
+            font-weight: bold;
+        }
+
+        table {
+            border-top: 1pt solid #ebebeb;
+            border-left: 1pt solid #ebebeb;
+        }
+
+        td {
+            padding: 5px 10px;
+            border-right: 1pt solid #ebebeb;
+            border-bottom: 1pt solid #ebebeb;
+        }
+
+        tr:nth-of-type(odd) {
+            background: #fbfbfb
+        }
+
+        tr:hover {
+            background: #fffeec;
+        }
+
+        @media screen and (max-width: 1205px) {
+            .adgg {
+                display: none
+            }
+
+            .sort {
+                padding-right: 20px;
+                padding-left: 20px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .sort {
+                padding-right: 12px;
+                padding-left: 12px;
+            }
+        }
+    </style>
+    <script>var n = 1;</script>
+    <style>
+        .felbanner {
+            height: 108px;
+            background-color: #202932;
+            padding-top: 35px;
+            background-image: url(css/flbg.png)
+        }
+
+        .top70 {
+            margin-top: 50px;
+        }
+
+        .feiseo {
+            width: 680px;
+            height: 37px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .feiseo input {
+            width: 100%;
+            height: 100%;
+            border: 0px;
+            outline: none;
+            padding-left: 3%;
+            padding-right: 3%;
+            background-color: #2f3a46;
+            color: #fff;
+            border-radius: 40px;
+        }
+
+        .feiseo button {
+            position: absolute;
+            right: 5px;
+            top: 2px;
+            color: #5b6e81
+        }
+
+        #ts a {
+            margin-left: 10px;
+            color: #808080
+        }
+
+        #ts a:hover {
+            color: #09b7fa;
+            text-decoration: none;
+        }
+
+        .jjk20 {
+            padding-bottom: 5px;
+            padding-top: 5px;
+        }
+
+        @media screen and (min-width: 1200px) {
+            .col-lg-4 {
+                width: 23.2%;
+            }
+        }
+
+        @media screen and (max-width: 770px) {
+            #ts {
+                width: 85%;
+                display: none
+            }
+
+            .feiseo {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".navbar-example">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar"><span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+            <a class="navbar-logo" href="http://www.jq22.com/"><img src="http://www.jq22.com/img/logo.png" height="100%"
+                                                                    alt="jQuery插件,jQuery,jQuery特效.jQuery ui,jQuery 教程,css3,网页特效,JS特效"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://www.jq22.com/webide"><i class="fa fa-edit"></i> &nbsp;在线编辑器</a></li>
+                <li><a href="http://www.jq22.com/daima"><i class="fa fa-code"></i> &nbsp;在线代码</a></li>
+                <li><a href="http://www.jq22.com/textDifference"><i class="fa fa-balance-scale" aria-hidden="true"></i>
+                    &nbsp;文本比较</a></li>
+                <li><a href="http://www.jq22.com/jquery-info122"><i class="fa fa-download"></i> &nbsp;jQuery下载</a></li>
+                <li><a href="http://www.jq22.com/jquery/jquery.html" target="_blank"><i class="fa fa-ship"
+                                                                                        aria-hidden="true"></i> &nbsp;前端库</a>
+                </li>
+                <li><a href="http://www.jq22.com/chm/jquery/index.html" target="_blank"><i class="fa fa-book"></i>
+                    &nbsp;在线手册</a></li>
+                <li class="dropdown"><a rel="nofollow" href="http://weibo.com/jq22" target="_blank"><i
+                        class="fa fa-weibo"></i> &nbsp;微博</a></li>
+                <li>
+                    <div class="myhome">
+                        <div class="xyd"><i class="fa fa-bell-o" aria-hidden="true"></i></div>
+                        <a href="http://www.jq22.com/myhome"><img src="http://www.jq22.com/tx/6.png"/></a>
+                        <div class="myhome-z bh2">
+                            <a class="bh" href="http://www.jq22.com/myhome"><i class="fa fa-home"></i> 个人中心</a>
+                            <a class="bh" href="javascript:void(0)" onclick="myout()"><i class="fa fa-sign-out"></i>
+                                退出登录</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content2 tcc">
+            <div class="modal-header2 top20">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                </h4>
+            </div>
+            <div class="modal-body tcck">
+                <div class="input-group input-group-lg parentCls">
+                    <span class="input-group-addon" id="email"><i class="fa fa-envelope-o"></i></span>
+                    <input type="text" class="form-control inputElem" placeholder="请输入登录邮箱" aria-describedby="email"
+                           id="ema" style="width: 466px;">
+                </div>
+                <div class="input-group input-group-lg top20">
+                    <span class="input-group-addon" id="pwd"><i class="fa fa-unlock-alt" style="width:18px"></i></span>
+                    <input type="password" class="form-control" placeholder="请输入登录密码" aria-describedby="pwd" id="pw">
+                    <span class="input-group-btn tccBut">
+<button class="btn btn-success" type="button" onclick="emdl()">登 录</button>
+</span>
+                </div>
+            </div>
+            <div class="modal-footer2">
+                <div class="f">
+                    <a href="pwd.aspx">忘记密码?</a></div>
+                <div class="r"><a href="register.aspx">注册新用户</a></div>
+                <div class="dr"></div>
+            </div>
+            <div class="d3f modal-body tcck2">
+                <a href="#" onClick="tz()" class="qq"></a>
+                <a href="https://api.weibo.com:443/oauth2/authorize?client_id=3364913104&redirect_uri=http%3A%2F%2Fwww.jq22.com%2FWeiboReturn.aspx&response_type=code&display=default"
+                   class="sina"></a>
+                <a href="http://www.jq22.com/zfbReturn.aspx" class="zfb"></a>
+                <a href="#" onClick="gt()" class="git"></a>
+            </div>
+            <script>
+                function tz() {
+                    var urldz = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101135281&redirect_uri=http://www.jq22.com/QQReturn.aspx?tjurl=" + window.location.href;
+                    window.location.href = urldz;
+                }
+
+                function gt() {
+                    var urldz = "https://github.com/login/oauth/authorize?client_id=cf869185ea7d8fcab6df&state=jq22&redirect_uri=http://www.jq22.com/github.aspx?tjurl=" + window.location.href;
+                    window.location.href = urldz;
+                }
+            </script>
+        </div>
+    </div>
+</div>
+<div class="yn jz container-fluid nav-bgn m0" id="menu_wrap">
+    <div class="container m0" style="position:relative;"><a class="nzz" href="http://www.jq22.com/jqueryUI-1-jq"
+                                                            id="z1"><span class="sort"><i class="fa fa-paint-brush"></i>&nbsp;UI <i
+            class="fa fa-angle-down"></i></span></a>|<a class="nzz" href="http://www.jq22.com/jquery输入-1-jq"
+                                                        id="z2"><span class="sort"><i class="fa fa-keyboard-o"></i>&nbsp;输入 <i
+            class="fa fa-angle-down"></i></span></a>|<a class="nzz" href="http://www.jq22.com/jquery媒体-1-jq"
+                                                        id="z3"><span class="sort"><i class="fa fa-film"></i>&nbsp;媒体 <i
+            class="fa fa-angle-down"></i></span></a>|<a class="nzz" href="http://www.jq22.com/jquery导航-1-jq"
+                                                        id="z4"><span class="sort "><i class="fa fa-paper-plane-o"></i>&nbsp;导航 <i
+            class="fa fa-angle-down"></i></span></a><span class="navxs">|<a class="nzz"
+                                                                            href="http://www.jq22.com/jquery其他-1-jq"
+                                                                            id="z5"><span class="sort"><i
+            class="fa fa-dropbox"></i>&nbsp;其他 <i class="fa fa-angle-down"></i></span></a></span><span class="navxs">|<a
+            href="http://www.jq22.com/jquery-plugins布局-1-jq" target="_blank"><span class="sort"><i
+            class="fa fa-th-large"></i>&nbsp;网页模板</span></a>|<a href="http://www.jq22.com/webinfo1"
+                                                                target="_blank"><span class="sort"><i
+            class="fa fa-file-code-o"></i>&nbsp;常用代码</span></a>|<a href="http://www.jq22.com/daima"
+                                                                   target="_blank"><span class="sort"><i
+            class="fa fa-code"></i>&nbsp;在线代码</span></a></span></div>
+    <style>.sort {
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+
+    @media screen and (max-width: 1220px) {
+        .azj {
+            display: none
+        }
+
+        .sort {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+    }</style>
+    <div class="container-fluid">
+        <div id="n1" class="nav-zi ty" style="display: none;">
+            <ul id="nz1" class="nn list-inline container m0" style="display: none;">
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins背景-1-jq"><i
+                        class="fa fa-delicious ls"></i>背景</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins对话框和灯箱-1-jq"><i
+                        class="fa fa-bell-o ls"></i>对话框和灯箱</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins筛选及排序-1-jq"><i
+                        class="fa fa-sort-numeric-desc ls"></i>筛选及排序</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins反馈-1-jq"><i
+                        class="fa fa-comments-o ls"></i>反馈</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins弹出层-1-jq"><i
+                        class="fa fa-stack-overflow ls"></i>弹出层</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins悬停-1-jq"><i
+                        class="fa fa-hand-o-up ls"></i>悬停</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins布局-1-jq"><i
+                        class="fa fa-th-large ls"></i>布局</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins图表-1-jq"><i
+                        class="fa fa-bar-chart ls"></i>图表</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins加载-1-jq"><i
+                        class="fa fa-spinner ls"></i>加载</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins圆边-1-jq"><i
+                        class="fa fa-circle-o ls"></i>圆边</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins滚动-1-jq"><i
+                        class="fa fa-long-arrow-down ls"></i>滚动</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins标签-1-jq"><i
+                        class="fa fa-tags ls"></i>标签</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins文本链接-1-jq"><i
+                        class="fa fa-link ls"></i>文本链接</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins工具提示-1-jq"><i
+                        class="fa fa-info-circle ls"></i>工具提示</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins网络类型-1-jq"><i
+                        class="fa fa-code-fork ls"></i>网络类型</a></li>
+            </ul>
+            <ul id="nz2" class="nn list-inline container m0" style="display: none;">
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins拾色器-1-jq"><i
+                        class="fa fa-eyedropper ls"></i>拾色器</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins定制和风格-1-jq"><i
+                        class="fa fa-paint-brush ls"></i>定制和风格</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins日期和时间-1-jq"><i
+                        class="fa fa-clock-o ls"></i>日期和时间</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins拖和放-1-jq"><i
+                        class="fa fa-arrows ls"></i>拖和放</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins通用输入-1-jq"><i
+                        class="fa fa-keyboard-o ls"></i>通用输入</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins自动完成-1-jq"><i
+                        class="fa fa-calculator ls"></i>自动完成</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins密码-1-jq"><i
+                        class="fa fa-lock ls"></i>密码</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins投票率-1-jq"><i
+                        class="fa fa-thumbs-up ls"></i>投票率</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins搜索-1-jq"><i
+                        class="fa fa-search ls"></i>搜索</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins选择框-1-jq"><i
+                        class="fa fa-caret-square-o-down ls"></i>选择框</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins快捷键-1-jq"><i
+                        class="fa fa-adn ls"></i>快捷键</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins触摸-1-jq"><i
+                        class="fa fa-hand-o-down ls"></i>触摸</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins丰富的输入-1-jq"><i
+                        class="fa fa-h-square ls"></i>丰富的输入</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins上传-1-jq"><i
+                        class="fa fa-upload ls"></i>上传</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins验证-1-jq"><i
+                        class="fa fa-key ls"></i>验证</a></li>
+            </ul>
+            <ul id="nz3" class="nn list-inline container m0" style="display: none;">
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins音频和视频-1-jq"><i
+                        class="fa fa-play-circle-o ls"></i>音频和视频</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins幻灯片和轮播图-1-jq"><i
+                        class="fa fa-exchange ls"></i>幻灯片和轮播图</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins图片展示-1-jq"><i
+                        class="fa fa-eye ls"></i>图片展示</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins图像-1-jq"><i
+                        class="fa fa-picture-o ls"></i>图像</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins地图-1-jq"><i
+                        class="fa fa-map-marker ls"></i>地图</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins滑块和旋转-1-jq"><i
+                        class="fa fa-arrows-h ls"></i>滑块和旋转</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-pluginsTabs-1-jq"><i
+                        class="fa fa-folder-o ls"></i>Tabs</a></li>
+            </ul>
+            <ul id="nz4" class="nn list-inline container m0" style="display: none;">
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins水平导航-1-jq"><i
+                        class="fa fa-long-arrow-right ls"></i>水平导航</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins垂直导航-1-jq"><i
+                        class="fa fa-long-arrow-down ls"></i>垂直导航</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins文件树-1-jq"><i
+                        class="fa fa-sitemap ls"></i>文件树</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins分页-1-jq"><i
+                        class="fa fa-chevron-right ls"></i>分页</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins手风琴菜单-1-jq"><i
+                        class="fa fa-trello ls"></i>手风琴菜单</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins其他导航-1-jq"><i
+                        class="fa fa-location-arrow ls"></i>其他导航</a></li>
+            </ul>
+            <ul id="nz5" class="nn list-inline container m0" style="display: none;">
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins动画效果-1-jq"><i
+                        class="fa fa-rocket ls"></i>动画效果</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins浏览器调整-1-jq"><i
+                        class="fa fa-expand ls"></i>浏览器调整</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins移动-1-jq"><i
+                        class="fa fa-arrows-v ls"></i>移动</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins独立的部件-1-jq"><i
+                        class="fa fa-cogs ls"></i>独立的部件</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins杂项-1-jq"><i
+                        class="fa fa-gift ls"></i>杂项</a></li>
+                <li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins游戏-1-jq"><i
+                        class="fa fa-gamepad ls"></i>游戏</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid m0 bod top70" id="zt">
+    <div class="felbanner">
+        <div class="feiseo">
+            <input placeholder="输入插件关键字.." id="searchtxt" onkeyup="autoComplete.start(event)"/>
+            <button class="btn banbutt" type="button" id="seobut"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+    <div class="container m0 ">
+        <ol class="breadcrumb jjk20 top10">
+            <li><a href="http://www.jq22.com/">首页</a></li>
+            <li class="active">媒体</li>
+            <li id="ts" style="float: right; font-size: 13px; ">
+                <a href="http://www.jq22.com/jq1-jq1" data-para="time"><i class="fa fa-flag"></i> &nbsp;最新发布</a>
+                <a href="http://www.jq22.com/jq1-jq4" data-para="comments"><i class="fa fa-heart"></i> &nbsp;最多收藏</a>
+                <a href="http://www.jq22.com/jq1-jq2" data-para="comments"><i class="fa fa-comments-o"></i>
+                    &nbsp;最多评论</a>
+                <a href="http://www.jq22.com/jq1-jq3" data-para="downloads"><i class="fa fa-arrow-circle-o-down"></i>
+                    &nbsp;最多下载</a>
+                <a href="http://www.jq22.com/jq1-jq8" data-para="ie8"><i class="fa fa-bus"></i> &nbsp;兼容IE8</a>
+                <a href="http://www.jq22.com/jq1-jq6" data-para="ie6"><i class="fa fa-motorcycle"></i> &nbsp;兼容IE6</a>
+            </li>
+        </ol>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <div class="cover-info" style="height:252px;padding-left: 10px;padding-top: 2px;">
+
+                <ins class="adsbygoogle" style="display:inline-block;width:250px;height:250px"
+                     data-ad-client="ca-pub-2935286260943234" data-ad-slot="1503012305"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <div class="cover-fields"><i class="fa fa-list-ul"></i> &nbsp;Advertisement</div>
+            <div class="cover-stat" style="text-align: center; font-weight: bold;  "> www.jq22.com</div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20390" target="_blank"><img src="http://assets.jq22.com/plugin/2018-11-06-00-27-49.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20390" target="_blank"><h4>移动端tab切换</h4></a>
+                <small>依赖jQuery tab切换，请在移动端预览查看最佳效果，支持移动端滑动切换</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                Tabs
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;269</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;2</span>
+                <div class="cover-yh">
+                    <a href="mem375707" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="Bboy ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20386" target="_blank"><img src="http://assets.jq22.com/plugin/2018-11-04-22-10-36.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20386" target="_blank"><h4>简单方便抠图工具（原创）</h4></a>
+                <small>基于canvas的简单图片编辑工具，包括 抠图，裁剪，调色，导出多种格式(全备注，无聊编写，有兴趣的可以研究一下，其实还是有点使用的）</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                图像,杂项
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;682</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;2</span>
+                <div class="cover-yh">
+                    <a href="mem823302" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="Apns ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20384" target="_blank"><img src="http://assets.jq22.com/plugin/2018-11-04-21-42-11.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20384" target="_blank"><h4>基于anime.js全屏图片视差旋转切换</h4></a>
+                <small>基于anime.js制作全屏响应式的图片轮播展示效果</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                幻灯片和轮播图
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;799</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;20</span>
+                <div class="cover-yh">
+                    <a href="mem30532" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="沵这是在装逼你知道吗 ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20381" target="_blank"><img src="http://assets.jq22.com/plugin/2018-11-03-23-40-32.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20381" target="_blank"><h4>功能强大的jQuery导航选项卡菜单</h4></a>
+                <small>功能强大的导航选项卡菜单条，支持滑动选项卡，支持动态添加菜单，支持手机设备显示</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                水平导航,Tabs
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;649</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;2</span>
+                <div class="cover-yh">
+                    <a href="mem153465" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="_嘿嘿_ ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20376" target="_blank"><img src="http://assets.jq22.com/plugin/2018-11-02-09-45-34.jpg"></a>
+            <div class="cover-info">
+                <a href="jquery-info20376" target="_blank"><h4>全屏切换展示效果</h4></a>
+                <small>一款时尚理念的全屏切换展示效果，背景液态过渡。</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                幻灯片和轮播图,滚动
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;2086</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;11</span>
+                <div class="cover-yh">
+                    <a href="mem623425" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="小多多你好 ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20349" target="_blank"><img src="http://assets.jq22.com/plugin/2018-11-01-00-20-48.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20349" target="_blank"><h4>Swiper全屏自适应图片轮播</h4></a>
+                <small>基于Swiper全屏自适应图片轮播，支持手势滑动相应式</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                幻灯片和轮播图
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;1376</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;11</span>
+                <div class="cover-yh">
+                    <a href="mem923681" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="??吴米老鼠?? ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20344" target="_blank"><img src="http://assets.jq22.com/plugin/2018-10-31-23-07-45.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20344" target="_blank"><h4>电商焦点轮播图加菜单</h4></a>
+                <small>电商网站中常用轮播图加导航菜单效果</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                其他导航,幻灯片和轮播图
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;1025</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;5</span>
+                <div class="cover-yh">
+                    <a href="mem909645" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="ZK ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20307" target="_blank"><img src="http://assets.jq22.com/plugin/2018-10-26-00-09-19.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20307" target="_blank"><h4>js图片压缩插件</h4></a>
+                <small>js压缩图片插件compressPhotoUpload.js,代码简单大小只有2kb，通过参数设置可快速调整压缩比</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                图像,杂项
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;1068</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;7</span>
+                <div class="cover-yh">
+                    <a href="mem937498" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="― ― ― ―  ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20278" target="_blank"><img src="http://assets.jq22.com/plugin/2018-10-23-00-49-29.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20278" target="_blank"><h4>swiper横向轮播</h4></a>
+                <small>swiper横向轮播，简单好用</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                幻灯片和轮播图
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;2947</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;25</span>
+                <div class="cover-yh">
+                    <a href="mem851953" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="△大大大龙猫 ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20269" target="_blank"><img src="http://assets.jq22.com/plugin/2018-10-19-09-16-46.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20269" target="_blank"><h4>移动手势音乐播放器Fmusic（原创）</h4></a>
+                <small>一款移动端的手势音乐播放器，支持单曲循环，歌词显示，歌曲搜索，音量控制，列表循环等功能</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                音频和视频
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;1718</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;14</span>
+                <div class="cover-yh">
+                    <a href="mem56768" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="疏梦寒星 ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20240" target="_blank"><img src="http://assets.jq22.com/plugin/2018-10-17-08-29-20.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20240" target="_blank"><h4>仿今日头条滚动轮播banner图(原创)</h4></a>
+                <small>今日头条PC端首页滚动轮播图效果</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                幻灯片和轮播图
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;2591</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;12</span>
+                <div class="cover-yh">
+                    <a href="mem343266" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="淡然一笑 ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20236" target="_blank"><img src="http://assets.jq22.com/plugin/2018-10-16-08-47-51.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20236" target="_blank"><h4>图片按宽高比及清晰度比率压缩转换为base64</h4></a>
+                <small>宽高比及清晰度比率压缩， 按照默认设置压缩后图片大小基本能在100KB以内</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                上传,图像
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;2047</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;17</span>
+                <div class="cover-yh">
+                    <a href="mem645273" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="zhe ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20216" target="_blank"><img src="http://assets.jq22.com/plugin/2018-10-12-09-24-37.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20216" target="_blank"><h4>jQuery双向滑块插件(原创)</h4></a>
+                <small>一个有趣的jQuery滑动插件</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                拖和放,滑块和旋转
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;1378</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;4</span>
+                <div class="cover-yh">
+                    <a href="mem704664" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="々＆? ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20206" target="_blank"><img src="http://assets.jq22.com/plugin/2018-10-11-09-47-14.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20206" target="_blank"><h4>jQuery 3d轮播图支持滑动和自动</h4></a>
+                <small>jQuery 3d轮播图，这个插件用的是过度和css3变形来实现文字缩放的效果</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                幻灯片和轮播图
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;2640</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;11</span>
+                <div class="cover-yh">
+                    <a href="mem23539" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="catbea ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <a href="jquery-info20200" target="_blank"><img src="http://assets.jq22.com/plugin/2018-10-11-00-18-59.png"></a>
+            <div class="cover-info">
+                <a href="jquery-info20200" target="_blank"><h4>jQuery音乐播放器（原创）</h4></a>
+                <small>基于H5audio标签和jQuery的仿网易云音乐播放器，代码注释全</small>
+            </div>
+            <div class="cover-fields">
+                <i class="fa fa-list-ul"></i> &nbsp;
+                音频和视频
+            </div>
+            <div class="cover-stat">
+                <i class="fa fa-eye"></i><span class="f10"> &nbsp;1895</span>
+                <i class="fa fa-heart"></i></i><span class="f10"> &nbsp;11</span>
+                <div class="cover-yh">
+                    <a href="mem307313" data-container="body" data-toggle="popover" data-placement="top"
+                       data-content="跟着风儿去流浪 ">
+                        <i class="fa fa-user-secret"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="posts-nav-wrap">
+            <ul class="posts-nav">
+                <li class='next'><a href='jquery媒体-2-jq' class='next'>←</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="auto_hidden" id="tauto"></div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/m.js" charset="gbk"></script>
+<script>
+    $("#seobut").click(function () {
+        var seo = $("#searchtxt").val();
+        if (seo.length > 1) {
+            window.location.href = "search?seo=" + seo;
+        }
+    });
+    $('#searchtxt').bind('keypress', function (event) {
+        if (event.keyCode == "13") {
+            var seo = $("#searchtxt").val();
+            if (seo.length > 1) {
+                window.location.href = "search?seo=" + seo;
+            }
+        }
+    });
+</script>
+
+<div style="position: fixed;top:15px;right: 750px;z-index:99999" class="nggys"><a
+        href="https://www.mysubmail.com/sms/api?tag=jq22" target="_blank" style="color:#cacaca;"><b><i
+        class="fa fa-comment"></i>&nbsp; 短信接口</b></a></div>
+<nav class="foot navbar-inverse navbar-fixed-bottom">
+    <ul class="list-inline">
+        <li class="footer-ss"><a href="copyright.aspx">版权声明</a></li>
+        <li class="footer-ss"><a href="feedback.aspx">在线反馈</a></li>
+        <li class="footer-ss"><a href="cooperation.aspx">广告合作</a></li>
+        <li class="footer-ss">帮助中心</li>
+        <li>Copyright © 2012-2018 jQuery插件库Version 3.0.0. 备案号:<a href="http://www.miitbeian.gov.cn/" target="_blank"
+                                                                 rel="nofollow">沪ICP备13043785号-1</a></li>
+    </ul>
+    <ul class="list-inline text-right">
+        <li>
+        </li>
+    </ul>
+</nav>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?b3a3fc356d0af38b811a0ef8d50716b8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<style>@media screen and (max-width: 930px) {
+    .nggys {
+        display: none
+    }
+}</style>
+
+<script src="/js/bbaufl.js?v=2"></script>
+<script type="text/javascript" src="/js/audate.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</body>
+</html>

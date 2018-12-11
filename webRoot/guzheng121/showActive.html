@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/public.css">
+    <link rel="stylesheet" href="static/css/videoCT.css">
+    <link rel="stylesheet" href="static/css/audio.css">
+    <link rel="stylesheet" href="static/css/newPopup.css">
+    <style type="text/css">
+
+        /*//新建样式，活动框架*/
+
+        #content {
+            margin-top: 44px;
+            height: 850px;
+
+        }
+
+        #pre_page, #next_page {
+            width: 100%;
+            height: 5%;
+
+        }
+
+        #active {
+            width: 100%;
+
+            height: 90%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #new_build {
+            width: 542px;
+            height: 756px;
+            background: #8799E9;
+            line-height: 756px;
+            text-align: center;
+            border-radius: 8.8px;
+            font-size: 38px;
+            color: #FFFFFF;
+
+        }
+
+        #new_build:hover {
+            background: #5361FC;
+            border: 4px solid #828CFF;
+            box-shadow: 0 0 18px 6px rgba(130, 140, 255, 0.90);
+            border-radius: 8.8px;
+        }
+
+        #addIcon {
+            width: 74px;
+            height: 74px;
+            line-height: 74px;
+        }
+
+        #right_box {
+            width: 1028px;
+            height: 756px;
+
+            margin-left: 147px;
+            line-height: 756px;
+            text-align: center;
+        }
+        /*//删除弹窗样式*/
+        .delete,.delete_course {
+            width: 920px;
+            height: 496px;
+            background-color: #4D66CC;
+            position: absolute;
+            margin-top: 292px;
+            z-index: 9999;
+            margin-left: 500px;
+            display: none;
+        }
+
+        .delete > div {
+            margin-left: 120px;
+        }
+
+        .del_header {
+
+            margin-top: 80px;
+            height: 56px;
+            font-size: 48px;
+            color: #FFFFFF;
+            line-height: 56px;
+        }
+
+        .del_mes {
+            margin-top: 40px;
+            height: 120px;
+            font-size: 38px;
+            color: #C8D0EF;
+            line-height: 56px;
+        }
+
+        .del_but {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: row;
+        }
+        .del_but>div{
+            cursor: pointer;
+            height: 68px;
+        }
+        .del_but>div:hover{
+            background: #5361FC;
+            border: 4px solid #828CFF;
+            box-shadow: 0 0 18px 6px rgba(130,140,255,0.90);
+            border-radius: 40px;
+        }
+
+        .del_confirm {
+            width: 192px;
+
+            background: #FFFFFF;
+            border: 4px solid #FFFFFF;
+            border-radius: 40px;
+        }
+        .del_confirm_title{
+
+            font-size: 32px;
+            color: #E4393C;
+            text-align: center;
+            line-height: 68px;
+        }
+        .del_close{
+            width: 144px;
+            margin-left: 32px;
+            background: rgba(255,255,255,0.10);
+            border: 4px solid rgba(255,255,255,0.20);
+            border-radius: 40px;
+        }
+        .del_close_title{
+            font-size: 32px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 68px;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+
+<!--//编辑修改课件名称-->
+<div id="divEdit" class="divEdit">
+    <div class="del_header">编辑课件名称</div>
+    <div id="editCourse" class="editCourse">
+        <input type="text" placeholder="请输入新的课件名称" maxlength="15" id="editName" class="editName">
+    </div>
+    <div id="editLine" class="editLine"></div>
+    <div id="editMes" class="editMes"></div>
+    <div class="del_but">
+        <div id="confirmEdit" class="del_confirm">
+            <div class="del_confirm_title"> 确认</div>
+        </div>
+        <div id="cancelEdit" class="del_close">
+            <div class="del_close_title">取消</div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<div id="del_course" class="delete">
+    <div class="del_header">确认删除当前课件？</div>
+    <div class="del_mes">一旦删除后，将不能复原！</div>
+    <div class="del_but">
+        <div id="del_course_confirm" class="del_confirm"><div class="del_confirm_title"> 确认删除</div></div>
+        <div id="del_course_close" class="del_close"><div class="del_close_title">取消</div></div>
+
+    </div>
+
+</div>
+
+<div id="boxes">
+    <div id="header_nav">
+        <div id="bark">
+            <img id="barkImg" src="static/images/arrow-lef.png"/>
+        </div>
+        <div id="unit" ></div>
+        <div id="searchBox">
+            <div id="edit" onclick="editCourse()"><img id="imgIcon" src="static/images/pencil.png"/></div>
+            <div id="delCourse">
+                <img id="imgIcon" src="static/images/trash-o.png"/>
+            </div>
+            <hr id="cutLine">
+            <button id="search" class="layui-btn layui-btn-primary layui-btn-radius">
+                <a id="coverMy" class="layui-btn layui-btn-primary layui-btn-radius"></a>
+                <img id="myImg1" src="static/images/searc.png"/>
+                <a id="my" style="">搜索</a>
+            </button>
+        </div>
+    </div>
+
+    <div id="content" style="margin-left: 0px">
+        <div id="pre_page">
+
+
+        </div>
+        <div id="active">
+            <div id="new_build" data-reveal-id="myModal" data-animation="fade">
+                <!--<i class="layui-icon" id="addIcon">&#xe654;</i>-->
+                <img id="addIcon" src="static/images/plus.png"/>
+                新建活动
+
+            </div>
+            <div id="right_box">
+
+                <a id="tips">没有活动请添加</a>
+
+            </div>
+
+
+        </div>
+        <div id="next_page"></div>
+
+
+    </div>
+
+
+</div>
+
+
+<!--//这里是弹出层-新建课件的弹出层-->
+<div id="myModal" class="reveal-modal">
+    <!--第三步-->
+    <div id="page_three" class="page_three">
+        <div id="course_title">添加单曲<a id="step">第3步，共3步</a></div>
+        <div id="unit_a" style="margin-top: 44px">
+
+            <div id="title_node" style="color:  #94A3E2;background-color: transparent"
+                 class="layui-btn layui-btn-primary layui-btn-radius">单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" id="unitA-1" onclick="unit(-1)"
+                 style="background-color: #687DD5;color: white">全部
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(1)" id="unitA1">第一单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(2)" id="unitA2">第二单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(3)" id="unitA3">第三单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(4)" id="unitA4">第四单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(5)" id="unitA5">第五单元
+            </div>
+
+        </div>
+        <div id="jie_shu" class="navBtn ">
+
+
+        </div>
+        <div id="lei_xin">
+
+
+        </div>
+        <div id="content_box">
+            <div id="leftPage" class="left_page">
+
+            </div>
+            <div id="result_box" class="result_box">
+                <div id="load"><i id="loadImg"
+                                  class="layui-icon layui-anim layui-anim-rotate layui-anim-loop">&#xe63d;</i>
+                </div>
+            </div>
+            <div id="rightPage" class="right_page">
+
+            </div>
+
+
+        </div>
+        <div id="footer"></div>
+
+
+    </div>
+    <!--第二步-->
+    <div id="page_two" class="page_two">
+
+        <div id="course_title">活动描述<a id="step">第2步，共3步</a></div>
+        <div id="input_name">
+            <input type="text" style="font-size: 38px" maxlength="30" placeholder="请输入活动描述" id="describe" name=""/>
+        </div>
+        <div id="input_line"></div>
+        <div id="message"><a id="messageTwo"></a></div>
+    </div>
+    <!--第一步-->
+    <div id="page_one" class="page_one">
+
+        <div id="course_title">活动名称<a id="step">第1步，共3步</a></div>
+        <div id="input_name">
+            <input type="text" style="font-size: 38px" maxlength="15" placeholder="请输入活动名称" id="course_name" name=""/>
+        </div>
+        <div id="input_line"></div>
+        <div id="message"><a id="messageOne"></a></div>
+    </div>
+    <!--按钮-->
+    <div id="div_but">
+        <button style="font-size: 32px;" id="confirm" class="layui-btn layui-btn-primary layui-btn-radius ">
+            下一步
+        </button>
+        <button style="  font-size: 32px;margin-left: 180px" id="pre_step"
+                class="layui-btn layui-btn-primary layui-btn-radius ">
+            上一步
+        </button>
+        <button style=" font-size: 32px;" id="cancel"
+                class="layui-btn layui-btn-primary layui-btn-radius close-reveal-modal">
+            取消
+        </button>
+
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="static/js/jquery.min1.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
+<script type="text/javascript" src="static/js/page.js"></script>
+<script type="text/javascript" src="static/layui/layui.all.js"></script>
+<script type="text/javascript" src="static/js/jquery.reveal.js"></script>
+<script type="text/javascript" src="static/js/newActive.js"></script>
+<script type="text/javascript">
+    var url = document.location.toString();
+    var urlParmStr = url.slice(url.indexOf('?')+1);
+    var arr = urlParmStr.split('&');
+    var courseId = arr[0].split("=")[1];//课件id
+    var unit_title=arr[1].split("=")[1];//课件标题
+    unit_title=decodeURI(unit_title);//转码/解决办法:将解码方式unscape换为decodeURI
+    $(document).ready(function () {
+        $("#bark").click(function () {
+            window.location.href="courseware.html";
+        });
+        getCourseList();
+        $("#unit").html(unit_title);
+
+    });
+
+    function editCourse(){
+        $("#divEdit").css({"display": "block"});
+
+    }
+    //获取课件列表
+    function getCourseList() {
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: getActiveDomain,
+            data: {
+                "action": "getModuleByCourse",
+                "courseId": courseId,
+            },
+            dataType: "json",
+            success: function (res) {
+
+                if (res.code == 0) {
+                    $dat = res.moduleList;
+                    $listNumber = $dat.length;
+
+                    if ($listNumber != 0) {
+                        window.location.href = "showActive1.html?courseId=" + courseId+"&title="+unit_title;
+
+                    }
+
+
+                }
+
+
+            },
+            error: function (res) {
+
+            },
+
+        });
+    }
+
+    //取消编辑课件名称
+    $("#cancelEdit").click(function () {
+        $("#divEdit").css({"display": "none"});
+
+    });
+    //确认修改的课件名称
+    $("#confirmEdit").click(function () {
+        $value = $("#editName").val();
+
+        if ($value == "") {
+            $("#editMes").html("你还没有输入修改的名称哦");
+        }
+        else {
+            $.ajax({
+                type: "get",
+                cache: "false",
+                url: getActiveDomain,
+                data: {
+                    "action": "editCourse",
+                    "courseId": courseId,
+                    "title": $value,
+                    "teacherId": global_teachId,
+                },
+                dataType: "json",
+                success: function (res) {
+                    $("#editMes").html(res.msg);
+                    if (res.code == 0) {
+
+                        alert("修改成功");
+                        $("#divEdit").css({"display": "none"});
+                        $("#unit").html($value);
+                    }
+
+                },
+                error: function (res) {
+
+                }
+
+
+            });
+
+
+        }
+
+
+    });
+
+
+
+</script>
+
+
+</html>

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/public.css">
+
+    <style type="text/css">
+        #boxes {
+            width: 90%;
+            height: 95%;
+            margin-left: 4%;
+
+        }
+
+        #header > div {
+
+            width: 15%;
+            height: 100%;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        #myicon {
+            font-size: 1.4em;
+        }
+
+        #kejian:hover {
+            color: white;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 2%;
+            background-color: #0C0C0C;
+            z-index: -100;
+        }
+
+        img:hover {
+            box-shadow: 0 0 100px #2196F3;
+        }
+
+        #line2 {
+            width: 80px;
+            height: 6px;
+            background-color: white;
+        }
+
+        #header_right {
+            margin-left: 40%;
+            float: right;
+            color: white;
+            width: 15%;
+
+            height: 80px;
+            line-height: 80px;
+        }
+
+        #searchClick {
+            color: #92A6EF;
+        }
+
+        #myTitle {
+            margin-top: 8%;
+            display: flex;
+            flex-direction: row;
+            background-color: #757DAE;
+            text-align: center;
+
+            border: hidden;
+            color: white;
+            font-size: 0.7em;
+            letter-spacing: 2px;
+
+        }
+
+        #box_nav {
+
+            display: flex;
+            position: relative;
+            text-align: center;
+            margin: auto;
+            flex-direction: column;
+        }
+
+        #title {
+            font-size: 38px;
+            color: white;
+            letter-spacing: 5px;
+            width: 100%;
+
+        }
+
+        #title_english {
+            bottom: 0;
+            position: absolute;
+            font-size: 28px;
+            font-family: 微软雅黑;
+            color: #FFFFFF;
+            width: 100%;
+
+        }
+
+        #teachPng {
+            width: 44px;
+            height: 44px;
+            margin-top: 18px;
+            margin-left: 22px;
+            background-color: transparent;
+        }
+
+        #line_div {
+            width: 60%;
+            height: 90%;
+            margin: auto;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px white;
+        }
+
+        #header_right > button {
+            width: 65%;
+            height: 70%;
+            float: right;
+            margin-right: 18px;
+        }
+
+        #my {
+            margin-top: 2px;
+            letter-spacing: 5px;
+
+        }
+
+        #header {
+            margin-top: 92px;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            flex-direction: row;
+            color: white;
+            font-size: 32px;
+            letter-spacing: 1px;
+            line-height: 80px;
+        }
+
+        #user {
+            margin-top: 2px;
+            margin-left: 18px;
+            width: 32px;
+            height: 32px;
+            z-index: 9999;
+            background-color: transparent;
+        }
+
+        #boxes_top, #boxes_bottom {
+            width: 100%;
+            height: 340px;
+            display: flex;
+            margin-left: 80px;
+            flex-direction: row;
+        }
+
+        #boxes_top > div, #boxes_bottom > div {
+            width: 544px;
+            height: 340px;
+            border-radius: 3%;
+            margin-left: 16px;
+            z-index: 9999;
+            cursor: pointer;
+        }
+
+        #boxes_bottom > div {
+            margin-top: 1%;
+            z-index: 9999;
+        }
+
+        #time {
+            color: white;
+            width: 50%;
+            float: right;
+        }
+
+        #black_border {
+
+            width: 98%;
+            height: 97%;
+            z-index: 9999;
+            text-align: center;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 3%;
+            font-size: 38px;
+            color: #FFFFFF;
+            font-weight: 200;
+            line-height: 56px;
+
+        }
+
+        #black_border:hover {
+            border: 4px solid black;
+
+        }
+
+        #new_build {
+            background: #5361FC;
+        }
+
+        #addIcon {
+
+            font-size: 117px;
+        }
+
+        #add_title {
+            margin-top: 18px;
+        }
+
+        /*这里是弹出层的样式*/
+
+        .reveal-modal {
+            visibility: hidden;
+            line-height: 470px;
+            height: 470px;
+            margin-left: 500px;
+            width: 920px;
+            margin-top: -800px;
+            position: absolute;
+            z-index: 99999;
+            padding: 30px 40px 34px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+            -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+            -box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+            background-color: #4F68CF;
+        }
+
+        #myModal > div {
+            width: 80%;
+            margin-left: 100px;
+
+        }
+
+        #course_title {
+
+            margin-top: 80px;
+            font-size: 48px;
+            color: #FFFFFF;
+            text-align: left;
+            line-height: 56px;
+        }
+
+        #input_name {
+            margin-top: 26px;
+            height: 100px;
+
+        }
+
+        #course_name {
+            width: 75%;
+            height: 96px;
+            color: white;
+            position: absolute;
+            border: hidden;
+            font-size: 32px;
+            background-color: transparent;
+
+        }
+
+        #input_line {
+            height: 4px;
+            opacity: 0.4;
+            background: #FFFFFF;
+        }
+
+        input::-webkit-input-placeholder {
+            color: #94A2DE;
+        }
+
+        #div_but {
+            height: 168px;
+            color: #FFFFFF;
+            line-height: 60px;
+        }
+
+        /*//按钮样式*/
+
+        #confirm, #cancel {
+            width: 144px;
+            position: absolute;
+            height: 68px;
+            margin-top: 48px;
+            color: white;
+            background: rgba(255, 255, 255, 0.10);
+            border: 4px solid rgba(255, 255, 255, 0.20);
+            border-radius: 40px;
+            letter-spacing: 3px;
+        }
+
+        #cancel {
+
+            margin-left: 180px;
+        }
+
+        #confirm:hover {
+            background: #5361FC;
+            border: 4px solid #828CFF;
+            box-shadow: 0 0 18px 6px rgba(130, 140, 255, 0.90);
+            border-radius: 40px;
+        }
+
+        #message {
+
+            height: 40px;
+            margin-top: 10px;
+
+        }
+
+        #tips {
+            width: 80%;
+            font-size: 28px;
+            color: red;
+            margin-top: -200px;
+            height: 40px;
+            position: absolute;
+
+        }
+
+        /*//翻页按钮样式*/
+        #left_box {
+            width: 108%;
+            height: 2px;
+            font-size: 2em;
+            z-index: 9999;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+
+<div id="boxes">
+
+    <div id="header">
+        <div id="searchClick">
+            <i id="myicon" class="icon iconfont">&#xe632;</i>
+        </div>
+        <div id="box_nav" class="teachLibrary">
+
+            <img id="teachPng" src="static/images/zither-default.png"/>
+            <a style="color:#92A6EF " id="titleTeach">教学库</a>
+
+
+        </div>
+        <div id="box_nav">
+
+            <img id="teachPng" src="static/images/viny.png"/>
+            <a style="color:white " id="titleTeach">课件</a>
+            <div id="line">
+                <div id="line_div"></div>
+            </div>
+
+        </div>
+        <div id="header_right">
+            <button id="myTitle" class=" layui-btn layui-btn-radius layui-btn-primary">
+                <img id="user" src="static/images/user.png"/>
+                &nbsp;<div id="my" style="color: white;">我的</div>
+            </button>
+        </div>
+
+    </div>
+
+
+    <div id="content">
+        <div id="load"><i id="loadImg" class="layui-icon layui-anim layui-anim-rotate layui-anim-loop">&#xe63d;</i>
+        </div>
+        <div id="boxes_top">
+
+
+        </div>
+
+        <div id="left_box">
+            <span id="leftPage">
+
+
+            </span>
+            <span id="rightPage">
+
+            </span>
+        </div>
+        <div id="boxes_bottom">
+
+
+        </div>
+
+
+    </div>
+
+
+    <div id="footer" style="width: 100%; margin-top: 50px;">
+
+
+    </div>
+</div>
+
+<!--//这里是弹出层-新建课件的弹出层-->
+<div id="myModal" class="reveal-modal">
+    <div id="course_title">课件名称</div>
+
+    <div id="input_name">
+        <input type="text" style="font-size: 38px" placeholder="请输入课件名称" maxlength="15" id="course_name" name=""/>
+    </div>
+    <div id="input_line"></div>
+    <div id="message"><a id="tips"></a></div>
+    <div id="div_but">
+        <button style="font-size: 32px;" id="confirm" class="layui-btn layui-btn-primary layui-btn-radius">
+            确认
+        </button>
+        <button style="  font-size: 32px;" id="cancel"
+                class="layui-btn layui-btn-primary layui-btn-radius close-reveal-modal">
+            取消
+        </button>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" src="static/js/jquery.min1.js"></script>
+<script type="text/javascript" src="static/layui/layui.all.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
+<script type="text/javascript" src="static/js/page.js"></script>
+<script type="text/javascript" src="static/js/jquery.reveal.js"></script>
+<script type="text/javascript">
+
+    var addCourse = config.interface.addCourse;//添加课件的接口
+    var courseListDomain = config.interface.courseList;//获取课件列表的接口
+    var imgPath = config.imgPath;//图片路径
+
+
+    $(document).ready(function () {
+        query();
+    });
+    $("#myTitle").click(function () {
+        window.location.href = "search.html";
+    });
+    $(".teachLibrary").click(function () {
+        window.location.href = "index.html";
+    });
+
+    $(".btn").mouseover(function () {
+
+        $("#black_border").addClass();
+    });
+    $("#cancel").click(function () {
+
+        $("#boxes").css({"opacity": "1"})
+    });
+    //添加课件
+    $("#confirm").click(function () {
+
+
+        var course_name = document.getElementById("course_name").value;
+
+        if (course_name === "") {
+            $("#tips").html("<i class=\"layui-icon\">&#xe702;</i> " + "温馨提示：名称不能为空哦！");
+        }
+
+        else {
+            $.ajax({
+                type: 'get',
+                cache: 'false',
+                url: addCourse,
+                data: {
+                    "action": 'addCourse',
+                    "teacherId": global_teachId,
+                    "title": course_name,
+                },
+                dataType: 'json',
+                success: function (res) {
+                    if (res.code == 0) {
+
+                        location.reload();
+                    }
+                    else {
+                        $("#tips").html("<i class=\"layui-icon\">&#xe702;</i> " + "温馨提示：添加失败！");
+                    }
+
+
+                },
+                error: function (res) {
+
+                  alert("添加失败");
+
+                },
+
+
+            });
+
+
+        }
+
+
+    });
+
+
+    //获取课件列表
+    function query() {
+        $.ajax({
+            type: 'get',
+            cache: 'false',
+            url: courseListDomain,
+            data: {
+                "action": "getCourseList",
+                "teacherId": global_teachId,
+                "page": global_currentPage,
+                "pageSize": 7,
+
+
+            },
+            dataType: 'json',
+            beforeSend: function () {
+                $("#load").css("display", "block");
+                $("#boxes_bottom").children().remove();
+                $("#boxes_top").children().remove();
+
+            },
+            success: function (res) {
+                console.log(res);
+                if (res.code == 0) {
+
+                    $("#load").css("display", "none");
+                    $totalPage = res.totalPage; //总页
+                    var unit = 1, category = -1;
+                    page($totalPage);//加载翻页函数
+
+                    $dat = res.courseList;//资源列表
+                    $count = $dat.length;//资源长度
+                    for ($i = 0; $i < $count; $i++) {
+                        $title = $dat[$i].title;//课件标题
+                        $courseId = $dat[$i].id;//课件id
+                        $teach_id = $dat[$i].teacher_id;//教师id
+                        $time = $dat[$i].create_time;//课件创建时间
+                        $moduleCount=$dat[$i].moduleCount;//活动数量
+                        $time = $time.trim().split(" ");
+                        $time = $time[0];
+                        if ($i < 4) {
+                            if ($i == 0) {
+
+                                $imgurl = imgPath + "card-zise.png";
+
+                            }
+                            else if ($i == 1) {
+                                $imgurl = imgPath + "card-blue.png";
+
+                            }
+                            else if ($i == 2) {
+                                $imgurl = imgPath + "card-zise.png";
+
+                            }
+                            else if ($i == 3) {
+                                $imgurl = imgPath + "card-lightblue.png";
+
+                            }
+                            $li = $("  <div id=\"two\" onclick='showActive(\"" + $courseId + "\",\"" + $title + "\")' class=\"btn  btn-border-o\">\n" +
+                                "                <div id=\"black_border\">\n" +
+                                "                    <img src=\"" + $imgurl + "\">\n" +
+                                "                    <div id=\"cover\">\n" +
+                                "                        <div id=\"line2\" class=\"layui-btn layui-btn-primary layui-btn-radius\"></div>\n" +
+                                "                        <div id=\"title\">" + $title + "</div>\n" +
+                                "                        <div id=\"title_english\">"+"活动："+$moduleCount+"<a id=\"time\">" + $time + "</a></div>\n" +
+                                "\n" +
+                                "                    </div>\n" +
+                                "                </div>\n" +
+                                "            </div>");
+                            $("#boxes_top").append($li);
+
+
+                        } else {
+
+                            if ($i == 4) {
+                                $imgurl = imgPath + "card-blue.png";
+                            }
+                            else if ($i == 5) {
+                                $imgurl = imgPath + "card-zise.png";
+                            }
+                            else if ($i == 6) {
+                                $imgurl = imgPath + "card-lightblue.png";
+
+
+                            }
+
+
+                            $li = $("  <div id=\"two\" onclick='showActive(\"" + $courseId + "\",\"" + $title + "\")' class=\"btn  btn-border-o\">\n" +
+                                "                <div id=\"black_border\">\n" +
+                                "                    <img src=\"" + $imgurl + "\">\n" +
+                                "                    <div id=\"cover\">\n" +
+                                "                        <div id=\"line2\" class=\"layui-btn layui-btn-primary layui-btn-radius\"></div>\n" +
+                                "                        <div id=\"title\">" + $title + "</div>\n" +
+                                "                        <div id=\"title_english\">活动4<a id=\"time\">" + $time + "</a></div>\n" +
+                                "\n" +
+                                "                    </div>\n" +
+                                "                </div>\n" +
+                                "            </div>");
+
+
+                            $("#boxes_bottom").append($li);
+
+
+                        }
+
+
+                    }
+                    $li = $(" <div id=\"new_build\" data-reveal-id=\"myModal\" data-animation=\"fade\" class=\"btn  btn-border-o\">\n" +
+                        "                <div id=\"black_border\">\n" +
+                        "                    <i class=\"layui-icon\" id=\"addIcon\">&#xe654;</i>\n" +
+                        "                    <div id=\"add_title\">新建课件</div>\n" +
+                        "                </div>\n" +
+                        "            </div>\n");
+                    $("#boxes_bottom").append($li);
+
+                }
+                else {
+                    $("#load").html("数据请求出现异常啦");
+
+                }
+
+            },
+            error: function (res) {
+
+            },
+
+
+        });
+
+
+    }
+
+    //跳转活动界面，新建活动
+    function showActive(courseId, title) {
+
+        window.location.href = "showActive.html?courseId=" + courseId + "&title=" + title;
+
+    }
+
+
+</script>
+</html>

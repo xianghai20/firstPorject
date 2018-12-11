@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>教学库</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/public.css">
+    <style type="text/css">
+
+
+
+        #header {
+            margin-top: 3%;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            flex-direction: row;
+            color: white;
+            font-size: 1.7em;
+            letter-spacing: 1px;
+            line-height: 80px;
+
+        }
+
+        #header > div {
+
+            width: 15%;
+            height: 100%;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+
+        }
+
+        #myicon {
+            font-size: 1.5em;
+        }
+
+        #header_right {
+            margin-left: 40%;
+            color: white;
+            width: 15%;
+            height: 80px;
+            line-height: 80px;
+        }
+
+        #header_right > div {
+            width: 80%;
+            line-height: 100px;
+            float: right;
+            color: white;
+            font-size: 1em;
+        }
+
+        #personal {
+            color: white;
+            font-size: 1em;
+        }
+
+        #boxes {
+            width: 100%;
+            margin-top: 2%;
+            height: 75%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #boxes_top, #boxes_bottom {
+            width: 100%;
+            height: 50%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #boxes_top > div, #boxes_bottom > div {
+            width: 32%;
+            height: 80%;
+            border-radius: 3%;
+            margin: auto;
+            z-index: 9999;
+            cursor: pointer;
+            position: relative;
+        }
+
+        #boxes_bottom > div {
+            margin-top: 1%;
+            z-index: 9999;
+        }
+
+        #boxes_top > div:hover {
+            box-shadow: 0 0 100px #2196F3;
+            z-index: 99999;
+            transform: scale(1.1);
+
+        }
+
+        #boxes_bottom > div:hover {
+            box-shadow: 0 0 100px #2196F3;
+            z-index: 99999;
+            transform: scale(1.1);
+
+        }
+
+        #kejian:hover {
+            color: white;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 2%;
+            background-color: #0C0C0C;
+            opacity: 0.7;
+            z-index: -100;
+            position: absolute;
+        }
+
+        img:hover {
+            box-shadow: 0 0 100px #2196F3;
+        }
+
+        #kejian {
+            color: #92A6EF;
+        }
+
+        #cover {
+            margin-left: 7%;
+            width: 86%;
+            height: 80%;
+            z-index: 9999;
+            text-align: left;
+            color: white;
+            position: absolute;
+            margin-top: 5%;
+        }
+
+        #line2 {
+
+            width: 21%;
+            height: 4%;
+            background-color: white;
+        }
+
+        #title {
+            font-size: 2em;
+            color: white;
+            margin-top: 2%;
+            letter-spacing: 5px;
+
+        }
+
+        #title_english {
+            bottom: 0;
+            position: absolute;
+            font-size: 1.5em;
+        }
+
+        #bg_line {
+            width: 110%;
+            height: 1px;
+            background-color: #6A7AB5;
+            position: fixed;
+            margin-top: 5%;
+            transform: rotateZ(7deg);
+            box-shadow: 0 0 10px #2196F3;
+
+        }
+        #header_right>button{
+              width: 70%;
+              height: 60%;
+
+
+        }
+        #line{
+            width: 70%;
+            height: 3%;
+            background-color: white;
+            border-radius:98%;
+            box-shadow:0 0 8px #DDD;
+            margin: auto;
+            animation: bs linear 3s 2.5s infinite;
+
+        }
+        @-webkit-keyframes bs {
+            0% {
+                width: 70%;
+                box-shadow: inset -1px 1px 3px 2px white, inset 1px -1px 3px 2px #222222, 0 0 0px 0 #b2ff1a;
+            }
+
+            50% {
+
+                box-shadow: inset -1px 1px 3px 2px white, inset 1px -1px 3px 2px #222222, 0 0 20px 0 #1affff;
+            }
+
+            100% {
+                width: 90%;
+           box-shadow: inset -1px 1px 3px 2px white, inset 1px -1px 3px 2px #222222, 0 0 0px 0 #b2ff1a;
+            }
+        }
+
+        .search-wrapper .input-holder {
+            overflow: hidden;
+            height: 70px;
+            border-radius:6px;
+            position: relative;
+            width:70px;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+        .search-wrapper.active .input-holder {
+            border-radius: 50px;
+            width:450px;
+            background: rgba(0,0,0,0.5);
+            -webkit-transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+            -moz-transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+            transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+        }
+
+        .search-wrapper .input-holder .search-input {
+            width:100%;
+            height: 50px;
+            padding:0px 70px 0 20px;
+            opacity: 0;
+            position: absolute;
+            top:0px;
+            left:0px;
+            background: transparent;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border:none;
+            outline:none;
+            font-family:"Open Sans", Arial, Verdana;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+            color:#FFF;
+            -webkit-transform: translate(0, 60px);
+            -moz-transform: translate(0, 60px);
+            transform: translate(0, 60px);
+            -webkit-transition: all .3s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+            -moz-transition: all .3s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+            transition: all .3s cubic-bezier(0.000, 0.105, 0.035, 1.570);
+
+            -webkit-transition-delay: 0.3s;
+            -moz-transition-delay: 0.3s;
+            transition-delay: 0.3s;
+        }
+        .search-wrapper.active .input-holder .search-input {
+            opacity: 1;
+            -webkit-transform: translate(0, 10px);
+            -moz-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+        }
+
+        .search-wrapper .input-holder .search-icon {
+            width:70px;
+            height:70px;
+            border:none;
+            border-radius:6px;
+            background: #FFF;
+            padding:0px;
+            outline:none;
+            position: relative;
+            z-index: 2;
+            float:right;
+            cursor: pointer;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+        .search-wrapper.active .input-holder .search-icon {
+            width: 50px;
+            height:50px;
+            margin: 10px;
+            border-radius: 30px;
+        }
+        .search-wrapper .input-holder .search-icon span {
+            width:22px;
+            height:22px;
+            display: inline-block;
+            vertical-align: middle;
+            position:relative;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-transition: all .4s cubic-bezier(0.650, -0.600, 0.240, 1.650);
+            -moz-transition: all .4s cubic-bezier(0.650, -0.600, 0.240, 1.650);
+            transition: all .4s cubic-bezier(0.650, -0.600, 0.240, 1.650);
+
+        }
+        .search-wrapper.active .input-holder .search-icon span {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+        .search-wrapper .input-holder .search-icon span::before, .search-wrapper .input-holder .search-icon span::after {
+            position: absolute;
+            content:'';
+        }
+        .search-wrapper .input-holder .search-icon span::before {
+            width: 4px;
+            height: 15px;
+            left: 12px;
+            top: 24px;
+            border-radius: 2px;
+            background: white;
+        }
+        .search-wrapper .input-holder .search-icon span::after {
+            width: 20px;
+            height: 20px;
+            left: 0px;
+            top: 0px;
+            border-radius: 16px;
+            border: 4px solid white;
+        }
+
+        .search-wrapper .close {
+            position: relative;
+            z-index: 1;
+            width:25px;
+            height:25px;
+            top:20px;
+            display: none;
+            cursor: pointer;
+            -webkit-transform: rotate(-180deg);
+            -moz-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+            -webkit-transition: all .3s cubic-bezier(0.285, -0.450, 0.935, 0.110);
+            -moz-transition: all .3s cubic-bezier(0.285, -0.450, 0.935, 0.110);
+            transition: all .3s cubic-bezier(0.285, -0.450, 0.935, 0.110);
+            -webkit-transition-delay: 0.2s;
+            -moz-transition-delay: 0.2s;
+            transition-delay: 0.2s;
+        }
+        .search-wrapper.active .close {
+            display: block;
+            right:-10px;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            transform: rotate(45deg);
+            animation: close 1s linear 1s infinite alternate;
+        }
+        @keyframes close{
+            0%{
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100%{
+
+                -webkit-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+
+        }
+        .search-wrapper .close::before, .search-wrapper .close::after {
+            position:absolute;
+            content:'';
+            background: #FFF;
+            border-radius: 2px;
+        }
+        .search-wrapper .close::before {
+            width: 5px;
+            height: 25px;
+            left: 10px;
+            top: 0px;
+        }
+        .search-wrapper .close::after {
+            width: 25px;
+            height: 5px;
+            left: 0px;
+            top: 10px;
+        }
+        .search-wrapper .result-container {
+            width: 100%;
+            position: absolute;
+            top:80px;
+            left:0px;
+            text-align: center;
+            font-family: "Open Sans", Arial, Verdana;
+            font-size: 14px;
+            display:none;
+            color:#B7B7B7;
+        }
+
+
+        @media screen and (max-width: 560px) {
+            .search-wrapper.active .input-holder {width:200px;}
+        }
+
+        #search{
+            margin-left: 50px;
+        }
+        #myTitle{
+
+
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="bg_line"></div>
+<div id="main">
+    <div id="header">
+        <div>
+            <form  id="searchClick" onsubmit="submitFn(this, event);">
+                <div class="search-wrapper" style="display: flex;flex-direction: row">
+                    <div class="input-holder" id="search" >
+                        <input type="text" class="search-input" placeholder="Type to search" />
+                        <button class="search-icon" style="background-color: transparent" onclick="searchToggle(this, event);"><span></span></button>
+                    </div>
+                    <span class="close"  onclick="searchToggle(this, event);"></span>
+                    <div class="result-container" >
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div ><i id="myicon" class="icon iconfont">&#xe63e;</i> 教学库
+            <div id="line"></div>
+        </div>
+        <div id="kejian"><i id="myicon" class="icon iconfont">&#xe6ec;</i> 课件</div>
+       <div id="header_right">
+        <span  id="myTitle" style="background-color: #757DAE;opacity:0.7;border: hidden;color: white;font-size: 0.7em;letter-spacing: 2px" class=" layui-btn layui-btn-radius layui-btn-primary">
+            <i id="personal" class="icon iconfont">&#xe7a3;</i>&nbsp;&nbsp;我的
+        </span>
+       </div>
+
+
+    </div>
+    <div id="boxes">
+        <div id="boxes_top"  v-html="message">
+            <div id="one" class="btn  btn-border-o">
+                <img src="static/images/card1.png">
+                <div id="cover">
+                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>
+                    <div id="title">关于古筝</div>
+                    <div id="title_english">About &nbsp; zither</div>
+
+                </div>
+            </div>
+            <div id="two" class="btn  btn-border-o">
+                <img src="static/images/card2.png">
+                <div id="cover">
+                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>
+                    <div id="title">第一单元<br>基本弹奏指法</div>
+                    <div id="title_english">Chapter 1</div>
+
+                </div>
+
+            </div>
+            <div id="three" class="btn  btn-border-o"><img src="static/images/card3.png">
+                <div id="cover">
+                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>
+                    <div id="title">第二单元<br>连托、连抹、连勾及刮奏</div>
+                    <div id="title_english">Chapter 2</div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div id="boxes_bottom"  v-html="message">
+            <div id="four" class="btn  btn-border-o"><img src="static/images/card4.png">
+                <div id="cover">
+                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>
+                    <div id="title">第三单元<br>撮弦与和弦</div>
+                    <div id="title_english">Chapter 3</div>
+
+                </div>
+            </div>
+            <div id="five" class="btn  btn-border-o"><img src="static/images/card5.png">
+
+                <div id="cover">
+                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>
+                    <div id="title">第四单元<br>遥指</div>
+                    <div id="title_english">Chapter 4</div>
+
+                </div>
+            </div>
+            <div id="six" class="btn  btn-border-o"><img src="static/images/card6.png">
+                <div id="cover">
+                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>
+                    <div id="title">第五单元<br>滑音及按音</div>
+                    <div id="title_english">Chapter 5</div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+</body>
+<script type="text/javascript" src="static/js/jquery.min.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
+<script type="text/javascript" src="static/js/vue.min.js"></script>
+<script src="static/layui/layui.all.js"></script>
+<script type="text/javascript">
+   $("#searchClick").click(function () {
+       window.location.href="search.html";
+   });
+    function searchToggle(obj, evt){
+        var container = $(obj).closest('.search-wrapper');
+
+        if(!container.hasClass('active')){
+            container.addClass('active');
+            evt.preventDefault();
+        }
+        else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
+            container.removeClass('active');
+            // clear input
+            container.find('.search-input').val('');
+            // clear and hide result container when we press close
+            container.find('.result-container').fadeOut(100, function(){$(this).empty();});
+        }
+    }
+
+    function submitFn(obj, evt){
+        value = $(obj).find('.search-input').val().trim();
+
+        _html = "Yup yup! Your search text sounds like this: ";
+        if(!value.length){
+            _html = "Yup yup! Add some text friend :D";
+        }
+        else{
+            _html += "<b>" + value + "</b>";
+        }
+
+        $(obj).find('.result-container').html('<span>' + _html + '</span>');
+        $(obj).find('.result-container').fadeIn(100);
+
+        evt.preventDefault();
+    }
+
+    $("#one").click(function () {
+        window.location.href="quku2.html";
+    });
+    $("#two").click(function () {
+        window.location.href="quku2.html";
+    });
+    $("#three").click(function () {
+        window.location.href="quku2.html";
+    });
+    $("#four").click(function () {
+        window.location.href="quku2.html";
+    });  $("#five").click(function () {
+        window.location.href="quku2.html";
+    });
+    $("#six").click(function () {
+        window.location.href="quku2.html";
+    });
+    $("#search").click(function () {
+    $("#search").css("margin-left","0px");
+    });
+
+
+    var imgPath=config.imgPath;
+
+    // new Vue({
+    //     el:'#boxes',
+    //     data:{
+    //         message:'  <div id="one" class="btn  btn-border-o">\n' +
+    //             '                <img src='+imgPath+'card1.png'+'>\n' +
+    //             '                <div id="cover">\n' +
+    //             '                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>\n' +
+    //             '                    <div id="title">关于古筝</div>\n' +
+    //             '                    <div id="title_english">About &nbsp; zither</div>\n' +
+    //             '\n' +
+    //             '                </div>\n' +
+    //             '            </div>\n' +
+    //             '            <div id="two" class="btn  btn-border-o">\n' +
+    //             '                <img src='+imgPath+'card1.png'+'>\n' +
+    //             '                <div id="cover">\n' +
+    //             '                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>\n' +
+    //             '                    <div id="title">第一单元<br>基本弹奏指法</div>\n' +
+    //             '                    <div id="title_english">Chapter 1</div>\n' +
+    //             '\n' +
+    //             '                </div>\n' +
+    //             '\n' +
+    //             '            </div>\n' +
+    //             '            <div id="three" class="btn  btn-border-o">' +
+    //             '                <img src='+imgPath+'card3.png'+'>\n' +
+    //             '                <div id="cover">\n' +
+    //             '                    <div id="line2" class="layui-btn layui-btn-primary layui-btn-radius"></div>\n' +
+    //             '                    <div id="title">第二单元<br>连托、连抹、连勾及刮奏</div>\n' +
+    //             '                    <div id="title_english">Chapter 2</div>\n' +
+    //             '\n' +
+    //             '                </div>\n' +
+    //             '\n' +
+    //             '            </div>',
+    //     }
+    //
+    //
+    // })
+
+
+
+</script>
+</html>

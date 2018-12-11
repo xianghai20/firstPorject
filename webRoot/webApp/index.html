@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>welcome</title>
+    <link rel="stylesheet" href="static/css/normalize.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/public.css">
+    <style>
+        #backGround {
+            z-index: 0;
+
+        }
+
+        .main {
+            width: 1920px;
+            height: 1080px;
+
+        }
+
+        .cover {
+            width: 1920px;
+            height: 1080px;
+            background-color: black;
+            opacity: 0.1;
+            margin-top: -1080px;
+        }
+
+        .boxes {
+            width: 1900px;
+            height: 1000px;
+            border: 1px solid black;
+            margin-top: -1040px;
+            margin-left: 10px;
+            z-index: 9999;
+            position: absolute;
+        }
+
+        .cardBox {
+            width: 1200px;
+            margin-top: 100px;
+            margin-left: 350px;
+            height: 800px;
+            border: 1px solid white;
+        }
+
+        .cardBox > div {
+            width: 1200px;
+            height: 100px;
+            border: 1px white dashed;
+            font-size: 32px;
+            line-height: 100px;
+        }
+
+        .navHeader {
+            text-align: center;
+
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="main">
+
+    <div id="backGround" class="satic-area">
+        <div class="dynamic-area1"></div>
+        <div class="dynamic-area2"></div>
+    </div>
+
+    <div class="cover"></div>
+
+
+</div>
+
+
+</body>
+</html>

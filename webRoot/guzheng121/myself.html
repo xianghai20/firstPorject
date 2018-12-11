@@ -1,0 +1,1070 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/public.css">
+    <link rel="stylesheet" href="static/css/newPopup.css">
+    <style type="text/css">
+        /*//新建样式，活动框架*/
+        #content {
+            margin-top: 44px;
+            height: 850px;
+
+        }
+
+        #active {
+            width: 100%;
+            height: 90%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .divLeft {
+            width: 542px;
+            height: 756px;
+            background-image: url("static/images/bj-my.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 8.8px;
+            font-size: 38px;
+            color: #FFFFFF;
+
+        }
+
+        #right_box {
+            width: 1028px;
+            height: 756px;
+            margin-left: 147px;
+            line-height: 756px;
+            text-align: center;
+
+        }
+
+        .right_boxA {
+            margin-top: 200px;
+            width: 1028px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /*//登录邮箱*/
+        /*//删除弹窗样式*/
+        .divEdit {
+            width: 920px;
+            height: 496px;
+            background-color: #4D66CC;
+            position: absolute;
+            margin-top: 292px;
+            z-index: 9999;
+            margin-left: 500px;
+            display: none;
+
+        }
+
+        .delete > div, .divEdit > div {
+            margin-left: 120px;
+        }
+
+        .del_header {
+
+            margin-top: 80px;
+            height: 56px;
+            font-size: 48px;
+            color: #FFFFFF;
+            line-height: 56px;
+        }
+
+        .del_mes {
+            margin-top: 40px;
+            height: 120px;
+            font-size: 38px;
+            color: #C8D0EF;
+            line-height: 56px;
+        }
+
+        .del_but {
+            margin-top: 40px;
+            display: flex;
+            position: absolute;
+            flex-direction: row;
+        }
+
+        .del_but > div {
+            cursor: pointer;
+            height: 68px;
+        }
+
+        .butDiv {
+            color: #FFFFFF;
+            width: 144px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 4px solid rgba(255, 255, 255, 0.20);
+            border-radius: 40px;
+        }
+
+        #upper {
+            margin-left: 24px;
+        }
+
+        .butDiv:hover {
+            color: #5361FC;
+            background: #FFFFFF;
+            border: 4px solid #FFFFFF;
+            border-radius: 40px;
+        }
+
+        .del_close_title, .del_confirm_title {
+            font-size: 32px;
+
+            text-align: center;
+            line-height: 68px;
+        }
+
+        .editCourse {
+            height: 96px;
+            width: 680px;
+            margin-top: 26px;
+        }
+
+        .editName, .password {
+            width: 680px;
+            height: 96px;
+            background-color: transparent;
+            border: hidden;
+        }
+
+        .editLine {
+
+            width: 680px;
+            height: 4px;
+            opacity: 0.4;
+            background: #FFFFFF;
+        }
+
+        .editName {
+            font-size: 32px;
+            color: white;
+        }
+
+        .editMes {
+            position: absolute;
+            margin-top: -70px;
+            display: none;
+            width: 400px;
+            height: 56px;
+            line-height: 56px;
+            text-align: left;
+            font-size: 24px;
+            color: white;
+            background: #E4393C;
+            border-radius: 4px;
+        }
+
+        /*///////////////////我的界面的css样式*/
+        .divLeft > div {
+            width: 542px;
+            text-align: center;
+        }
+
+        .divImg {
+
+            margin-top: 126px;
+
+        }
+
+        .headImg {
+            width: 168px;
+            height: 168px;
+
+        }
+
+        .nickName {
+            font-size: 48px;
+            color: #FFFFFF;
+            line-height: 56px;
+            margin-top: 50px;
+        }
+
+        .number {
+            opacity: 0.7;
+            font-size: 32px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 60px;
+            margin-top: 50px;
+        }
+
+        /*//右边的样式*/
+        .right_boxA > div {
+            width: 880px;
+            height: 96px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-left: 74px;
+        }
+
+        .rightNav {
+            font-size: 38px;
+            color: #8799E9;
+            line-height: 96px;
+            text-align: left;
+            cursor: pointer;
+
+        }
+
+        .rightNav:hover {
+            background: #5361FC;
+            border: 4px solid #828CFF;
+            box-shadow: 0 0 18px 6px rgba(130, 140, 255, 0.90);
+            border-radius: 8px;
+            color: white;
+        }
+
+        .mask {
+            width: 880px;
+            height: 96px;
+            opacity: 0.1;
+            background: #000000;
+            border-radius: 8px;
+            position: absolute;
+        }
+
+        .myIcon {
+            margin-left: 32px;
+            float: left;
+            opacity: 0.7;
+        }
+
+        .myIcon, .arrow {
+
+            margin-top: 26px;
+            margin-left: 32px;
+            width: 44px;
+            height: 44px;
+        }
+
+        .rightMsgOne {
+            float: right;
+            margin-right: 24px;
+
+        }
+
+        .arrow, .Edition {
+            opacity: 0.5;
+            float: right;
+            margin-right: 24px;
+
+        }
+
+        .rightNavTitle {
+            margin-left: 32px;
+        }
+
+        /*//登录弹窗*/
+        #cancelEdit, #findCode {
+
+            margin-left: 32px;
+        }
+
+        #regestDiv {
+            position: absolute;
+
+        }
+
+        #retrieveDiv {
+            position: absolute;
+        }
+
+        .password {
+            display: none;
+        }
+
+        .butBox {
+            width: 200px;
+            height: 100px;
+            margin-left: 200px;
+        }
+
+        .butBoxOne {
+            width: 200px;
+            height: 100px;
+        }
+
+        #signOut {
+            display: none;
+
+            margin-top: 60px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="divEdit" class="divEdit">
+    <div id="headerTitle" class="del_header">登录邮箱</div>
+    <div id="editCourse" class="editCourse">
+        <input type="email" placeholder="请输入邮箱" id="editName" class="editName">
+
+    </div>
+    <div id="editLine" class="editLine"></div>
+    <div id="editMes" class="editMes" style="margin-left:800px"></div>
+    <div class="del_but">
+        <div id="confirmEdit" class="butDiv">
+            <div id="confirmTitle" class="del_confirm_title"> 下一步</div>
+        </div>
+
+        <div id="boxButOne" class="butBoxOne">
+
+            <div id="cancelEdit" class="butDiv">
+                <div class="del_close_title">取消</div>
+            </div>
+        </div>
+
+        <div id="butBox" class="butBox">
+            <div id="regestDiv" class="butDiv" onclick="register()">
+                <div class="del_close_title" id="regestior">注册</div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<div id="boxes">
+    <div id="header_nav">
+        <div id="bark">
+            <img id="barkImg" src="static/images/arrow-lef.png"/>
+        </div>
+        <div id="unit">我的</div>
+    </div>
+
+    <div id="content" style="margin-left: 0px">
+        <div id="active">
+            <div id="divLeft" class="divLeft">
+                <div id="divImg" class="divImg">
+                    <img class="headImg" src="static/images/myheader.png"/>
+                </div>
+                <div class="nickName" id="nickName">游客</div>
+                <div class="number" id="number">编号</div>
+
+
+            </div>
+            <div id="right_box">
+                <div class="right_boxA">
+                    <div class="rightNav">
+                        <div id="mask" class="mask"></div>
+                        <img class="myIcon" src="static/images/account-user-o.png"/>
+                        <span class="rightNavTitle">我的账号</span>
+
+                        <span class="rightMsgOne" id="rightMsgOne">未登录</span>
+                    </div>
+                    <div class="rightNav">
+                        <div id="mask" class="mask"></div>
+                        <img class="myIcon" src="static/images/account-users-o.png"/>
+                        <span class="rightNavTitle">我的班级</span>
+                        <img class="arrow" src="static/images/arrow.png"/>
+                    </div>
+                    <div class="rightNav">
+                        <div id="mask" class="mask"></div>
+                        <img class="myIcon" src="static/images/squares-o.png"/>
+                        <span class="rightNavTitle">版本号码</span>
+                        <span class="Edition">1.0</span>
+                    </div>
+                    <div class="rightNav" id="signOut">
+                        <div id="mask" class="mask"></div>
+                        <img class="myIcon" src="static/images/exit.png"/>
+                        <span class="rightNavTitle">退出</span>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+<script type="text/javascript" src="static/js/jquery.min1.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
+<script type="text/javascript" src="static/js/page.js"></script>
+<script type="text/javascript" src="static/layui/layui.all.js"></script>
+<script type="text/javascript" src="static/js/jQuery.md5.js"></script>
+
+
+<script type="text/javascript">
+    var currentStep = 1;//定义
+    var pattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;//定义检测邮箱
+    var global_email = "";//存储邮箱变量
+    var userApi = config.interface.userApi;//用户api
+    var global_type = 1;//初始类型
+    var globalPass = "";
+    var global_reEmail = "";//初始的注册邮箱
+    var global_code = "";//初始验证码
+    global_teachId = localStorage.getItem("tearchId");
+    globalPass = localStorage.getItem("pass");
+    global_email = localStorage.getItem("email");
+    console.log(global_teachId,globalPass,global_email);
+    $(document).ready(function () {
+        $("#bark").click(function () {
+            window.location.href = "courseware.html";
+        });
+        //取消登录操作
+        $("#cancelEdit").click(function () {
+            global_type = 1;
+            currentStep = 1;
+            $("#divEdit").css({"display": "none"});
+        });
+        $(".rightNav").click(function () {
+            if (global_teachId == null) {
+                step(currentStep);
+                $("#divEdit").css({"display": "block"});
+            }
+        });
+        //注销登录
+        $("#signOut").click(function () {
+            clearAllCookie();
+
+
+        });
+        judgeLogin();
+    });
+
+    //清除所有cookie函数
+
+    function clearAllCookie() {
+        localStorage.clear();
+        global_teachId = "";
+        globalPass = "";
+        global_email = "";
+        location.reload();
+    }
+
+    //判断登录
+    function judgeLogin() {
+        if (global_teachId == null && global_email == null) {
+            $(".right_boxA").css({"margin-top": "200px"});
+            $("#rightMsgOne").html("未登录");
+            $("#signOut").css({"display": "none"});
+        }
+        else {
+            $(".right_boxA").css({"margin-top": "131px"});
+            console.log("您已经登录");
+            $("#rightMsgOne").html("已登录");
+            login(globalPass);
+            $("#signOut").css({"display": "block"});
+
+
+        }
+
+
+    }
+
+
+    //取消函数
+    function cancel() {
+        global_type = 1;
+        currentStep = 1;
+        $("#divEdit").css({"display": "none"});
+    }
+
+    //找回密码函数
+
+    function findPass() {
+        global_type = 2;
+        step(currentStep);
+    }
+
+    //检查邮箱
+
+    $("#editName").bind('input propertychange', function () {
+
+        $emailName = $("#editName").val();
+        $email = pattern.test($emailName);
+        if ($email) {
+            $("#editMes").html("邮箱格式正确！");
+            $("#editMes").css({"color": "green", "display": "none"});
+        }
+        else {
+            $("#editMes").css({"color": "white", "display": "block"});
+            $("#editMes").html("邮箱格式不正确！");
+        }
+
+
+    });
+
+
+    //步骤
+    //下一步
+    $("#confirmEdit").click(function () {
+
+        $emailName = $("#editName").val();
+        $email = pattern.test($emailName);
+        $reEmailName = $("#reEmail").val();//注册邮箱
+        $reEmail = pattern.test($reEmailName);
+        $RePassword = $("#RePassword").val();
+        $newPass = $("#newPassword").val();
+
+        //判断是否输入活动名称
+        if (currentStep == 1 && !$email) {
+            $("#editMes").css({"color": "white", "display": "block"});
+            $("#editMes").html("邮箱格式不正确！");
+        }
+
+        else if (currentStep == 1 && $email) {
+            console.log($emailName);
+            global_email = $emailName;
+            currentStep = Number(currentStep) + 1;
+            step(currentStep);
+
+        }
+        else if (currentStep == 2 && global_type == 2) {
+            checkCode();
+
+
+        }
+        else if (currentStep == 3 && global_type == 2 && $newPass.length > 6) {
+            currentStep = Number(currentStep) + 1;
+            step(currentStep);
+
+
+        }
+        else if (currentStep == 5 && global_type == 3 && $reEmail) {
+            currentStep = Number(currentStep) + 1;
+            global_reEmail = $reEmailName;
+            step(currentStep);
+        }
+        else if (currentStep == 5 && global_type == 3 && !$reEmail) {
+            $("#editMes").css({"color": "white", "display": "block"});
+            $("#editMes").html("邮箱格式不正确！");
+        }
+        else if (currentStep == 6 && global_type == 3 && $RePassword.length > 6) {
+
+            currentStep = Number(currentStep) + 1;
+            step(currentStep);
+        }
+        else if (currentStep == 6 && global_type == 3 && $RePassword.length < 6) {
+            $("#editMes").css({"color": "white", "display": "block"});
+            $("#editMes").html("密码长度必须大于6位！");
+        }
+        else {
+            currentStep = Number(currentStep) + 1;
+            step(currentStep);
+        }
+
+
+    });
+
+    //上一步
+    function upper() {
+
+        currentStep = Number(currentStep) - 1;
+        console.log("你点击了上一步，当前页面为第" + currentStep + "页");
+        step(currentStep);
+    }
+
+
+    //弹窗页面的步骤函数
+    function step(currentPage) {
+        console.log(currentPage, global_type);
+        //当前页面为第二页，未点击找回密码
+        if (currentStep == 2 && global_type == 1) {
+
+            $("#headerTitle").html(global_email);
+            $("#editName").css({"display": "none"});
+            $("#upper").css({"display": "block"});
+            $("#cancelEdit").css({"display": "none"});
+            //input输入框
+            $pass = $("<input type=\"password\"  placeholder=\"请输入密码\" id=\"password\" class=\"editName\">");
+            $("#editCourse").html($pass);
+            $boxBut = $("   <div id=\"retrieveDiv\" onclick='findPass()' class=\"butDiv\">\n" +
+                "            <div class=\"del_close_title\" id=\"retrieveTitle\">找回密码</div>\n" +
+                "        </div>");
+            $("#butBox").html($boxBut);
+            $("#confirmTitle").html("登录");
+            $("#retrieveDiv").css({"display": "block"});
+            $("#regestDiv").css({"display": "none"});
+
+            //替换第二个按钮取消
+
+            $boxButOne = $("      <div id=\"upper\" onclick='upper()' class=\"butDiv\">\n" +
+                "                <div class=\"del_confirm_title\"> 上一步</div>\n" +
+                "            </div>");
+            $("#boxButOne").html($boxButOne);
+        }
+        //确定点击找回密码
+        else if (currentStep == 2 && global_type == 2) {
+            sendCode();
+            $("#password").css({"display": "none"});
+            $("#confirmTitle").html("确认");
+            $code = $("<input type=\"text\"  placeholder=\"请输入验证码\" id=\"code\" class=\"editName\">");
+
+            $boxBut = $("   <div id=\"barkLogin\" onclick='barkLogin()' class=\"butDiv\">\n" +
+                "            <div class=\"del_close_title\" id=\"retrieveTitle\">返回登录</div>\n" +
+                "        </div>");
+            $("#butBox").html($boxBut);
+            $("#editCourse").html($code);
+            //显示第二个按钮
+
+            $boxButOne = $("      <div id=\"findCode\" onclick='sendCode()' class=\"butDiv\">\n" +
+                "                <div class=\"del_confirm_title\"> 发送验证</div>\n" +
+                "            </div>");
+            $("#boxButOne").html($boxButOne);
+
+
+        }
+        //点击登录
+        else if (currentStep == 3 && global_type == 1) {
+            $pass = $("#password").val();
+            $pass = $.md5($pass);
+            login($pass);
+        }
+        //找回密码,发送邮箱验证码
+        else if (currentPage == 3 && global_type == 2) {
+
+            $("#boxButOne").remove();
+            $("#confirmTitle").html("确认新密码，登录");
+            $("#confirmEdit").css({"width": "336px"});
+            //input输入框
+            $pass = $("<input type=\"password\"  placeholder=\"请输入新的密码\" id=\"newPassword\" class=\"editName\">");
+            $("#editCourse").html($pass);
+            //检测注册密码
+            $("#newPassword").bind('input propertychange', function () {
+
+                $newPass = $("#newPassword").val();
+                if ($newPass.length < 6) {
+                    $("#editMes").css({"color": "white", "display": "block"});
+                    $("#editMes").html("密码长度必须大于6位！");
+                }
+                else {
+                    $("#editMes").html("密码格式正确！");
+                    $("#editMes").css({"color": "green", "display": "none"});
+
+                }
+
+
+            });
+
+
+        }
+        //确定修改并登录
+        else if (currentPage == 4 && global_type == 2) {
+
+            $newPass = $("#newPassword").val();
+            $newPass = $.md5($newPass);
+            updatePass($newPass);
+
+        }
+        //登录邮箱页面
+        else if (currentPage == 1 && global_type == 1) {
+            $("#headerTitle").html("邮箱登录");
+            $("#confirmEdit").css({"width": "160px"});
+            $("#password").css({"display": "none"});
+            //替换界面输入框
+            $pass = $(" <input type=\"email\"  placeholder=\"请输入邮箱\" id=\"editName\" class=\"editName\">");
+            $("#editCourse").html($pass);
+            //替换确认按钮、第一个按钮
+            $("#confirmTitle").html("下一步");
+            //替换第二个按钮取消
+
+            $boxButOne = $("     <div id=\"cancelEdit\" onclick='cancel()'  class=\"butDiv\">\n" +
+                "                <div class=\"del_close_title\">取消</div>\n" +
+                "            </div>");
+            $("#boxButOne").html($boxButOne);
+
+            //替换有右边的按钮
+            $butBox = $("    <div id=\"regestDiv\" onclick='register()' class=\"butDiv\">\n" +
+                "                <div class=\"del_close_title\" id=\"regestior\">注册</div>\n" +
+                "            </div>");
+            $("#butBox").html($butBox);
+
+            $("#upper").css({"display": "none"});
+            $("#cancelEdit").css({"display": "block"});
+            $("#editMes").css({"display": "none"});
+            $("#retrieveDiv").css({"display": "none"});
+            $("#regestDiv").css({"display": "block"});
+
+            $("#editName").bind('input propertychange', function () {
+
+                $emailName = $("#editName").val();
+                $email = pattern.test($emailName);
+                if ($email) {
+                    $("#editMes").html("邮箱格式正确！");
+                    $("#editMes").css({"color": "green", "display": "none"});
+                }
+                else {
+                    $("#editMes").css({"color": "white", "display": "block"});
+                    $("#editMes").html("邮箱格式不正确！");
+                }
+            });
+        }
+        //注册界面
+        else if (currentPage == 5 && global_type == 3) {
+            console.log("已经跳转到了注册页面");
+            $("#headerTitle").html("注册邮箱");
+            $email = $("<input type=\"email\"  placeholder=\"请输入注册的邮箱\" id=\"reEmail\" class=\"editName\">");
+            $("#editCourse").html($email);
+            $("#confirmTitle").html("下一步");
+            $("#butBox").children().remove();
+
+            //检测邮箱
+            $("#reEmail").bind('input propertychange', function () {
+
+                $emailName = $("#reEmail").val();
+                $email = pattern.test($emailName);
+                if ($email) {
+                    $("#editMes").html("邮箱格式正确！");
+                    $("#editMes").css({"color": "green", "display": "none"});
+                }
+                else {
+                    $("#editMes").css({"color": "white", "display": "block"});
+                    $("#editMes").html("邮箱格式不正确！");
+                }
+
+
+            });
+
+
+        }
+        //注册界面下一步
+        else if (currentPage == 6 && global_type == 3) {
+            console.log("注册界面下一步");
+            $("#confirmTitle").html("注册，登录");
+            $("#headerTitle").html(global_reEmail);
+            //input输入框
+            $pass = $("<input type=\"password\"  placeholder=\"请输入密码\" id=\"RePassword\" class=\"editName\">");
+            $("#editCourse").html($pass);
+            //确认框
+            $("#confirmEdit").css({"width": "208px"});
+            //上一步
+            $butBox = $("      <div id=\"upper\" style='margin-left: -50px' onclick='upper()' class=\"butDiv\">\n" +
+                "                <div class=\"del_confirm_title\"> 上一步</div>\n" +
+                "            </div>");
+            $("#butBox").html($butBox);
+
+            //检测注册密码
+            $("#RePassword").bind('input propertychange', function () {
+
+                $RePassword = $("#RePassword").val();
+                if ($RePassword.length < 6) {
+                    $("#editMes").css({"color": "white", "display": "block"});
+                    $("#editMes").html("密码长度必须大于6位！");
+                }
+                else {
+                    $("#editMes").html("密码格式正确！");
+                    $("#editMes").css({"color": "green", "display": "none"});
+
+                }
+
+
+            });
+
+
+        }
+
+        //开始注册
+        else if (currentPage == 7 && global_type == 3) {
+            $rePass = $("#RePassword").val();
+            $rePass = $.md5($rePass);
+            registerLogin($rePass);
+
+
+        }
+
+
+    }
+
+    //自动登录
+    function login(pass) {
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: userApi,
+            data: {
+                "action": "teacherLogin",
+                "email": global_email,
+                "password": pass,
+
+            },
+            dataType: "json",
+            success: function (res) {
+                $("#editMes").css({"color": "white", "display": "block"});
+                $("#editMes").html(res.msg);
+                currentStep = Number(currentStep) - 1;
+                if (res.code == 0) {
+                    $(".right_boxA").css({"margin-top": "131px"});
+                    $("#signOut").css({"display": "block"});
+                    $dat = res.teacher;
+                    $email = $dat.email;
+                    $tid = $dat.tid;
+                    $nick = $dat.nick;
+                    $uname = $dat.uname;
+                    $(".right_boxA").css({"margin-top": "131px"});
+                    $("#rightMsgOne").html("已登录");
+                    $("#nickName").html($nick);
+                    $("#number").html($tid);
+                    $("#divEdit").css({"display": "none"});
+                    //本地储存
+                    localStorage.setItem("tearchId", $tid);
+                    localStorage.setItem("pass", pass);
+                    localStorage.setItem("email", $email);
+
+
+                }
+                else {
+                    localStorage.clear();
+                }
+
+
+            },
+            error: function (res) {
+
+            },
+
+        });
+
+
+    }
+
+    //注册，登录
+    function registerLogin(pass) {
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: userApi,
+            data: {
+                "action": "teacherRegister",
+                "email": global_reEmail,
+                "password": pass,
+
+            },
+            dataType: "json",
+            success: function (res) {
+                $("#editMes").css({"color": "white", "display": "block"});
+                $("#editMes").html(res.msg);
+                currentStep = Number(currentStep) - 1;
+                if (res.code == 0) {
+                    $dat = res.teacher;
+                    $email = $dat.email;
+                    $tid = $dat.tid;
+                    $nick = $dat.nick;
+                    $uname = $dat.uname;
+
+
+                    localStorage.setItem("tearchId", $tid);
+                    localStorage.setItem("pass", pass);
+                    localStorage.setItem("email", $email);
+                    login(pass);
+                    //存储
+                    global_teachId = $tid;
+
+                    cancel();
+
+                }
+
+
+            },
+            error: function (res) {
+                $("#editMes").css({"color": "white", "display": "block"});
+                $("#editMes").html("注册失败！");
+            },
+
+        });
+
+
+    }
+
+    //发送验证码的函数
+    function sendCode() {
+
+
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: userApi,
+            data: {
+                "action": "sendFindEmailValidate",
+                "email": global_email,
+
+            },
+            dataType: "json",
+            success: function (res) {
+                $("#editMes").css({"color": "white", "display": "block"});
+                $("#editMes").html(res.msg);
+                if (res.code == 0) {
+                    var time = setInterval(showTime, 1000);
+                    var second = 60;
+                    $boxButOne = $("      <div  style='width: 208px' id=\"findCode\" class=\"butDiv\">\n" +
+                        "                <div id='findCodeTitle' class=\"del_confirm_title\" style='color: #FFFFFF;opacity: 0.4'> 发送验证</div>\n" +
+                        "            </div>");
+                    $("#boxButOne").html($boxButOne);
+
+                    function showTime() {
+                        if (second == 0) {
+                            clearInterval(time);
+                            $boxButOne = $("      <div id=\"findCode\" onclick='sendCode()' class=\"butDiv\">\n" +
+                                "                <div  class=\"del_confirm_title\"> 发送验证</div>\n" +
+                                "            </div>");
+                            $("#boxButOne").html($boxButOne);
+
+                        }
+                        $("#findCodeTitle").html("已发送" + second + "s");
+                        second--;
+                    }
+
+
+                }
+                else if (res.code == 106) {
+                    $("#editMes").css({"color": "white", "display": "block"});
+                    $("#editMes").html("该邮箱未注册！请先注册");
+                }
+
+
+            },
+            error: function (res) {
+
+                $("#editMes").css({"color": "white", "display": "block"});
+                $("#editMes").html("找回密码失败！");
+            },
+
+        });
+
+    }
+
+    //返回登录操作
+    function barkLogin() {
+        currentStep = 1;
+        global_type = 1;
+        step(currentStep);
+    }
+
+    // //注册函数
+    function register() {
+        global_type = 3;
+        currentStep = 5;//5代表注册页面
+        console.log("开始注册", global_type);
+        step(currentStep);
+
+
+    }
+
+    //验证码验证
+    function checkCode() {
+
+        $code = $("#code").val();
+        global_code = $code;
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: userApi,
+            data: {
+                "action": "checkCode",
+                "email": global_email,
+                "code": global_code,
+
+            },
+            dataType: "json",
+            success: function (res) {
+
+                if (res.code == 0) {
+                    $("#editMes").css({"color": "white", "display": "block"});
+                    $("#editMes").html("验证成功！");
+                    currentStep = Number(currentStep) + 1;
+                    step(currentStep);
+                }
+                else {
+                    $("#editMes").css({"color": "white", "display": "block"});
+                    $("#editMes").html("验证码错误！");
+
+                }
+
+
+            },
+            error: function (res) {
+
+                $("#editMes").css({"color": "white", "display": "block"});
+                $("#editMes").html("验证失败！");
+            },
+
+        });
+
+    }
+
+    //修改密码并登录
+    function updatePass(pass) {
+
+        console.log(pass, global_code, global_email);
+
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: userApi,
+            data: {
+                "action": "validateEmailCode",
+                "email": global_email,
+                "code": global_code,
+                "password": pass,
+
+            },
+            dataType: "json",
+            success: function (res) {
+                console.log(res);
+
+                if (res.code == 0) {
+
+                    $("#editMes").css({"color": "white", "display": "block", "background-color": "green"});
+                    $("#editMes").html("重置密码成功！");
+                    var time = setInterval(showTime, 1000);
+                    var second = 2;
+
+                    function showTime() {
+                        if (second == 0) {
+                            clearInterval(time);
+                            currentStep = 1;
+                            global_type = 1;
+                            step(currentStep);
+                        }
+                        second--;
+                    }
+
+                }
+                else {
+                    $("#editMes").css({"color": "white", "display": "block"});
+                    $("#editMes").html("重置密码失败！");
+
+                }
+
+
+            },
+            error: function (res) {
+
+                $("#editMes").css({"color": "white", "display": "block"});
+                $("#editMes").html("重置密码失败！");
+            },
+
+        });
+
+
+    }
+
+
+</script>
+
+
+</html>

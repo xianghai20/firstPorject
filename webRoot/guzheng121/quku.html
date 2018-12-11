@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/public.css">
+    <style type="text/css">
+        #boxes {
+            width: 90%;
+            height: 90%;
+            margin-left: 5%;
+
+            margin-top: 64px;
+        }
+
+        #header_nav {
+            width: 100%;
+            height: 76px;
+            display: flex;
+            line-height: 76px;
+            font-size: 38px;
+            color: white;
+            flex-direction: row;
+        }
+
+        #unit {
+            margin-left: 64px;
+            width: 152px;
+        }
+
+        #bark {
+            width: 108px;
+        }
+
+        #searchBox {
+            float: right;
+            width: 188px;
+            height: 68px;
+            margin-left: 1160px;
+            right: 0;
+        }
+
+        #search {
+            width: 188px;
+            background-color: transparent;
+            height: 68px;
+            color: white;
+        }
+
+        #barkImg {
+            width: 40px;
+            height: 40px;
+        }
+
+        #myImg1 {
+            width: 36px;
+            height: 36px;
+            margin-left: -160px;
+        }
+
+        #coverMy {
+            z-index: -1;
+            width: 188px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.10);
+            border: 4px solid rgba(255, 255, 255, 0.20);
+            border-radius: 38px;
+        }
+
+        #my {
+            margin-left: 24px;
+            position: absolute;
+            margin-top: 5px;
+            font-size: 32px;
+            color: #FFFFFF;
+            font-family: "微软雅黑";
+            text-align: center;
+            line-height: 60px;
+        }
+
+        #jie_shu,
+        #lei_xin {
+            width: 100%;
+            height: 60px;
+            margin-top: 1%;
+            display: table;
+            flex-direction: row;
+        }
+
+        #jie_shu > div,
+        #lei_xin > div {
+            height: 60px;
+            font-size: 32px;
+            text-align: left;
+            margin-left: 44px;
+            line-height: 60px;
+            color: #8799E9;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        #left_box {
+            width: 106%;
+            height: 20px;
+            margin-left: -3%;
+            font-size: 2em;
+            z-index: 9999;
+        }
+
+        #content_box2 > div,
+        #content_box1 > div {
+            width: 240px;
+            height: 240px;
+            margin-left: 40px;
+        }
+
+        #nav_header {
+            cursor: pointer;
+            height: 100px;
+            display: flex;
+            flex-direction: row;
+            margin-top: 54px;
+            color: white;
+            font-size: 38px;
+            font-weight: bold;
+        }
+
+        #total_title {
+            margin-top: 12px;
+            font-size: 24px;
+        }
+
+        #content_item_title {
+            width: 100%;
+            height: 20%;
+            margin-top: 16px;
+            font-size: 32px;
+            color: #BCC2D6;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #content_box1,
+        #content_box2 {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            margin-top: 1%;
+        }
+
+        #content_icon > img {
+            width: 160px;
+            height: 153px;
+            margin-top: 24px;
+
+        }
+
+        #content_item {
+            cursor: pointer;
+            width: 100%;
+            height: 98%;
+
+            margin: auto;
+            text-align: center;
+            color: white;
+            border-radius: 3%;
+            background-image: url("static/images/bj_default.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        #left_box {
+            width: 1812px;
+            height: 72px;
+            line-height: 72px;
+            margin-left: -3%;
+            font-size: 32px;
+            z-index: 9999;
+        }
+
+        #leftPage {
+            float: left;
+            transform: rotate(180deg);
+        }
+
+        #rightPage {
+            float: right;
+        }
+
+        #jie_shu > div:hover {
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 0 15px #2196F3;
+            background-color: #5061c7;
+        }
+
+        #lei_xin > div:hover {
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 0 15px #2196F3;
+            background-color: #5061c7;
+        }
+
+        .but {
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 0 15px #2196F3;
+            background-color: #5061c7;
+        }
+
+        #footer > i {
+            cursor: pointer;
+
+        }
+
+        #unit, #bark {
+            cursor: pointer;
+        }
+
+        #load {
+            display: none;
+            width: 15%;
+            height: 100px;
+            margin-left: 47%;
+            margin-top: 15%;
+            color: #8799E9;
+            font-size: 24px;
+
+        }
+
+        #loadImg {
+
+            font-size: 100px;
+            color: #8799E9;
+
+        }
+
+        #quImg {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        img {
+            cursor: pointer;
+        }
+
+        #audioMp3 {
+            position: absolute;
+
+            z-index: 99999;
+            border: 2px solid white;
+            /*display: none;*/
+        }
+
+        /*弹出层样式*/
+
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 1920px;
+            height: 1080px;
+            background-color: black;
+            z-index: 9999;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=80);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 450px;
+            left: 360px;
+            width: 1200px;
+            height: 100px;
+            background-color: transparent;
+            z-index: 9999;
+        }
+
+        .white_content_small {
+            display: none;
+            position: absolute;
+            top: 20%;
+            left: 30%;
+            width: 40%;
+            height: 50%;
+            border: 16px solid lightblue;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+
+        #videoHtml {
+            display: none;
+        }
+
+        #close,.closeAudio {
+            width: 100px;
+            height: 100px;
+            z-index: 9999;
+            position: absolute;
+            margin-top: 50px;
+            margin-left: 1770px;
+            color: white;
+            display: none;
+
+        }
+
+        .audio {
+            margin-top: 500px;
+            width: 1000px;
+            margin-left: 460px;
+            position: absolute;
+            z-index: 9999;
+            transform: scale(1.5);
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="close" class="close"><img src="static/images/enlarge.png"/></div>
+<video id="videoHtml" width="1920px" height="1080px" controls="controls" autoplay>
+    <source src="" type="video/mp4">
+</video>
+<!--//音频-->
+<div id="closeAudio" class="closeAudio"><img src="static/images/enlarge.png"/></div>
+<audio class="audio" controls="controls" autoplay>
+    <source src="">
+</audio>
+
+<div id="fade" class="black_overlay">
+</div>
+<div id="MyDiv" class="audio-box white_content">
+    <div style="text-align: right; cursor: default; height: 40px;">
+        <span id="closeDiv" style="font-size: 48px;cursor: pointer" onclick="CloseDiv('MyDiv','fade')">
+            <i style="font-size: 48px;" class="icon iconfont">&#xe7fc;</i></span>
+    </div>
+    <div class="audio-container">
+        <div class="audio-view">
+            <div class="audio-cover"></div>
+            <div class="audio-body">
+                <h3 class="audio-title">未知歌曲</h3>
+                <div class="audio-backs">
+                    <div class="audio-this-time">00:00</div>
+                    <div class="audio-count-time">00:00</div>
+                    <div class="audio-setbacks">
+                        <i class="audio-this-setbacks">
+                            <span class="audio-backs-btn"></span>
+                        </i>
+                        <span class="audio-cache-setbacks">
+							</span>
+                    </div>
+                </div>
+            </div>
+            <div class="audio-btn">
+                <div class="audio-select">
+                    <div action="prev" class="icon-fast-backward"></div>
+                    <div action="play" data-on="icon-play" data-off="icon-pause" class="icon-play"></div>
+                    <div action="next" class="icon-fast-forward"></div>
+                    <div action="volume" class="icon-volume-up">
+                        <div class="audio-set-volume">
+                            <div class="volume-box">
+                                <i><span class="audio-backs-btn"></span></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="boxes">
+    <div id="header_nav">
+        <div id="bark">
+            <img id="barkImg" src="static/images/arrow-lef.png"/>
+        </div>
+        <div id="unit">第一单元</div>
+        <div id="searchBox">
+            <button id="search" class="layui-btn layui-btn-primary layui-btn-radius">
+                <a id="coverMy" class="layui-btn layui-btn-primary layui-btn-radius"></a>
+                <img id="myImg1" src="static/images/searc.png"/>
+                <a id="my" style="">搜索</a>
+            </button>
+        </div>
+    </div>
+    <div id="jie_shu" class="navBtn ">
+
+    </div>
+    <div id="lei_xin">
+    </div>
+    <div id="contentBox">
+        <div id="load"><i id="loadImg" class="layui-icon layui-anim layui-anim-rotate layui-anim-loop">&#xe63d;</i>
+        </div>
+
+        <div id="content_box1">
+
+        </div>
+        <div id="left_box">
+            <span id="leftPage"></span>
+            <span id="rightPage"></span>
+        </div>
+        <div id="content_box2">
+
+        </div>
+    </div>
+    <br><br>
+    <div id="footer">
+    </div>
+
+
+</div>
+
+
+</body>
+<script type="text/javascript" src="static/js/jquery.min.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
+<script type="text/javascript" src="static/js/page.js"></script>
+<script type="text/javascript" src="static/layui/layui.all.js"></script>
+<script type="text/javascript">
+
+    var show_div = "MyDiv", bg_div = "fade";
+    $(document).ready(function () {
+        $("#search").mouseover(function () {
+            $("#searchInput").css("display", "block");
+            $("#icon-search").css("margin-left", "-10px");
+            $("#searchTitle").css("display", "none");
+        });
+        $("#search").mouseout(function () {
+            $("#searchInput").css("display", "none");
+            $("#icon-search").css("margin-left", "27px");
+            $("#searchTitle").css("display", "block");
+        });
+        $("#search_box").click(function () {
+            $("#search_box").css("margin-left", "-50%");
+        });
+        $("#bark").click(function () {
+            window.location.href = "index.html";
+        });
+        $("#search").click(function () {
+            window.location.href = "search.html";
+        });
+
+        $("#left").click(function () {
+            window.location.href = "index.html";
+
+        });
+        initial();
+    });
+    var url = document.location.toString();
+    var chapterId = url.split("=")[1];
+    var domain = config.interface.Domain; //配置节数，类型域名接口地址
+    var library = config.interface.library; //配置列表数据接口地址
+    $.ajax({
+        type: 'get',
+        cache: 'false',
+        url: domain,
+        data: {
+            "action": "getFilterByChapter",
+            "chapterId": chapterId,
+        },
+        dataType: 'json',
+        success: function (res) {
+            //当访问成功，显示数据
+            console.log(res);
+            if (res.code === 0) {
+                $dat = res.unit;
+                $cat = res.category;
+                $length = $dat.length;
+                $typeL = $cat.length;
+                $node = $("#jie_shu");
+
+                //关于节数
+                for ($i = 0; $i < $length; $i++) {
+                    $name = $dat[$i].name; //名称
+                    $title = $dat[$i].title; //标题
+                    $unit = $dat[$i].unit; //单元
+                    $unitName = "unit" + $unit;
+                    $nodeIdName = "nodeName" + $unit; //名称id名称
+                    $nodeIdTitle = "nodeTitle" + $unit; //标题id名称
+
+                    if ($i === 0) {
+                        $li = $(" <div id=\"title_node\"  style=\"color: #BEC5E0;\" class=\"layui-btn layui-btn-primary layui-btn-radius\">节数</div>");
+
+                        $("#jie_shu").append($li);
+                    }
+                    $li = $(" <div class=\"layui-btn layui-btn-primary layui-btn-radius\" onclick= 'chapter(" + $unit + ")'  id=\"" + $unitName + "\">" +
+                        "<div id=\"" + $nodeIdName + "\" style='display: none;color:white'>" + $name + "</div>" +
+                        "<div id=\"" + $nodeIdTitle + "\">" + $title + "</div>" +
+                        "</div>");
+
+                    $("#jie_shu").append($li);
+
+                    $footer = $(" <i class=\"icon iconfont\" style=\"color:#A3AEDC \">&#xe62f;</i>");
+
+                }
+                //关于类型
+                for ($i = 0; $i < $typeL; $i++) {
+                    $category = $cat[$i].category; //类型
+                    $catName = $cat[$i].name; //类型名称
+                    $categoryNmae = "category" + $category;
+
+                    if ($i === 0) {
+                        $type = $(" <div id=\"title_node\"  style=\"color: #BEC5E0;\" class=\"layui-btn layui-btn-primary layui-btn-radius\">类型</div>");
+                        $("#lei_xin").append($type);
+
+                    }
+                    $type = $(" <div  class=\"layui-btn layui-btn-primary layui-btn-radius\" onclick='showCategory(" + $category + ")' id=\"" + $categoryNmae + "\" >" + $catName + "</div>");
+
+                    $("#lei_xin").append($type);
+
+                }
+
+            }
+
+        },
+        error: function (res) {
+            console.log(res);
+        }
+
+    });    //查询节数和类型
+
+
+    if (chapterId === "6") {
+        $("#unit").html("关于古筝");
+    }
+    else if (chapterId === "1") {
+        $("#unit").html("第一单元");
+
+    }
+    else if (chapterId === "2") {
+        $("#unit").html("第二单元");
+    }
+    else if (chapterId === "3") {
+        $("#unit").html("第三单元");
+    }
+    else if (chapterId === "4") {
+        $("#unit").html("第四单元");
+    }
+    else if (chapterId === "5") {
+        $("#unit").html("第五单元");
+    }
+
+
+    function initial() {
+        $.ajax({
+            type: 'get',
+            cache: 'false',
+            url: library,
+            data: {
+                action: 'getResourceByFilter',
+                chapterId: chapterId,
+                unit: global_unit,
+                category: global_category,
+                page: global_currentPage,
+                pageSize: 12,
+
+            },
+            dataType: 'json',
+            beforeSend: function () {
+                $("#load").css("display", "block");
+
+            },
+            success: function (res) {
+                if (res.code === 0) {
+                    $("#load").css("display", "none");
+                    $totalPage = res.totalPage; //总页
+                    var unit = 1, category = -1;
+                    page($totalPage, global_unit, global_category);
+
+                    $("#unit" + "-1").addClass("but");
+                    $("#nodeTitle" + "-1").css("display", "none", "color", "white");
+                    $("#nodeName" + "-1").css({"display": "block", "color": "white"});
+                    $("#category" + "-1").addClass("but");
+                    $("#category" + "-1").css("color", "white");
+                    $dat = res.resource;
+                    $resLength = $dat.length;
+                    $("#content_box1").children("#childNode").remove();
+                    $("#content_box2").children("#childNode").remove();
+                    for ($i = 0; $i < $resLength; $i++) {
+                        $id = $dat[$i].id;
+                        $chapter = $dat[$i].chapter;
+                        $unit = $dat[$i].unit;
+                        $code = $dat[$i].code;
+                        $file_url = $dat[$i].file_url;//数据链接
+                        $category = $dat[$i].category;
+                        $name = $dat[$i].name;
+                        $type = $dat[$i].type;
+
+                        if ($type === "1") {
+                            $imgurl = imgPath + "icon-mp4.png";
+
+                        }
+                        else if ($type === "2") {
+                            $imgurl = imgPath + "music_1.png";
+
+                        }
+                        else if ($type === "3") {
+                            $imgurl = imgPath + "icon_img.png";
+                        }
+                        if ($code == null || $code == "") {
+                            $code = "";
+                        }
+
+                        if ($i < 6) {
+
+
+                            //判断类型，是否为图片，音频，视频；音频为type=1;图片为type=2;视频为type=3;
+
+
+                            $li = $("    <div id='childNode' onclick='jumpLink(\"" + $file_url + "\",\"" + $name + "\",\"" + $type + "\")'>\n" +
+                                "                        <div id=\"content_item\" class=\"btn  btn-border-o\">\n" +
+                                "<div id=\"box\" >" +
+
+                                "                            <div id=\"content_icon\">\n" +
+                                "                                <img src=\"" + $imgurl + "\">\n" +
+                                "                                <h4 id=\"total_title\">" + $code + "</h4>\n" +
+                                "                            </div>\n" +
+                                "</div>" +
+                                "                        </div>\n" +
+                                "                        <div id=\"content_item_title\">" + $name + "</div>\n" +
+                                "                    </div>");
+
+                            $("#content_box1").append($li);
+
+                        } else {
+
+                            $li = $("    <div id='childNode' onclick='jumpLink(\"" + $file_url + "\",\"" + $name + "\",\"" + $type + "\")'>\n" +
+                                "                        <div id=\"content_item\" class=\"btn  btn-border-o\">\n" +
+                                "<div id=\"box\">" +
+                                "                            <div id=\"content_icon\">\n" +
+
+                                "                                <img src=\"" + $imgurl + "\">\n" +
+                                "                                <h4 id=\"total_title\">" + $code + "</h4>\n" +
+                                "                            </div>\n" +
+                                "</div>" +
+                                "                        </div>\n" +
+                                "                        <div id=\"content_item_title\">" + $name + "</div>\n" +
+                                "                    </div>");
+
+                            $("#content_box2").append($li);
+
+                        }
+
+                    }
+
+                }
+
+            },
+            error: function (res) {
+                $("#load").html("数据请求出现异常啦");
+            }
+        });
+
+    }
+
+    //查询曲目节数
+    function chapter(unit) {
+        console.log("上一个单元为：" + global_unit + "当前点击的单元为" + unit);
+        if (global_unit !== unit) {
+            global_currentPage = 0;
+            console.log("这是点击的不同单元的操作显示");
+            $("#unit" + global_unit).removeClass("but");
+            $("#unit" + unit).addClass("but");
+            $("#nodeName" + global_unit).css("display", "none");
+            $("#nodeTitle" + global_unit).removeClass("but");
+            $("#nodeTitle" + global_unit).css({
+                "display": "block",
+                "color": "#8799E9",
+                "background-color": "transparent"
+            });
+            global_unit = unit;
+            $("#nodeTitle" + unit).css("display", "none", "color", "white");
+            $("#nodeTitle" + unit).css("color", "white");
+            $("#nodeName" + unit).css("display", "block");
+            $("#category" + global_category).addClass("but");
+            $("#category" + global_category).css("color", "white");
+
+        }
+        else {
+
+            $("#nodeTitle" + unit).css("display", "none", "color", "white");
+            $("#nodeTitle" + unit).css("color", "white");
+            $("#nodeName" + unit).css("display", "block");
+            $("#category" + global_category).addClass("but");
+            $("#category" + global_category).css("color", "white");
+
+        }
+        query();
+    }
+
+    //跳转链接
+    function jumpLink(url, name, type) {
+
+
+        //类型：视频
+        if (type == 1) {
+
+
+            $("#videoHtml").css({"display": "block"});
+            $("#videoHtml").prop("src", url);
+            $("#close").css({"display": "block"});
+
+
+        }
+        else if (type == 2) {
+
+            $(".audio").css({"display":"block"});
+            $(".audio").prop("src",url);
+            $("#boxes").css({"opacity":"0.1"});
+            $("#closeAudio").css({"display":"block"});
+
+
+        }
+        else if (type == 3) {
+            $("#media").css("display", "block");
+            $("#boxes").css("display", "none");
+            $img = $("<img id=\"quImg\" alt='点击图片退出' src=\"" + url + "\" onclick='clearImg()' /> >");
+            layer.tips(name + '<br>' + "点击图片退出", '#quImg');
+            $("#media").html($img);
+        }
+
+
+    }
+    //关闭音频
+      $("#closeAudio").click(function () {
+        if (confirm("确定退出音频播放吗？")) {
+            $('audio').trigger('pause');
+
+            $(".audio").css({"display": "none"});
+            $("#boxes").css({"opacity":"1"});
+            $("#closeAudio").css({"display": "none"});
+
+
+        }
+        else {
+
+
+        }
+
+    });
+
+
+    //关闭视频
+    $("#close").click(function () {
+
+        if (confirm("确定退出视频播放吗？")) {
+            $('video').trigger('pause');
+
+            $("#videoHtml").css({"display": "none"});
+
+            $("#close").css({"display": "none"});
+
+
+        }
+        else {
+
+
+        }
+    });
+
+
+    //显示弹出层
+    function ShowDiv(show_div, bg_div) {
+        console.log(show_div, bg_div);
+        $(".black_overlay").css("display", "block");
+        document.getElementById(show_div).style.display = 'block';
+        document.getElementById(bg_div).style.display = 'block';
+
+
+    };
+
+    // //关闭弹出层
+    function CloseDiv(show_div, bg_div) {
+        document.getElementById(show_div).style.display = 'none';
+        document.getElementById(bg_div).style.display = 'none';
+        pausePlay();
+    };
+
+    function clearImg() {
+        location.reload();
+    }
+
+    //查询曲目类型
+    function showCategory(category) {
+        if (global_category !== category) {
+            global_currentPage = 0;
+            console.log(global_category);
+            $("#category" + global_category).removeClass("but");
+            $("#category" + global_category).css("color", "#8799E9");
+            global_category = category;
+            $("#category" + category).addClass("but");
+            $("#category" + category).css({"color": "white"});
+            $("#nodeTitle" + global_unit).css({"display": "none", "color": "white"});
+            $("#nodeName" + global_unit).css("display", "block");
+            $("#unit" + global_unit).addClass("but");
+
+            $("#" + category).css("color", "white");
+        } else {
+
+            $("#category" + "-1").removeClass("but");
+            $("#nodeTitle" + global_unit).css("display", "none", "color", "white");
+            $("#nodeTitle" + global_unit).css("color", "white");
+            $("#nodeName" + global_unit).css("display", "block");
+            $("#unit" + global_unit).addClass("but");
+            $("#category" + global_category).removeClass("but");
+
+        }
+
+        query();
+    }
+
+    function query() {
+
+        console.log("当前页" + global_currentPage);
+        $("#content_box1").children().remove();
+        $("#content_box2").children().remove();
+        $("#footer").children().remove();
+        //查询教学库数据
+        $.ajax({
+            type: 'get',
+            cache: 'false',
+            url: library,
+            data: {
+                action: 'getResourceByFilter',
+                chapterId: chapterId,
+                unit: global_unit,
+                category: global_category,
+                page: global_currentPage,
+                pageSize: 12,
+
+            },
+            dataType: 'json',
+            beforeSend: function () {
+                $("#load").css("display", "block");
+                $("#leftPage").children().remove();
+                $("#rightPage").children().remove();
+            },
+            success: function (res) {
+                if (res.code === 0) {
+                    $("#load").css("display", "none");
+                    $totalPage = res.totalPage; //总页
+                    $dat = res.resource;
+                    $resLength = $dat.length;
+
+                    page($totalPage);
+
+                    if ($resLength === 0) {
+                        $("#load").css("display", "block");
+                        $("#load").html("捕获到0条记录！");
+
+
+                    } else {
+
+                        $("#content_box1").children().remove();
+                        $("#content_box2").children().remove();
+
+                        for ($i = 0; $i < $resLength; $i++) {
+
+                            $id = $dat[$i].id;
+                            $chapter = $dat[$i].chapter;
+                            $code = $dat[$i].code;
+                            $unit = $dat[$i].unit;
+                            $category = $dat[$i].category;
+                            $name = $dat[$i].name;
+                            $file_url = $dat[$i].file_url;//数据链接
+                            $type = $dat[$i].type;
+                            if ($type === "1") {
+                                $imgurl = imgPath + "icon-mp4.png";
+
+                            }
+                            else if ($type === "2") {
+                                $imgurl = imgPath + "music_1.png";
+
+                            }
+                            else if ($type === "3") {
+                                $imgurl = imgPath + "icon_img.png";
+                            }
+                            if ($code == null || $code == "") {
+                                $code = "";
+                            }
+                            if ($i < 6) {
+
+
+                                $li = $("    <div id='childNode' onclick='jumpLink(\"" + $file_url + "\",\"" + $name + "\",\"" + $type + "\")'>\n" +
+                                    "                        <div id=\"content_item\" class=\"btn  btn-border-o\">\n" +
+                                    "<div id=\"box\" >" +
+
+                                    "                            <div id=\"content_icon\">\n" +
+                                    "                                <img src=\"" + $imgurl + "\"/>\n" +
+                                    "                                <h4 id=\"total_title\">" + $code + "</h4>\n" +
+                                    "                            </div>\n" +
+                                    "</div>" +
+                                    "                        </div>\n" +
+                                    "                        <div id=\"content_item_title\">" + $name + "</div>\n" +
+                                    "                    </div>");
+
+                                $("#content_box1").append($li);
+
+                            }
+                            else {
+
+                                $li = $("    <div id='childNode' onclick='jumpLink(\"" + $file_url + "\",\"" + $name + "\",\"" + $type + "\")'>\n" +
+                                    "                        <div id=\"content_item\" class=\"btn  btn-border-o\">\n" +
+                                    "<div id=\"box\">" +
+                                    "                            <div id=\"content_icon\">\n" +
+
+                                    "                                <img src=\"" + $imgurl + "\"/>\n" +
+                                    "                                <h4 id=\"total_title\">" + $code + "</h4>\n" +
+                                    "                            </div>\n" +
+                                    "</div>" +
+                                    "                        </div>\n" +
+                                    "                        <div id=\"content_item_title\">" + $name + "</div>\n" +
+                                    "                    </div>");
+
+                                $("#content_box2").append($li);
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            },
+            error: function (res) {
+                console.log(res);
+                $("#load").html("数据请求出现异常啦");
+            }
+        });
+
+    }
+
+</script>
+
+</html>

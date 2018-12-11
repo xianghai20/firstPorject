@@ -1,0 +1,478 @@
+/*头部css样式*/
+#boxes {
+    width: 90%;
+    height: 90%;
+    margin-left: 5%;
+    margin-top: 64px;
+}
+
+#header_nav {
+    width: 100%;
+    height: 76px;
+    display: flex;
+    line-height: 76px;
+    font-size: 38px;
+    color: white;
+    flex-direction: row;
+}
+
+
+#unit {
+    margin-left: 64px;
+    width: 1200px;
+}
+
+#bark {
+    width: 108px;
+}
+
+#searchBox {
+    float: right;
+    width: 500px;
+    height: 68px;
+    margin-top: 15px;
+    margin-left: 100px;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#searchBox > div {
+    width: 68px;
+    height: 68px;
+    margin-left: 34px;
+    border-radius: 50%;
+    background-color: #5F72BD;
+}
+
+#searchBox > div:hover {
+    box-shadow: 0 0 100px #E4393C;
+    background-color: #E4393C;
+}
+
+#searchBox > div:hover > img {
+    transform: scale(1.1);
+
+}
+
+#cutLine {
+    margin-top: 18px;
+    margin-left: 55px;
+    width: 2px;
+    height: 32px;
+    opacity: 0.4;
+    background: #FFFFFF;
+
+}
+
+#search {
+    width: 188px;
+    background-color: transparent;
+    height: 68px;
+    color: white;
+}
+
+#barkImg {
+    width: 40px;
+    height: 40px;
+}
+
+#myImg1 {
+    width: 36px;
+    height: 36px;
+    margin-left: -160px;
+}
+
+#imgIcon {
+    position: absolute;
+    margin-top: -1px;
+    margin-left: 1px;
+    width: 66px;
+    height: 66px;
+}
+
+#coverMy {
+    z-index: -1;
+    width: 188px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.10);
+    border: 4px solid rgba(255, 255, 255, 0.20);
+    border-radius: 38px;
+}
+
+#my {
+    margin-left: 24px;
+    position: absolute;
+    margin-top: 5px;
+    font-size: 32px;
+    color: #FFFFFF;
+    font-family: "微软雅黑";
+    text-align: center;
+    line-height: 60px;
+}
+#tips {
+    opacity: 0.7;
+    font-weight: 200;
+    font-size: 32px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 60px;
+}
+
+#unit, #bark {
+    cursor: pointer;
+}
+
+#footer > i {
+    cursor: pointer;
+
+}
+
+#unit, #bark {
+    cursor: pointer;
+}
+
+/*新样式相同点*/
+#addIcon {
+    width: 74px;
+    height: 74px;
+    line-height: 74px;
+}
+/*加载css样式*/
+#load {
+    display: none;
+    width: 15%;
+    height: 100px;
+    margin-left: 47%;
+    margin-top: 15%;
+    color: #8799E9;
+    font-size: 24px;
+
+}
+
+#loadImg {
+
+    font-size: 100px;
+    color: #8799E9;
+
+}
+
+/*弹出层样式*/
+
+.black_overlay {
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 1920px;
+    height: 1080px;
+    background-color: black;
+    z-index: 9999;
+    -moz-opacity: 0.8;
+    opacity: .80;
+    filter: alpha(opacity=80);
+}
+
+.white_content {
+    display: none;
+    position: absolute;
+    top: 450px;
+    left: 420px;
+    width: 70%;
+    height: 100px;
+    background-color: transparent;
+    z-index: 9999;
+}
+
+.white_content_small {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 40%;
+    height: 50%;
+    border: 16px solid lightblue;
+    background-color: white;
+    z-index: 1002;
+    overflow: auto;
+}
+
+
+#step {
+    margin-left: 32px;
+    opacity: 0.5;
+    font-size: 24px;
+    color: #FFFFFF;
+    line-height: 36px;
+}
+
+#confirm:hover {
+
+    background: #FFFFFF;
+    border: 4px solid #FFFFFF;
+    border-radius: 40px;
+    font-size: 32px;
+    color: #5361FC;
+    line-height: 60px;
+}
+
+#pre_step:hover {
+
+    background: #FFFFFF;
+    border: 4px solid #FFFFFF;
+    border-radius: 40px;
+    font-size: 32px;
+    color: #5361FC;
+    line-height: 60px;
+}
+
+#cancel:hover {
+
+    background: #FFFFFF;
+    border: 4px solid #FFFFFF;
+    border-radius: 40px;
+    font-size: 32px;
+    color: #5361FC;
+    line-height: 60px;
+}
+
+#messageOne, #messageTwo {
+    width: 80%;
+    font-size: 28px;
+    color: red;
+    margin-top: -200px;
+    height: 40px;
+    position: absolute;
+}
+
+/*//第三步弹出层的样式*/
+
+.reveal-modal1 {
+    height: 1002px;
+    width: 1782px;
+    margin-left: 69px;
+    margin-top: -1000px;
+    position: absolute;
+    z-index: 99999;
+
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    -box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    background-color: #4F68CF;
+}
+
+.page_three {
+    display: none;
+    width: 1543px;
+    height: 858px;
+    margin-left: 120px;
+    margin-top: 80px;
+    flex-direction: column;
+
+}
+
+#unit_a, #jie_shu, #lei_xin {
+    width: 100%;
+    height: 68px;
+    line-height: 68px;
+    margin-top: 12px;
+}
+
+#unit_a > div, #jie_shu > div, #lei_xin > div {
+    color: #8799E9;
+    font-weight: 550;
+    height: 68px;
+    line-height: 68px;
+    background: #455BB6;
+    border-radius: 33px;
+    font-size: 32px;
+}
+
+#content_box {
+    height: 321px;
+    width: 1600px;
+    margin-left: 10px;
+
+    margin-top: 64px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.left_page {
+    width: 80px;
+    height: 321px;
+    line-height: 321px;
+    margin-left: -80px;
+    font-size: 48px;
+
+}
+
+.right_page {
+
+    width: 80px;
+    height: 321px;
+    line-height: 321px;
+    margin-left: 10px;
+    font-size: 48px;
+}
+
+.result_box {
+    width: 1500px;
+    height: 321px;
+    display: flex;
+
+    flex-direction: row;
+}
+
+.result_box > div {
+    width: 257px;
+    height: 321px;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.item_box {
+    width: 217px;
+    height: 217px;
+    margin-top: 20px;
+    margin-left: 10px;
+    background-image: url("../images/bj_default.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.item_box > img {
+    width: 137px;
+    height: 137px;
+    margin-top: 24px;
+    margin-left: 40px;
+
+}
+
+.item_box:hover {
+    background-image: url("../images/bj-hover.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 4px solid #828CFF;
+    box-shadow: 0 0 36px 12px rgba(130, 140, 255, 0.90);
+    border-radius: 8px;
+}
+
+.item_title {
+    width: 100%;
+    height: 68px;
+    opacity: 0.7;
+    font-size: 32px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 60px;
+    margin-top: 16px;
+}
+
+.total_title {
+    width: 100%;
+    height: 36px;
+    margin-top: 16px;
+    opacity: 0.7;
+    font-size: 24px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 36px;
+}
+
+.box {
+    width: 257px;
+    height: 321px;
+    margin-left: 20px;
+}
+
+.box:hover {
+    transform: scale(1.1);
+}
+
+.select {
+    display: none;
+}
+
+#pre_step {
+    display: none;
+}
+
+/*//第一步的样式*/
+.page_one, .page_two {
+    width: 680px;
+    margin-left: 120px;
+    margin-top: 80px;
+}
+
+.page_two {
+    display: none;
+}
+
+#div_but {
+    margin-left: 120px;
+}
+
+.div_but_three {
+    margin-top: -120px;
+}
+
+/*//按钮被选中的样式*/
+#all {
+    background-color: #687DD5;
+    color: #FFFFFF;
+}
+
+/*/头部样式*/
+
+.editCourse {
+    height: 96px;
+    width: 680px;
+    z-index: 9999;
+    margin-top: 26px;
+}
+
+.editName {
+    width: 680px;
+    height: 96px;
+    background-color: transparent;
+    border: hidden;
+}
+
+.editLine {
+
+    width: 680px;
+    height: 4px;
+    opacity: 0.4;
+    background: #FFFFFF;
+}
+
+.editName {
+    font-size: 32px;
+    color: white;
+}
+
+.editMes {
+    margin-top: 25px;
+    color: red;
+}
+
+/*//删除弹窗样式*/
+.delete, .divEdit {
+    width: 920px;
+    height: 496px;
+    background-color: #4D66CC;
+    position: absolute;
+    margin-top: 292px;
+    z-index: 9999;
+    margin-left: 500px;
+    display: none;
+}
+.delete > div, .divEdit > div {
+    margin-left: 120px;
+}

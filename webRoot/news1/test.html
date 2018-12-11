@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html{
+            perspective: 1000px;
+            background-color: black;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 150px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: xuanzhuan 20s infinite linear;
+        }
+        @keyframes xuanzhuan {
+            0%{
+                transform: rotateX(0) rotateY(0);
+            }
+            100%{
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+        .box>div{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: #1E9FFF;
+            border: 1px solid #999;
+            text-align: center;
+            line-height: 20px;
+        }
+        .out-front{
+            background-image: url("static/images/Hippopx (1).jpg");
+            transform: translateZ(100px);
+
+        }
+        .out-back{
+            background-image: url("static/images/Hippopx (2).jpg");
+            transform: translateZ(-100px);
+        }
+        .out-left{
+            background-image: url("static/images/Hippopx (3).jpg");
+            transform: rotateY(90deg) translateZ(100px) ;
+        }
+        .out-right{
+            background-image: url("static/images/Hippopx (4).jpg");
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        .out-top{
+            background-image: url("static/images/Hippopx (5).jpg");
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .out-bottom{
+            background-image: url("static/images/Hippopx (6).jpg");
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+<div class="box">
+    <div class="out-front"></div>
+    <div class="out-back"></div>
+    <div class="out-left"></div>
+    <div class="out-right"></div>
+    <div class="out-top"></div>
+    <div class="out-bottom"></div>
+</div>
+</body>
+</html>

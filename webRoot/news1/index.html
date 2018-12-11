@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+<div id="main">
+    <div id="left">
+        <form id="search" class="layui-btn layui-btn-radius layui-btn-primary"
+              method="post">
+            <i id="icon-search" style="margin-left: 27px" class="icon iconfont">&#xe632;</i><span
+                id="searchTitle">搜索</span>
+            <input id="searchInput" class="searchInput" value="" type="text" placeholder="" autocomplete="off">
+        </form>
+        <div id="nav">
+            <div id="quku" class="btn  btn-border-o"><i id="myicon" class="icon iconfont">&#xe63e;</i> &nbsp;&nbsp;曲库</div>
+            <div class="btn  btn-border-o"> <i id="myicon" class="icon iconfont">&#xe6ec;</i> &nbsp;&nbsp;课件</div>
+            <div class="btn  btn-border-o"><i id="myicon" class="layui-icon">&#xe66f;</i> &nbsp;&nbsp;我的</div>
+        </div>
+    </div>
+    <div id="right">
+        <div id="right_boxes">
+            <div id="rb_child">
+                <div id="one">
+                    <img src="static/images/Hippopx%20(1).jpg">
+                    <h3 id="imgTitle">第一单元<p>Chapter 1</h3>
+                </div>
+
+                <div id="two"><img src="static/images/Hippopx%20(2).jpg">
+                    <h3 id="imgTitle">第二单元<p>Chapter 2</h3>
+                </div>
+                <div id="three"><img src="static/images/Hippopx%20(3).jpg">
+                    <h3 id="imgTitle">第三单元<p>Chapter 3</h3>
+                </div>
+            </div>
+            <div id="rb_last">
+                <div id="four"><img src="static/images/Hippopx%20(4).jpg">
+                    <h3 id="imgTitle">第四单元<p>Chapter 4</h3>
+                </div>
+                <div id="five"><img src="static/images/Hippopx%20(5).jpg">
+                    <h3 id="imgTitle">第五单元<p>Chapter 5</h3>
+                </div>
+                <div id="six"><img src="static/images/Hippopx%20(6).jpg">
+                    <h3 id="imgTitle">第六单元<p>Chapter 6</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="static/js/jquery.min.js"></script>
+<script type="text/javascript" src="static/layui/layui.all.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#search").mouseover(function () {
+            $("#searchInput").css("display", "block");
+            $("#icon-search").css("margin-left", "-10px");
+            $("#searchTitle").css("display", "none");
+        });
+        $("#search").mouseout(function () {
+            $("#searchInput").css("display", "none");
+            $("#icon-search").css("margin-left", "27px");
+            $("#searchTitle").css("display", "block");
+        });
+
+        $("#one").click(function () {
+            window.location.href="quku.html";
+        });
+        $("#two").click(function () {
+            window.location.href="quku.html";
+        });
+        $("#three").click(function () {
+            window.location.href="quku.html";
+        });
+        $("#four").click(function () {
+            window.location.href="quku.html";
+        });  $("#five").click(function () {
+            window.location.href="quku.html";
+        });
+        $("#six").click(function () {
+            window.location.href="quku.html";
+        });
+
+    });
+    $("#icon-search").click(function () {
+        $search = $("#searchInput").val();
+        $.ajax({
+            type: 'post',
+            cache: 'false',
+            url: '',
+            data: {
+                "sraech": $search,
+            },
+            dataType: 'json',
+            success: function (res) {
+
+            },
+            error: function (res) {
+                console.log(res);
+            }
+
+        });
+
+
+    });
+
+
+</script>
+</body>
+</html>

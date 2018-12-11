@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/public.css">
+    <link rel="stylesheet" href="static/css/videoCT.css">
+    <link rel="stylesheet" href="static/css/audio.css">
+    <link rel="stylesheet" href="static/css/newPopup.css">
+    <style type="text/css">
+        /*//新建样式，活动框架*/
+        #content {
+            margin-top: 44px;
+            height: 800px;
+
+        }
+
+        #active {
+            width: 100%;
+            height: 90%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #leftBox {
+            width: 542px;
+            height: 800px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 8.8px;
+            font-size: 38px;
+            color: #FFFFFF;
+
+        }
+
+        #right_box {
+            width: 1028px;
+            height: 756px;
+            margin-left: 147px;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        #right_box > div {
+            margin-top: 24px;
+            width: 100%;
+
+        }
+
+        #box_title {
+            line-height: 56px;
+            font-size: 38px;
+            color: #FFFFFF;
+            height: 56px;
+        }
+
+        /*//新样式*/
+        #leftBoxItem {
+
+            width: 600px;
+            height: 800px;
+            display: flex;
+            overflow: scroll;
+            overflow-x: hidden;
+            flex-direction: column;
+            border-radius: 8.8px;
+            font-size: 38px;
+            color: #FFFFFF;
+
+        }
+
+        #leftBoxItem > div {
+            cursor: pointer;
+            width: 542px;
+            height: 80px;
+            line-height: 80px;
+            margin-top: 16px;
+
+        }
+
+        .addActive {
+            background: #8799E9;
+            border-radius: 8px;
+            font-size: 38px;
+            color: #FFFFFF;
+            line-height: 56px;
+        }
+
+        .listTitle {
+            background-color: #213274;
+            border-radius: 8px;
+        }
+
+        .listTitle:hover {
+            transform: scale(1);
+            background: #5361FC;
+            border: 4px solid #828CFF;
+            box-shadow: 0 0 18px 6px rgba(130, 140, 255, 0.90);
+            border-radius: 8px;
+        }
+
+        #title {
+            margin-left: 24px;
+        }
+
+        .boxDesc {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 112px;
+
+        }
+
+        .boxDescText {
+            width: 836px;
+            height: 112px;
+            opacity: 0.7;
+            font-size: 28px;
+            color: #FFFFFF;
+            line-height: 56px;
+        }
+
+        .butDetail {
+            width: 112px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.10);
+            border-radius: 40px;
+            margin-top: 60px;
+            margin-left: 40px;
+
+        }
+
+        .more {
+            opacity: 0.7;
+            font-size: 28px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 48px;
+        }
+
+        .boxLine {
+            width: 100%;
+            height: 4px;
+            opacity: 0.4;
+            background: #8799E9;
+        }
+
+        .boxBoxes {
+            width: 1028px;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            height: 322px;
+            display: flex;
+            flex-direction: row;
+
+        }
+
+        .boxBoxes > div {
+            width: 257px;
+            height: 321px;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .boxItemCover {
+            width: 217px;
+            height: 217px;
+            margin-top: 20px;
+            margin-left: 20px;
+            background-image: url("static/images/bj_default.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .boxItemCover:hover {
+            background-image: url("static/images/bj-hover.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            transform: scale(1.1);
+            border: 4px solid #828CFF;
+            box-shadow: 0 0 18px 6px rgba(130, 140, 255, 0.90);
+            border-radius: 8px;
+        }
+
+        #imgImg {
+            width: 137px;
+            height: 131px;
+            margin-left: 40px;
+            margin-top: 30px;
+        }
+
+        .code {
+            margin-top: 12px;
+            opacity: 0.7;
+            font-size: 24px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 36px;
+        }
+
+        .boxName {
+            margin-top: 16px;
+            opacity: 0.7;
+            font-size: 32px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 60px;
+        }
+
+        .pageCount {
+            width: 100%;
+            text-align: center;
+            opacity: 0.4;
+            font-size: 24px;
+            color: #FFFFFF;
+            line-height: 36px;
+        }
+
+        .fotBut {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 48px;
+            line-height: 48px;
+
+        }
+
+        .fotBut > div {
+            cursor: pointer;
+            width: 168px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.10);
+            border-radius: 40px;
+            opacity: 0.7;
+            font-size: 28px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 48px;
+
+        }
+
+        .remove {
+            margin-left: 24px;
+        }
+
+        .del {
+            margin-left: 460px;
+        }
+
+        .edit:hover, .remove:hover {
+            background: #5361FC;
+            border: 4px solid #828CFF;
+            box-shadow: 0 0 18px 6px rgba(130, 140, 255, 0.90);
+            border-radius: 40px;
+            color: white;
+        }
+
+        .del:hover {
+            background: #E4393C;
+            border: 4px solid #E4393C;
+            box-shadow: 0 0 18px 6px rgba(228, 57, 60, 0.90);
+            border-radius: 40px;
+        }
+
+        .fotTitle {
+
+        }
+
+        .nicescroll-rails-vr .nicescroll-cursors {
+            background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+            animation: pace-stripe-animation 500ms linear infinite;
+            background-size: 20px 20px;
+        }
+
+        @keyframes pace-stripe-animation {
+            from {
+                background-position-y: 0;
+            }
+            to {
+                background-position-y: 100%;
+            }
+        }
+
+        /*//第三步弹出层的样式*/
+
+        .reveal-modal1 {
+            height: 1002px;
+            width: 1782px;
+            margin-left: 69px;
+            margin-top: -1000px;
+            position: absolute;
+            z-index: 99999;
+
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+            -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+            -box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+            background-color: #4F68CF;
+        }
+
+        .page_three {
+            display: none;
+            width: 1543px;
+            height: 858px;
+            margin-left: 120px;
+            margin-top: 80px;
+            flex-direction: column;
+
+        }
+
+        #unit_a, #jie_shu, #lei_xin {
+            width: 100%;
+            height: 68px;
+            line-height: 68px;
+            margin-top: 12px;
+        }
+
+        #unit_a > div, #jie_shu > div, #lei_xin > div {
+            color: #8799E9;
+            font-weight: 550;
+            height: 68px;
+            line-height: 68px;
+            background: #455BB6;
+            border-radius: 33px;
+            font-size: 32px;
+        }
+
+        #content_box {
+            height: 321px;
+            width: 1600px;
+            margin-left: 10px;
+
+            margin-top: 64px;
+            display: flex;
+            flex-direction: row;
+
+        }
+
+        .left_page {
+            width: 80px;
+            height: 321px;
+            line-height: 321px;
+            margin-left: -80px;
+            font-size: 48px;
+
+        }
+
+        .right_page {
+
+            width: 80px;
+            height: 321px;
+            line-height: 321px;
+            margin-left: 10px;
+            font-size: 48px;
+        }
+
+        .result_box {
+            width: 1500px;
+            height: 321px;
+            display: flex;
+
+            flex-direction: row;
+        }
+
+        .result_box > div {
+            width: 257px;
+            height: 321px;
+            display: flex;
+            cursor: pointer;
+            flex-direction: column;
+        }
+
+        .item_box {
+            width: 217px;
+            height: 217px;
+            margin-top: 20px;
+            margin-left: 10px;
+            background-image: url("static/images/bj_default.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .item_box > img {
+            width: 137px;
+            height: 137px;
+            margin-top: 24px;
+            margin-left: 40px;
+
+        }
+
+        .item_box:hover {
+
+            border: 4px solid #828CFF;
+            box-shadow: 0 0 36px 12px rgba(130, 140, 255, 0.90);
+            border-radius: 8px;
+        }
+
+        .item_title {
+            width: 100%;
+            height: 68px;
+            opacity: 0.7;
+            font-size: 32px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 60px;
+            margin-top: 16px;
+        }
+
+        .total_title {
+            width: 100%;
+            height: 36px;
+            margin-top: 16px;
+            opacity: 0.7;
+            font-size: 24px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 36px;
+        }
+
+        .box {
+            width: 257px;
+            height: 321px;
+            margin-left: 20px;
+        }
+
+        .box:hover {
+            transform: scale(1.1);
+        }
+
+        .select {
+            display: none;
+        }
+
+        #pre_step {
+            display: none;
+        }
+
+        /*//第一步的样式*/
+        .page_one, .page_two {
+            width: 680px;
+            margin-left: 120px;
+            margin-top: 80px;
+        }
+
+        .page_two {
+            display: none;
+        }
+
+        #div_but {
+            margin-left: 120px;
+        }
+
+        .div_but_three {
+            margin-top: -120px;
+        }
+
+        /*//按钮被选中的样式*/
+        #all {
+            background-color: #687DD5;
+            color: #FFFFFF;
+        }
+
+        .mes {
+            display: none;
+
+            width: 100%;
+            opacity: 0.7;
+            font-size: 32px;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        /*//删除弹窗样式*/
+        .delete, .divEdit {
+            width: 920px;
+            height: 496px;
+            background-color: #4D66CC;
+            position: absolute;
+            margin-top: 292px;
+            z-index: 9999;
+            margin-left: 500px;
+            display: none;
+        }
+
+        .delete > div, .divEdit > div {
+            margin-left: 120px;
+        }
+
+        .del_header {
+
+            margin-top: 80px;
+            height: 56px;
+            font-size: 48px;
+            color: #FFFFFF;
+            line-height: 56px;
+        }
+
+        .del_mes {
+            margin-top: 40px;
+            height: 120px;
+            font-size: 38px;
+            color: #C8D0EF;
+            line-height: 56px;
+        }
+
+        .del_but {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .del_but > div {
+            cursor: pointer;
+            height: 68px;
+        }
+
+        .del_but > div:hover {
+            background: #5361FC;
+            border: 4px solid #828CFF;
+            box-shadow: 0 0 18px 6px rgba(130, 140, 255, 0.90);
+            border-radius: 40px;
+        }
+
+        .del_confirm {
+            width: 192px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 4px solid rgba(255, 255, 255, 0.20);
+            border-radius: 40px;
+        }
+
+        .del_close {
+            width: 144px;
+            margin-left: 32px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 4px solid rgba(255, 255, 255, 0.20);
+            border-radius: 40px;
+        }
+
+        .del_close_title, .del_confirm_title {
+            font-size: 32px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 68px;
+        }
+
+        .editCourse {
+            height: 96px;
+            width: 680px;
+            z-index: 9999;
+            margin-top: 26px;
+        }
+
+        .editName {
+            width: 680px;
+            height: 96px;
+            background-color: transparent;
+            border: hidden;
+        }
+
+        .editLine {
+
+            width: 680px;
+            height: 4px;
+            opacity: 0.4;
+            background: #FFFFFF;
+        }
+
+        .editName {
+            font-size: 32px;
+            color: white;
+        }
+
+        .editMes {
+            margin-top: 25px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<!--//编辑修改课件名称-->
+<div id="divEdit" class="divEdit">
+    <div class="del_header">编辑课件名称</div>
+    <div id="editCourse" class="editCourse">
+        <input type="text" placeholder="请输入新的课件名称" maxlength="15" id="editName" class="editName">
+    </div>
+    <div id="editLine" class="editLine"></div>
+    <div id="editMes" class="editMes"></div>
+    <div class="del_but">
+        <div id="confirmEdit" class="del_confirm">
+            <div class="del_confirm_title"> 确认</div>
+        </div>
+        <div id="cancelEdit" class="del_close">
+            <div class="del_close_title">取消</div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<div id="del_course" class="delete">
+    <div class="del_header">确认删除当前课件？</div>
+    <div class="del_mes">一旦删除后，将不能复原！</div>
+    <div class="del_but">
+        <div id="del_course_confirm" class="del_confirm">
+            <div class="del_confirm_title"> 确认删除</div>
+        </div>
+        <div id="del_course_close" class="del_close">
+            <div class="del_close_title">取消</div>
+        </div>
+
+    </div>
+
+</div>
+<div id="delete" class="delete">
+    <div class="del_header">确认删除当前活动？</div>
+    <div class="del_mes">一旦删除后，不能复原！</div>
+    <div class="del_but">
+        <div id="del_confirm" class="del_confirm">
+            <div class="del_confirm_title"> 确认删除</div>
+        </div>
+        <div id="del_close" class="del_close">
+            <div class="del_close_title">取消</div>
+        </div>
+
+    </div>
+
+</div>
+<div id="boxes">
+    <div id="header_nav">
+        <div id="bark">
+            <img id="barkImg" src="static/images/arrow-lef.png"/>
+        </div>
+        <div id="unit"></div>
+        <div id="searchBox">
+            <div id="editCourse" onclick="editCourse()"><img id="imgIcon" src="static/images/pencil.png"/></div>
+            <div id="delCourse">
+                <img id="imgIcon" src="static/images/trash-o.png"/>
+            </div>
+            <hr id="cutLine">
+            <button id="search" class="layui-btn layui-btn-primary layui-btn-radius">
+                <a id="coverMy" class="layui-btn layui-btn-primary layui-btn-radius"></a>
+                <img id="myImg1" src="static/images/searc.png"/>
+                <a id="my" style="">搜索</a>
+            </button>
+        </div>
+    </div>
+
+    <div id="content" style="margin-left: 0px">
+        <div id="active">
+            <div id="leftBox">
+                <div id="leftBoxItem">
+                    <div id="new_build" class="addActive" data-reveal-id="myModal" data-animation="fade">
+                        <img id="addIcon" src="static/images/plus.png">
+                        新建活动
+
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div id="right_box">
+                <div id="box_title"></div>
+                <div id="boxDesc" class="boxDesc">
+                    <div id="boxDescText" class="boxDescText">
+
+                    </div>
+                    <!--<div id="butDetail" class="butDetail">-->
+                    <!--<div id="more" class="more"></div>-->
+
+                    <!--</div>-->
+
+                </div>
+                <div id="boxLine" class="boxLine"></div>
+                <div id="mes" class="mes"> 没有单曲，请编辑活动添加单曲。</div>
+                <div id="boxBoxes" class="boxBoxes">
+                </div>
+                <div id="pageCount" class="pageCount"></div>
+                <div id="fotBut" class="fotBut">
+                    <div id="editActive" class="edit">
+                        <div id="fotTitle" class="fotTitle">编辑活动</div>
+                    </div>
+                    <div id="remove" class="remove">
+                        <div id="fotTitle" class="fotTitle">移除单曲</div>
+                    </div>
+                    <div id="del" class="del">
+                        <div id="fotTitle" class="fotTitle">删除活动</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!--//这里是弹出层-新建课件的弹出层-->
+<div id="myModal" class="reveal-modal">
+    <!--删除活动-->
+
+    <!--第三步-->
+    <div id="page_three" class="page_three">
+        <div id="course_title">添加单曲<a id="step">第3步，共3步</a></div>
+        <div id="unit_a" style="margin-top: 44px">
+
+            <div id="title_node" style="color:  #94A3E2;background-color: transparent"
+                 class="layui-btn layui-btn-primary layui-btn-radius">单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" id="unitA-1" onclick="unit(-1)"
+                 style="background-color: #687DD5;color: white">全部
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(1)" id="unitA1">第一单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(2)" id="unitA2">第二单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(3)" id="unitA3">第三单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(4)" id="unitA4">第四单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(5)" id="unitA5">第五单元
+            </div>
+
+        </div>
+        <div id="jie_shu" class="navBtn ">
+
+
+        </div>
+        <div id="lei_xin">
+
+
+        </div>
+        <div id="content_box">
+            <div id="leftPage" class="left_page">
+
+            </div>
+            <div id="result_box" class="result_box">
+                <div id="load"><i id="loadImg"
+                                  class="layui-icon layui-anim layui-anim-rotate layui-anim-loop">&#xe63d;</i>
+                </div>
+            </div>
+            <div id="rightPage" class="right_page">
+
+            </div>
+
+
+        </div>
+        <div id="footer"></div>
+
+
+    </div>
+    <!--第二步-->
+    <div id="page_two" class="page_two">
+
+        <div id="course_title">活动描述<a id="step">第2步，共3步</a></div>
+        <div id="input_name">
+            <input type="text" style="font-size: 38px" placeholder="请输入活动描述" maxlength="30" id="describe" name=""/>
+        </div>
+        <div id="input_line"></div>
+        <div id="message"><a id="messageTwo"></a></div>
+    </div>
+    <!--第一步-->
+    <div id="page_one" class="page_one">
+
+        <div id="course_title">活动名称<a id="step">第1步，共3步</a></div>
+        <div id="input_name">
+            <input type="text" style="font-size: 38px" placeholder="请输入活动名称" maxlength="15" id="course_name" name=""/>
+        </div>
+        <div id="input_line"></div>
+        <div id="message"><a id="messageOne"></a></div>
+    </div>
+    <!--按钮-->
+    <div id="div_but">
+        <button style="font-size: 32px;" id="confirm" class="layui-btn layui-btn-primary layui-btn-radius ">
+            下一步
+        </button>
+        <button style="  font-size: 32px;margin-left: 180px" id="pre_step"
+                class="layui-btn layui-btn-primary layui-btn-radius ">
+            上一步
+        </button>
+        <button style=" font-size: 32px;" id="cancel"
+                class="layui-btn layui-btn-primary layui-btn-radius close-reveal-modal">
+            取消
+        </button>
+
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="static/js/jquery.min1.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
+<script type="text/javascript" src="static/js/page.js"></script>
+<script type="text/javascript" src="static/layui/layui.all.js"></script>
+<script type="text/javascript" src="static/js/jquery.reveal.js"></script>
+<script type="text/javascript" src="static/js/newActive.js"></script>
+<script type="text/javascript">
+    var maxwidth = 58;//设置最多显示的字数
+    // var global_active = "";//储存活动id 的全局变量
+    var global_activeName = "";//活动名称
+    var url = document.location.toString();
+    var urlParmStr = url.slice(url.indexOf('?') + 1);
+    var arr = urlParmStr.split('&');
+    var courseId = arr[0].split("=")[1];//课件id
+    var unit_title = arr[1].split("=")[1];//课件标题
+    var global_desc="";//活动描述
+    unit_title = decodeURI(unit_title);//转码/解决办法:将解码方式unscape换为decodeURI
+    $("#editName").val(unit_title);
+    $(document).ready(function () {
+        $("#bark").click(function () {
+            window.location.href = "courseware.html";
+        });
+        getCourseList();
+
+        $("#unit").html(unit_title);
+
+
+    });
+
+    //编辑课件名称
+
+    function editCourse() {
+        $("#divEdit").css({"display": "block"});
+
+    }
+
+    //编辑课件活动的操作
+    $("#editActive").click(function () {
+        if (global_active == "") {
+            alert("请选择要编辑的活动");
+        }
+        else {
+            console.log(global_active, courseId, global_activeName);
+
+
+            window.location.href = "editActive.html?activeId=" + global_active + "&courseId=" + courseId + "&activeName=" + global_activeName+"&desc="+global_desc;
+
+
+        }
+
+
+    });
+
+
+    //取消编辑课件名称
+    $("#cancelEdit").click(function () {
+        $("#divEdit").css({"display": "none"});
+
+    });
+    //确认修改的课件名称
+    $("#confirmEdit").click(function () {
+        $value = $("#editName").val();
+
+        if ($value == "") {
+            $("#editMes").html("你还没有输入修改的名称哦");
+        }
+        else {
+            $.ajax({
+                type: "get",
+                cache: "false",
+                url: getActiveDomain,
+                data: {
+                    "action": "editCourse",
+                    "courseId": courseId,
+                    "title": $value,
+                    "teacherId": global_teachId,
+                },
+                dataType: "json",
+                success: function (res) {
+                    $("#editMes").html(res.msg);
+                    if (res.code == 0) {
+
+                        alert("修改成功");
+                        $("#divEdit").css({"display": "none"});
+                        $("#unit").html($value);
+                    }
+
+                },
+                error: function (res) {
+
+                }
+
+
+            });
+
+
+        }
+
+
+    });
+
+
+    //取消函数
+    $("#cancel").click(function () {
+        $("#boxes").css({"opacity": "1"})
+    });
+    //删除活动的操作
+    $("#del").click(function () {
+        if (global_active != "") {
+            $("#delete").css({"display": "block"});
+            $("#boxes").css("opcity", "0.5");
+        }
+        else {
+            layer.alert("当前没有选择任何活动，不能删除");
+        }
+
+
+    });
+    //删除课件的操作
+    $("#delCourse").click(function () {
+        $("#del_course").css({"display": "block"});
+    });
+    //确认删除课件的操作
+    $("#del_course_confirm").click(function () {
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: delUrl,
+            data: {
+                "action": "deleteCourse",
+                "courseId": courseId,
+                "teacherId": global_teachId,
+
+            },
+            dataType: 'json',
+            success: function (res) {
+
+                if (res.code == 0) {
+                    alert("删除成功！");
+                    window.location.href = "courseware.html";
+
+                }
+            },
+            error: function (res) {
+                alert("删除失败！");
+            },
+        });
+    });
+    //取消删除课件选项
+    $("#del_course_close").click(function () {
+        $("#del_course").css({"display": "none"});
+        $("#boxes").css("opcity", "1");
+    });
+    //确认删除操作
+    $("#del_confirm").click(function () {
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: delUrl,
+            data: {
+                "action": "deleteModule",
+                "courseId": courseId,
+                "moduleId": global_active,
+                "teacherId": global_teachId,
+
+            },
+            dataType: 'json',
+            success: function (res) {
+                if (res.code == 0) {
+                    alert("删除成功");
+                    location.reload();
+
+                }
+                else {
+                    alert(res.msg)
+                }
+
+
+            },
+            error: function (res) {
+                alert("删除失败！");
+            },
+
+
+        });
+
+
+    });
+    //取消删除选项
+    $("#del_close").click(function () {
+        $("#delete").css({"display": "none"});
+        $("#boxes").css("opcity", "1");
+
+    });
+    //移除单曲
+    $("#remove").click(function () {
+        if (global_active == "") {
+
+            layer.msg("没有选择活动");
+            $("#layui-layer1").css({"top": "450px", "left": "796px"});
+        }
+        else {
+            window.location.href = "remove.html?activeId=" + global_active + "&courseId=" + courseId;
+        }
+
+
+    });
+
+    //获取课件列表
+    function getCourseList() {
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: getActiveDomain,
+            data: {
+                "action": "getModuleByCourse",
+                "courseId": courseId,
+            },
+            dataType: "json",
+            success: function (res) {
+                if (res.code == 0) {
+                    $dat = res.moduleList;
+                    $listNumber = $dat.length;//活动数量
+
+
+                    if ($listNumber != 0) {
+                        for ($i = 0; $i < $listNumber; $i++) {
+                            $course_id = $dat[$i].course_id;//活动id
+                            $title = $dat[$i].title;//活动标题
+                            $activeId = $dat[$i].id;//活动id
+                            $num = $i + 1;
+                            $huoDong = "活动" + $num + "：";
+
+
+                            $activeList = $("  <div id=\"listTitle\" onclick='showActiveMes(\"" + $activeId + "\")' class=\"listTitle\">\n" +
+                                "                        <div id=\"title\">" + $huoDong + $title + "</div>\n" +
+                                "                    </div>");
+
+                            $("#leftBoxItem").append($activeList);
+
+
+                        }
+
+
+                    }
+                    else {
+                        window.location.reload();
+                    }
+
+
+                }
+
+
+            },
+            error: function (res) {
+
+            },
+
+        });
+
+
+    }
+
+    //触发活动列表中的单个活动
+    function showActiveMes(val) {
+
+        global_active = val;//转储变量值
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: getActiveDomain,
+            data: {
+                "action": "getModuleByCourse",
+                "courseId": courseId,
+            },
+            dataType: "json",
+            success: function (res) {
+
+                if (res.code == 0) {
+                    $("#boxBoxes").children().remove();
+                    $dat = res.moduleList;
+                    $listNumber = $dat.length;//活动数量
+                    for ($i = 0; $i < $listNumber; $i++) {
+                        $course_id = $dat[$i].course_id;//活动id
+                        $activeId = $dat[$i].id;
+                        $num = $i + 1;
+
+
+                        if ($activeId == val) {
+                            $huoDong = "活动" + $num + "：";
+                            $resourceList = $dat[$i].resourceList;//资源
+                            $resourceNum = $resourceList.length;//曲目数量
+                            $description = $dat[$i].description;//活动描述
+                            global_desc=$description;
+                            $description = $description.substring(0, maxwidth) + "...";
+                            $title = $dat[$i].title;//活动标题
+                            $activeTitle = $huoDong + $title;
+                            global_activeName = $activeTitle;
+                            $lent = 0;//资源个数
+                            $("#box_title").html($huoDong + $title);
+                            $("#boxDescText").html($description);
+                            if ($resourceNum == 0) {
+                                $("#mes").css({"display": "block", "margin-top": "185px"});
+                                $("#boxDesc").css("display", "none");
+
+
+                            } else {
+                                $("#mes").css({"display": "none", "margin-top": "0px"});
+                                $("#boxDesc").css("display", "flex");
+                                for ($j = 0; $j < $resourceNum; $j++) {
+
+                                    $code = $resourceList[$j].code;
+                                    $name = $resourceList[$j].name;
+                                    $type = $resourceList[$j].type;
+
+                                    if ($type === "1") {
+                                        $imgurl = imgPath + "icon-mp4.png";
+
+                                    }
+                                    else if ($type === "2") {
+                                        $imgurl = imgPath + "music_1.png";
+
+                                    }
+                                    else if ($type === "3") {
+                                        $imgurl = imgPath + "icon_img.png";
+                                    }
+                                    if ($code == null) {
+                                        $code = "";
+                                    }
+                                    $box = $("         <div id=\"boxItem\">\n" +
+                                        "                    <div id=\"boxItemCover\" class=\"boxItemCover\">\n" +
+                                        "                        <img id=\"imgImg\" src=\"" + $imgurl + "\" >\n" +
+                                        "                        <div id=\"code\" class=\"code\">" + $code + "</div>\n" +
+                                        "                    </div>\n" +
+                                        "                    <div id=\"boxName\" class=\"boxName\">" + $name + "</div>\n" +
+                                        "                </div>");
+
+                                    $("#boxBoxes").append($box);
+
+
+                                }
+
+
+                            }
+                            $("#pageCount").html("共" + $resourceNum + "条记录");
+
+
+                        }
+
+
+                    }
+
+
+                }
+
+
+            },
+            error: function (res) {
+
+            },
+
+        });
+
+
+    }
+
+
+</script>
+
+
+</html>

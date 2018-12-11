@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索</title>
+    <link rel="stylesheet" href="static/css/public.css">
+    <style type="text/css">
+        #boxes {
+            display: flex;
+            flex-direction: row;
+            width: 92%;
+            margin-left: 4%;
+            margin-top: 5%;
+            height: 90%;
+
+        }
+
+        #boxes > div {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #left {
+            width: 35%;
+        }
+
+        #right {
+            margin-left: 5%;
+            width: 60%;
+
+        }
+
+        #header {
+            height: 6%;
+            width: 100%;
+            border-bottom: 3px solid #5A6FC0;
+        }
+
+        #header > span {
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            font-weight: bold;
+            color: white;
+        }
+
+        #keyboard {
+            border: 1px;
+            color: white;
+            width: 100%;
+            height: 90%;
+            margin-top: 7%;
+
+        }
+
+        #result_box {
+            width: 100%;
+            height: 70%;
+            margin-top: 4%;
+        }
+
+        #keyboard > tbody > tr > td {
+            border: 1px solid #4C5DA3;
+            text-align: center;
+            border-radius: 8%;
+            height: 50px;
+            color: #969ED0;
+            font-size: 1.3em;
+        }
+
+        #keyboard > tbody > tr > td:hover {
+            border: 1px solid white;
+            text-align: center;
+            border-radius: 8%;
+            height: 50px;
+            color: white;
+            transform: scale(1.1);
+            font-size: 1.4em;
+        }
+
+        #result_box {
+            width: 100%;
+            height: 72%;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        #content_box1, #content_box2 {
+            width: 100%;
+            height: 50%;
+            display: flex;
+            flex-direction: row;
+            margin-top: 1%;
+
+        }
+
+        #leftPage {
+            float: left;
+            transform: rotate(180deg);
+        }
+
+        #rightPage {
+            float: right;
+        }
+
+        #left_box {
+            width: 108%;
+            height: 1px;
+
+            margin-left: -4%;
+            font-size: 2em;
+            z-index: 9999;
+        }
+
+        #content_box2 > div, #content_box1 > div {
+            width: 24%;
+            height: 100%;
+            margin-left: 1%;
+            border-radius: 2%;
+        }
+
+        #content_icon > img {
+            width: 70%;
+        }
+
+        #content_item {
+            cursor: pointer;
+            width: 100%;
+            height: 80%;
+            margin: auto;
+            text-align: center;
+            color: white;
+            border-radius: 3%;
+            background-image: url("static/images/bj_default.png");
+            background-repeat: no-repeat;
+        }
+
+        #content_icon {
+            width: 90%;
+            height: 80%;
+            position: absolute;
+            margin: auto;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+        }
+
+        #total_title {
+            margin-top: 5%;
+        }
+
+        #content_item_title {
+            width: 100%;
+            height: 6%;
+            margin-top: 3%;
+            color: #BCC2D6;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-align: center;
+            cursor: pointer;
+
+        }
+
+        #content_item_title:hover {
+            color: white;
+        }
+
+        #query {
+            width: 80%;
+            font-size: 1.5em;
+            color: #9CACE0;
+            border: hidden;
+            background: transparent;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<div id="boxes">
+    <div id="left">
+        <div id="header">
+
+            <input type="text" id="query" value="G">
+        </div>
+        <div class="layui-form">
+            <table cellspacing="5px" id="keyboard" class="layui-table" lay-skin="row">
+                <tbody>
+                <tr>
+                    <td id="a">A</td>
+                    <td id="b">B</td>
+                    <td id="c">C</td>
+                    <td id="d">D</td>
+                    <td id="e">E</td>
+                    <td id="f">F</td>
+                </tr>
+                <tr>
+                    <td id="g">G</td>
+                    <td id="h">H</td>
+                    <td id="i">I</td>
+                    <td id="j">J</td>
+                    <td id="k">K</td>
+                    <td id="l">L</td>
+                </tr>
+                <tr>
+                    <td id="m">M</td>
+                    <td id="n">N</td>
+                    <td id="o">O</td>
+                    <td id="p">P</td>
+                    <td id="q">Q</td>
+                    <td id="r">R</td>
+                </tr>
+                <tr>
+                    <td id="s">S</td>
+                    <td id="t">T</td>
+                    <td id="u">U</td>
+                    <td id="v">V</td>
+                    <td id="w">W</td>
+                    <td id="x">X</td>
+                </tr>
+                <tr>
+                    <td id="y">Y</td>
+                    <td id="z">Z</td>
+                    <td id="1">1</td>
+                    <td id="2">2</td>
+                    <td id="3">3</td>
+                    <td id="4">4</td>
+                </tr>
+                <tr>
+                    <td id="5">5</td>
+                    <td id="6">6</td>
+                    <td id="7">7</td>
+                    <td id="8">8</td>
+                    <td id="9">9</td>
+                    <td id="0">0</td>
+                </tr>
+                <tr>
+                    <td style="" colspan="2" id="clear">清空</td>
+                    <td></td>
+                    <td></td>
+
+                    <td colspan="2" id="delete">删除</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    <div id="right">
+        <div id="header">
+            <span>搜索结果</span>
+            <a id="searchResult" style="color: #9CACE0"></a>
+        </div>
+        <div id="result_box">
+            <div id="content_box1">
+
+
+                <div>
+                    <div id="content_item" class="btn  btn-border-o">
+                        <div id="content_icon">
+                            <img src="static/images/icon_img.png"/>
+                            <h4 id="total_title">Ul_OL_1</h4>
+                        </div>
+                    </div>
+                    <div id="content_item_title">古筝一</div>
+                </div>
+
+
+
+            </div>
+            <div id="left_box">
+                <span id="leftPage"><i id="page" class="icon iconfont page">&#xe642;</i></span>
+                <span id="rightPage"><i id="page" class="icon iconfont">&#xe642;</i></span>
+            </div>
+            <div id="content_box2">
+
+
+                <div>
+                    <div id="content_item" class="btn  btn-border-o">
+                        <div id="content_icon">
+                            <img src="static/images/icon_img.png"/>
+                            <h4 id="total_title">Ul_OL_1</h4>
+                        </div>
+                    </div>
+                    <div id="content_item_title">古筝一</div>
+                </div>
+                <div>
+                    <div id="content_item" class="btn  btn-border-o">
+                        <div id="content_icon">
+                            <img src="static/images/icon_img.png"/>
+                            <h4 id="total_title">Ul_OL_1</h4>
+                        </div>
+                    </div>
+                    <div id="content_item_title">古筝一</div>
+                </div>
+                <div>
+                    <div id="content_item" class="btn  btn-border-o">
+                        <div id="content_icon">
+                            <img src="static/images/icon_img.png"/>
+                            <h4 id="total_title">Ul_OL_1</h4>
+                        </div>
+                    </div>
+                    <div id="content_item_title">古筝一</div>
+                </div>
+                <div>
+                    <div id="content_item" class="btn  btn-border-o">
+                        <div id="content_icon">
+                            <img src="static/images/icon_img.png"/>
+                            <h4 id="total_title">Ul_OL_1</h4>
+                        </div>
+                    </div>
+                    <div id="content_item_title">古筝一</div>
+                </div>
+
+
+            </div>
+            <div id="footer" class="">
+                <i class="icon iconfont" style="color:#A3AEDC ">&#xe62f;</i>
+                <i class="icon iconfont" style="color:#46517E ">&#xe62f;</i>
+                <i class="icon iconfont" style="color:#46517E ">&#xe62f;</i>
+            </div>
+        </div>
+        <script type="text/javascript" src="static/js/jquery.min.js"></script>
+        <script type="text/javascript" src="static/layui/layui.all.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+
+                $("#clear").click(function () {
+                    $("#query").val("");
+                });
+                $("#delete").click(function () {
+                    var val = document.getElementById("query").value;
+                    var count = val.length;
+                    val = val.substring(0, val.length - 1);
+                    $("#query").val(val);
+                    query(val);
+
+
+                });
+                $("#a").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"A";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#b").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"B";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#c").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"C";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#d").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"D";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#e").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"E";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#f").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"F";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#g").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"G";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#h").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"H";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#i").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"H";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#j").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"J";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#k").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"K";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#l").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"L";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#m").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"M";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#n").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"N";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#o").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"O";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#p").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"P";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#q").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"Q";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#r").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"R";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#s").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"S";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#t").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"T";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#u").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"U";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#v").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"V";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#w").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"W";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#x").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"X";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#y").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"Y";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#z").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"Z";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#1").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"1";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#2").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"2";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#3").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"3";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#4").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"4";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#5").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"5";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#6").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"6";
+                    $("#query").val(value);
+                    query(value);
+
+                });
+                $("#7").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"7";
+                    $("#query").val(value);
+                    query(value);
+
+                });
+                $("#8").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"8";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#9").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"9";
+                    $("#query").val(value);
+                    query(value);
+                });
+                $("#0").click(function () {
+                    var value=document.getElementById("query").value;
+                    value=value+"0";
+                    $("#query").val(value);
+                    query(value);
+
+                });
+
+
+
+
+
+
+
+
+            });
+
+            function sub() {
+                var query = document.getElementById("query").value;
+            }
+
+
+            function query(value) {
+              console.log(value);
+                // $.ajax({
+                //     type: 'post',
+                //     cache: 'false',
+                //     url: '',
+                //     data: {},
+                //     dataType: 'json',
+                //     success:function (res) {
+                //
+                //     },
+                //     error:function (res) {
+                //
+                //     }
+                //
+                // })
+
+
+            }
+
+        </script>
+</body>
+</html>
+

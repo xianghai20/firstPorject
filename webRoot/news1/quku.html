@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>曲库</title>
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+    <style type="text/css">
+
+        @font-face {
+            font-family: "iconfont";
+            src: url('static/font/iconfont.eot'); /* IE9*/
+            src: url('static/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('static/font/iconfont.woff') format('woff'), /* chrome, firefox */ url('static/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url('static/font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+            margin: auto;
+
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            margin: auto;
+        }
+
+        #main {
+            width: 100%;
+            height: 100%;
+            background: -webkit-linear-gradient(#04154B, #022579); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(#04154B, #022579); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(#04154B, #022579); /* Firefox 3.6 - 15 */
+            background: linear-gradient(#04154B, #022579); /* 标准的语法 */
+            display: flex;
+            flex-direction: row;
+        }
+
+        #left {
+            width: 20%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px #4E669D solid;
+        }
+
+        #right {
+            width: 80%;
+            height: 100%;
+
+        }
+
+        #search {
+            width: 60%;
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            background-color: #35436F;
+            margin-left: 20%;
+            margin-top: 15%;
+            color: white;
+            letter-spacing: 2px;
+            font-size: 16px;
+            border-color: transparent;
+        }
+
+        .searchInput {
+            width: 80%;
+            background-color: #35436F;
+            color: white;
+            letter-spacing: 2px;
+            border-color: transparent;
+        }
+
+        #icon-search {
+            color: white;
+
+            font-size: 25px;
+        }
+
+        #nav {
+            margin: auto;
+            width: 100%;
+        }
+
+        #nav > div {
+            height: 50px;
+            line-height: 50px;
+            width: 70%;
+            margin: auto;
+            color: #5589CE;
+            text-align: center;
+            cursor: pointer;
+            font-size: 15px;
+            letter-spacing: 2px;
+            border-radius: 2%;
+
+        }
+
+        #nav > div:hover {
+            border: 1px #2196F3 solid;
+            color: white;
+            box-shadow: 0 0 15px #2196F3;
+        }
+
+        #myicon1 {
+            color: white;
+            font-size: 30px;
+
+        }
+
+        #nav1 {
+            color: white;
+            font-size: 3em;
+        }
+
+        #right_boxes {
+            width: 99%;
+            height: 99%;
+            display: flex;
+
+            flex-direction: column;
+            margin: auto;
+        }
+
+        #right_boxes > div {
+            width: 90%;
+            margin-left: 5%;
+
+        }
+
+        #nav_header {
+            cursor: pointer;
+            height: 5%;
+            margin-top: 5%;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+
+        }
+
+        #jie_shu,#lei_xin {
+            width: 100%;
+            height: 5%;
+            margin-top: 2%;
+            display: table;
+            flex-direction: row;
+        }
+
+        #jie_shu > div,#lei_xin>div {
+            width: 5%;
+            height: 100%;
+            margin: auto;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            color: #8B96B2;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        #jie_shu > div:hover {
+            color: white;
+            font-weight: bold;
+            border: 1px solid white;
+
+            box-shadow: 0 0 15px #2196F3;
+            border-radius: 3%;
+            background-color: #224596;
+
+        }
+        #lei_xin>div:hover{
+            color: white;
+            font-weight: bold;
+            border: 1px solid white;
+
+            box-shadow: 0 0 15px #2196F3;
+            border-radius: 3%;
+            background-color: #224596;
+        }
+
+        #content {
+            width: 100%;
+            height: 60%;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        #content_box {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            margin-top: 1%;
+        }
+
+        #content_box > div {
+            width: 20%;
+            height: 100%;
+            margin-left: 1%;
+            margin-top: 1%;
+
+        }
+
+        #content_item {
+            width: 100%;
+            height: 92%;
+            margin: auto;
+            text-align: center;
+            color: white;
+            border-radius: 5%;
+            background-image: url("static/images/bg.jpg");
+        }
+
+        #content_item_title {
+            width: 100%;
+            height: 5%;
+            margin: auto;
+            color: white;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        #content_item:hover {
+            box-shadow: 0 0 15px #2196F3;
+        }
+
+        #footer {
+            width: 100%;
+            height: 5%;
+            margin-top: 2%;
+            display: table;
+            flex-direction: row;
+        }
+
+        #footer > div {
+            width: 5%;
+            height: 100%;
+            margin: auto;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            color: #8B96B2;
+            letter-spacing: 2px;
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+
+        #footer > div > a:hover {
+            color: white;
+            font-weight: bold;
+            font-size: 2em;
+        }
+
+        .btn {
+            width: 100px;
+            font-size: 15px;
+            position: relative;
+
+        }
+
+        .btn, .btn-border-o:before, .btn-border-o:after {
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+
+        }
+
+        .btn-border-o:before, .btn-border-o:after {
+            content: '';
+            border-style: solid;
+            position: absolute;
+            z-index: 5;
+            border-radius: 3px;
+            box-sizing: content-box;
+        }
+
+        .btn-border-o:before {
+            width: 0;
+            height: 100%;
+            border-width: 1px 0 1px 0;
+            top: -1px;
+            left: 0;
+            -webkit-transition-delay: 0.05s
+            transition-delay: 0.05s;
+        }
+
+        .btn-border-o:after {
+            width: 100%;
+            height: 0;
+            border-width: 0 1px 0 1px;
+            top: 0;
+            left: -1px;
+        }
+
+        .btn-border-o:hover:before {
+            width: 100%;
+        }
+
+        .btn-border-o:hover:after {
+            height: 100%;
+        }
+
+        .btn-border-o:before, .btn-border-o:after {
+            border-color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div id="left">
+        <form id="search" class="layui-btn layui-btn-radius layui-btn-primary"
+              method="post">
+            <i id="icon-search" style="margin-left: 27px" class="icon iconfont">&#xe632;</i><span
+                id="searchTitle">搜索</span>
+            <input id="searchInput" class="searchInput" value="" type="text" placeholder="" autocomplete="off">
+        </form>
+        <div id="nav">
+            <div class="btn  btn-border-o" id="nav1" style="color: white"><i id="myicon1"
+                                                                             class="icon iconfont">&#xe63e;</i> &nbsp;&nbsp;曲库
+            </div>
+            <div class="btn  btn-border-o"><i id="myicon" class="icon iconfont">&#xe6ec;</i> &nbsp;&nbsp;课件</div>
+            <div class="btn  btn-border-o"><i id="myicon" class="layui-icon">&#xe66f;</i> &nbsp;&nbsp;我的</div>
+        </div>
+    </div>
+    <div id="right">
+        <div id="right_boxes">
+            <div id="nav_header"><i class="layui-icon" style="font-size: 1em;">&#xe65c;</i> &nbsp;&nbsp;&nbsp;&nbsp;第一单元
+            </div>
+            <div id="jie_shu" class="navBtn ">
+                <div class="btn  btn-border-o"> 节数</div>
+                <div class="btn  btn-border-o">全部</div>
+                <div class="btn  btn-border-o">第一节</div>
+                <div class="btn  btn-border-o">第二节</div>
+                <div class="btn  btn-border-o">第三节</div>
+                <div class="btn  btn-border-o">第四节</div>
+                <div class="btn  btn-border-o">第五节</div>
+                <div class="btn  btn-border-o">第六节</div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div id="lei_xin">
+                <div class="btn  btn-border-o">类型</div>
+                <div class="btn  btn-border-o">全部</div>
+                <div class="btn  btn-border-o">知识点</div>
+                <div class="btn  btn-border-o">专家讲解</div>
+                <div class="btn  btn-border-o">示范</div>
+                <div class="btn  btn-border-o">伴奏</div>
+                <div class="btn  btn-border-o">乐理</div>
+                <div class="btn  btn-border-o">作业</div>
+                <div class="btn  btn-border-o">自定义</div>
+                <div></div>
+            </div>
+            <div id="content">
+                <div id="content_box">
+                    <div>
+                        <div id="content_item"  class="btn  btn-border-o">
+                            <!--<div >-->
+                                <!--<i id="myicon" class="icon iconfont" style="font-size: 5em;">&#xe63f;</i>-->
+                            <!--</div>-->
+
+                        </div>
+                        <div id="content_item_title">古筝一</div>
+                    </div>
+                    <div>
+                        <div id="content_item" class="btn  btn-border-o"></div>
+                        <div id="content_item_title">古筝一</div>
+                    </div>
+                    <div>
+                        <div id="content_item" class="btn  btn-border-o"></div>
+                        <div id="content_item_title">古筝一</div>
+                    </div>
+                    <div>
+                        <div id="content_item" class="btn  btn-border-o"></div>
+                        <div id="content_item_title">古筝一</div>
+                    </div>
+                    <div>
+                        <div id="content_item"></div>
+                        <div id="content_item_title">古筝一</div>
+                    </div>
+                </div>
+
+                <div id="content_box">
+                    <div>
+                        <div id="content_item"></div>
+                        <div id="content_item_title">古筝一</div>
+                    </div>
+                    <div>
+                        <div id="content_item"></div>
+                        <div id="content_item_title">古筝一</div>
+                    </div>
+                    <div>
+                        <div id="content_item"></div>
+                        <div id="content_item_title">古筝一</div>
+                    </div>
+                    <div>
+                        <div id="content_item"></div>
+                        <div id="content_item_title">古筝一</div>
+                    </div>
+                    <div>
+                        <div id="content_item"></div>
+                        <div id="content_item_title">古筝一</div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <div>
+
+                    <a style="color: white"><i class="layui-icon" style="font-size: 1em;">&#xe603;</i></a>
+                    <a style="color: white">1/2</a>
+
+                    <a style="color: white"><i class="layui-icon" style="font-size: 1em;">&#xe602;</i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script type="text/javascript" src="static/js/jquery.min.js"></script>
+<script type="text/javascript" src="static/layui/layui.all.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#search").mouseover(function () {
+            $("#searchInput").css("display", "block");
+            $("#icon-search").css("margin-left", "-10px");
+            $("#searchTitle").css("display", "none");
+        });
+        $("#search").mouseout(function () {
+            $("#searchInput").css("display", "none");
+            $("#icon-search").css("margin-left", "27px");
+            $("#searchTitle").css("display", "block");
+        });
+
+        $("#nav_header").click(function () {
+            window.location.href = "index.html";
+
+        });
+    });
+</script>
+</html>

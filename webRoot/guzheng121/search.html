@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/search.css">
+    <style type="text/css">
+
+        @font-face {
+            font-family: "iconfont";
+            src: url('static/font/iconfont.eot'); /* IE9*/
+            src: url('static/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('static/font/iconfont.woff') format('woff'), /* chrome, firefox */ url('static/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url('static/font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /*弹出层样式*/
+
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 1920px;
+            height: 1080px;
+            background-color: black;
+            z-index: 9999;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=80);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 450px;
+            left: 360px;
+            width: 1200px;
+            height: 100px;
+            background-color: transparent;
+            z-index: 9999;
+        }
+
+        .white_content_small {
+            display: none;
+            position: absolute;
+            top: 20%;
+            left: 30%;
+            width: 40%;
+            height: 50%;
+            border: 16px solid lightblue;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+
+        .audio-body {
+            padding: 0 10px;
+            margin-top: -20px;
+        }
+        #videoHtml {
+            display: none;
+        }
+
+
+        #close,.closeAudio {
+            width: 100px;
+            height: 100px;
+            z-index: 9999;
+            position: absolute;
+            margin-top: 50px;
+            margin-left: 1770px;
+            color: white;
+            display: none;
+
+        }
+        .audio {
+            margin-top: 500px;
+            width: 1000px;
+            margin-left: 460px;
+            position: absolute;
+            z-index: 9999;
+            transform: scale(1.5);
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="close" class="close"><img src="static/images/enlarge.png"/></div>
+<video id="videoHtml" width="1920px" height="1080px" controls="controls" autoplay>
+    <source src="" type="video/mp4">
+</video>
+<!--//音频-->
+<div id="closeAudio" class="closeAudio"><img src="static/images/enlarge.png"/></div>
+<audio class="audio" controls="controls" autoplay>
+    <source src="">
+</audio>
+
+
+<div id="fade" class="black_overlay">
+</div>
+<div id="MyDiv" class="audio-box white_content">
+    <div style="text-align: right; cursor: default; height: 40px;" action="prev">
+        <span id="closeDiv" style="font-size: 48px;cursor: pointer" onclick="CloseDiv('MyDiv','fade')">
+            <i style="font-size: 48px;" class="icon iconfont">&#xe7fc;</i></span>
+    </div>
+    <div id="audio" class="audio-container">
+        <div class="audio-view">
+            <div class="audio-cover"></div>
+            <div class="audio-body">
+                <h3 class="audio-title">未知歌曲</h3>
+                <div class="audio-backs">
+                    <div class="audio-this-time">00:00</div>
+                    <div class="audio-count-time">00:00</div>
+                    <div class="audio-setbacks">
+                        <i class="audio-this-setbacks">
+                            <span class="audio-backs-btn"></span>
+                        </i>
+                        <span class="audio-cache-setbacks">
+							</span>
+                    </div>
+                </div>
+            </div>
+            <div class="audio-btn">
+                <div class="audio-select">
+                    <div action="prev" class="icon-fast-backward"></div>
+                    <div action="play" data-on="icon-play" data-off="icon-pause" class="icon-play"></div>
+                    <div action="next" class="icon-fast-forward"></div>
+                    <!--<div action="menu" class="icon-list-alt"></div>-->
+                    <div action="volume" class="icon-volume-up">
+                        <div class="audio-set-volume">
+                            <div class="volume-box">
+                                <i><span class="audio-backs-btn"></span></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="boxes">
+    <div id="header_nav">
+        <div id="bark">
+            <img id="barkImg" src="static/images/arrow-lef.png"/>
+        </div>
+        <div id="unit">搜索</div>
+
+    </div>
+
+
+    <div id="cent_boxes">
+
+        <div id="left">
+            <div id="header">
+                <input type="text" id="query" value="">
+            </div>
+            <div id="table">
+                <table cellspacing="12px" id="keyboard">
+                    <tbody>
+                    <tr>
+                        <td id="a">A</td>
+                        <td id="b">B</td>
+                        <td id="c">C</td>
+                        <td id="d">D</td>
+                        <td id="e">E</td>
+                        <td id="f">F</td>
+                    </tr>
+                    <tr>
+                        <td id="g">G</td>
+                        <td id="h">H</td>
+                        <td id="i">I</td>
+                        <td id="j">J</td>
+                        <td id="k">K</td>
+                        <td id="l">L</td>
+                    </tr>
+                    <tr>
+                        <td id="m">M</td>
+                        <td id="n">N</td>
+                        <td id="o">O</td>
+                        <td id="p">P</td>
+                        <td id="q">Q</td>
+                        <td id="r">R</td>
+                    </tr>
+                    <tr>
+                        <td id="s">S</td>
+                        <td id="t">T</td>
+                        <td id="u">U</td>
+                        <td id="v">V</td>
+                        <td id="w">W</td>
+                        <td id="x">X</td>
+                    </tr>
+                    <tr>
+                        <td id="y">Y</td>
+                        <td id="z">Z</td>
+                        <td id="1">1</td>
+                        <td id="2">2</td>
+                        <td id="3">3</td>
+                        <td id="4">4</td>
+                    </tr>
+                    <tr>
+                        <td id="5">5</td>
+                        <td id="6">6</td>
+                        <td id="7">7</td>
+                        <td id="8">8</td>
+                        <td id="9">9</td>
+                        <td id="0">0</td>
+                    </tr>
+                    <tr>
+                        <td style="" colspan="2" id="clear">清空</td>
+                        <td style="border: transparent"></td>
+                        <td style="border: transparent"></td>
+
+                        <td colspan="2" id="delete">删除</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="right">
+
+            <div id="header">
+                <span>搜索结果</span>
+                <a id="searchResult" style="color: #9CACE0"></a>
+            </div>
+            <div id="result_box">
+                <div id="load">还没有进行搜索。</div>
+                <div id="content_box1">
+
+
+                </div>
+                <div id="left_box">
+                    <span id="leftPage"></span>
+                    <span id="rightPage"></span>
+                </div>
+                <div id="content_box2">
+
+
+                </div>
+                <br>
+
+                <div id="footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+<script type="text/javascript" src="static/js/jquery.min.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
+<script type="text/javascript" src="static/js/page.js"></script>
+<script type="text/javascript">
+
+    var show_div = "MyDiv", bg_div = "fade";
+    var queryUrl = config.interface.query;//定义查询接口配置
+    var global_value = "";
+    var local_val="";//历史值
+
+
+    $(document).ready(function () {
+        $("#bark").click(function () {
+            window.location.href = "index.html";
+
+        });
+
+        $("#clear").click(function () {
+            $("#query").val("");
+            $("#content_box1").children().remove();
+            $("#content_box2").children().remove();
+            $("#searchResult").html("");
+            $("#footer").children().remove();
+        });
+        $("#delete").click(function () {
+            var val = document.getElementById("query").value;
+            var count = val.length;
+            val = val.substring(0, val.length - 1);
+            $("#query").val(val);
+            global_value = val;
+            if(val==""){
+                global_value = 9999;
+            }
+
+            console.log(global_value);
+            query();
+
+
+        });
+        $("#a").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "A";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#b").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "B";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#c").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "C";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#d").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "D";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#e").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "E";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#f").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "F";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#g").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "G";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#h").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "H";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#i").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "H";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#j").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "J";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#k").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "K";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#l").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "L";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#m").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "M";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#n").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "N";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#o").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "O";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#p").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "P";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#q").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "Q";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#r").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "R";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#s").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "S";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#t").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "T";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#u").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "U";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#v").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "V";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#w").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "W";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#x").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "X";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#y").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "Y";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#z").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "Z";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#1").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "1";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#2").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "2";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#3").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "3";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#4").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "4";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#5").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "5";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#6").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "6";
+            $("#query").val(value);
+            global_value = value;
+            query();
+
+        });
+        $("#7").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "7";
+            $("#query").val(value);
+            global_value = value;
+            query();
+
+        });
+        $("#8").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "8";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#9").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "9";
+            $("#query").val(value);
+            global_value = value;
+            query();
+        });
+        $("#0").click(function () {
+            var value = document.getElementById("query").value;
+            value = value + "0";
+            $("#query").val(value);
+            global_value = value;
+            query();
+
+        });
+
+
+    });
+
+
+    function query() {
+        // console.log(value);
+        if(global_value!=local_val){
+            global_currentPage=0;
+        }
+        console.log("当前页"+global_currentPage);
+        $("#content_box1").children().remove();
+        $("#content_box2").children().remove();
+        $("#footer").children().remove();
+
+        $.ajax({
+            type: 'get',
+            cache: 'false',
+            url: queryUrl,
+            data: {
+                action: 'searchResource',
+                keyword: global_value,
+                page: global_currentPage,
+                pageSize: 8,
+
+            },
+            dataType: 'json',
+            beforeSend: function () {
+                $("#load").html("<i id=\"loadImg1\" class=\"icon iconfont layui-anim-rotate\" >&#xe699;</i> ");
+            },
+            success: function (res) {
+                $("#leftPage").children().remove();
+                $("#rightPage").children().remove();
+                if (res.code === 0) {
+                    local_val=global_value;
+                    $("#load").css("display", "none");
+
+                    $dat = res.resource;
+                    $count = $dat.length;
+                    $totalPage = res.totalPage;
+                    $total = res.totalNumber;//获取查询记录的总数
+                    $("#searchResult").html($total + "条记录");//需要获取总数的字段
+                    $("#content_box1").children("#childNode").remove();
+                    $("#content_box2").children("#childNode").remove();
+
+
+                    if ($count === 0) {
+                        $("#load").css("display", "block");
+                        $("#load").html("捕获到0条记录！");
+
+                    } else {
+
+                        page($totalPage);
+
+                        for ($i = 0; $i < $count; $i++) {
+
+                            $code = $dat[$i].code;//曲目名称(英文)
+                            $file_url = $dat[$i].file_url;//数据链接
+                            $name = $dat[$i].name;//曲目名称（中文）
+                            $id = $dat[$i].id;//曲目id
+                            $type = $dat[$i].type;//曲目类型
+                            $unit = $dat[$i].unit;//曲目所属单元
+                            $category = $dat[$i].category;//曲目所属类型
+                            $chapter = $dat[$i].chapter;//曲目所属节数
+                            if ($type === "1") {
+                                $imgurl = imgPath + "icon-mp4.png";
+                            }
+                            else if ($type === "2") {
+                                $imgurl = imgPath + "music_1.png";
+
+                            }
+                            else if ($type === "3") {
+                                $imgurl = imgPath + "icon_img.png";
+                            }
+                            if ($code == null || $code == "") {
+                                $code = "  ";
+                            }
+                            if ($i < 4) {
+                                $li = $("    <div id='childNode' onclick='jumpLink(\"" + $file_url + "\",\"" + $name + "\",\"" + $type + "\")'>\n" +
+                                    "                    <div id=\"content_item\" class=\"btn  btn-border-o\">\n" +
+                                    "                        <div id=\"content_icon\">\n" +
+                                    "                                <img src=\"" + $imgurl + "\">\n" +
+                                    "                            <h4 id=\"total_title\">" + $code + "</h4>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>\n" +
+                                    "                    <div id=\"content_item_title\">" + $name + "</div>\n" +
+                                    "                </div>");
+                                $("#content_box1").append($li);
+                            }
+
+                            else {
+
+                                $li = $("    <div id='childNode' onclick='jumpLink(\"" + $file_url + "\",\"" + $name + "\",\"" + $type + "\")'>\n" +
+                                    "                    <div id=\"content_item\" class=\"btn  btn-border-o\">\n" +
+                                    "                        <div id=\"content_icon\">\n" +
+                                    "                                <img src=\"" + $imgurl + "\">\n" +
+                                    "                            <h4 id=\"total_title\">" + $code + "</h4>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>\n" +
+                                    "                    <div id=\"content_item_title\">" + $name + "</div>\n" +
+                                    "                </div>");
+
+                                $("#content_box2").append($li);
+
+
+                            }
+
+
+                        }
+                    }
+
+                }
+
+
+            },
+            error: function (res) {
+                $("#load").html("数据请求出现异常啦");
+            }
+
+        })
+
+
+    }
+
+    //关闭音频
+    $("#closeAudio").click(function () {
+        if (confirm("确定退出音频播放吗？")) {
+            $('audio').trigger('pause');
+
+            $(".audio").css({"display": "none"});
+            $("#boxes").css({"opacity":"1"});
+            $("#closeAudio").css({"display": "none"});
+
+
+        }
+        else {
+
+
+        }
+
+    });
+
+
+    //关闭视频
+    $("#close").click(function () {
+
+        if (confirm("确定退出视频播放吗？")) {
+            $('video').trigger('pause');
+
+            $("#videoHtml").css({"display": "none"});
+
+            $("#close").css({"display": "none"});
+
+
+        }
+        else {
+
+
+        }
+    });
+
+    //跳转链接
+    function jumpLink(url, name, type) {
+
+
+        console.log(url);
+
+        if (type == 1) {
+
+            $("#videoHtml").css({"display": "block"});
+            $("#videoHtml").prop("src", url);
+            $("#close").css({"display": "block"});
+
+
+        }
+        else if (type == 2) {
+
+            $(".audio").css({"display": "block"});
+            $(".audio").prop("src", url);
+            $("#boxes").css({"opacity": "0.1"});
+            $("#closeAudio").css({"display": "block"});
+        }
+
+
+    }
+
+    //显示弹出层
+    function ShowDiv(show_div, bg_div) {
+        console.log(show_div, bg_div);
+        $(".black_overlay").css("display", "block");
+        document.getElementById(show_div).style.display = 'block';
+        document.getElementById(bg_div).style.display = 'block';
+
+
+    };
+
+    //关闭弹出层
+    function CloseDiv(show_div, bg_div) {
+
+
+        pausePlay();
+        document.getElementById(show_div).style.display = 'none';
+        document.getElementById(bg_div).style.display = 'none';
+
+
+    };
+    //暂停播放
+
+
+    //清除图片
+    function clearImg() {
+        location.reload();
+    }
+</script>
+
+</html>

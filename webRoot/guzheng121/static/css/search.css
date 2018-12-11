@@ -1,0 +1,428 @@
+@font-face {
+    font-family: "iconfont";
+    src: url('../font/iconfont.eot'); /* IE9*/
+    src: url('../font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../font/iconfont.woff') format('woff'), /* chrome, firefox */ url('static/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url('static/font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    width: 1920px;
+    height: 1080px;
+    background-image: url(../images/bj.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    zoom: 0.667;
+    overflow-x:hidden;
+    overflow-y:hidden;
+}
+body {
+    width: 1920px;
+    height: 1080px;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    
+}
+.btn {
+    width: 100px;
+    position: relative;
+
+}
+
+.btn, .btn-border-o:before, .btn-border-o:after {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+
+}
+
+.btn-border-o:before, .btn-border-o:after {
+    content: '';
+    border-style: solid;
+    position: absolute;
+    z-index: 5;
+    border-radius: 3px;
+    box-sizing: content-box;
+}
+
+.btn-border-o:before {
+    width: 0;
+    height: 100%;
+    border-width: 2px 0 2px 0;
+    top: -1px;
+    left: 0;
+    -webkit-transition-delay: 0.05s;
+    transition-delay: 0.05s;
+}
+
+.btn-border-o:after {
+    width: 100%;
+    height: 0;
+    border-width: 0 2px 0 2px;
+    top: 0;
+    left: -1px;
+}
+
+.btn-border-o:hover:before {
+    width: 100%;
+}
+
+.btn-border-o:hover:after {
+    height: 100%;
+}
+
+.btn-border-o:before, .btn-border-o:after {
+    border-color: #888CF8;
+}
+
+
+
+
+#footer {
+    width: 100%;
+    height: 10px;
+    margin-top: 20px;
+    position: relative;
+    text-align: center;
+}
+
+#footer > i {
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+#page {
+    animation: Arrow 2s linear 2s infinite alternate;
+    font-size: 1.2em;
+    color: #A3AEDC;
+    cursor: pointer;
+}
+
+@keyframes Arrow {
+    0% {
+        transform: scale(1);
+        color: #A3AEDC;
+        font-size: 0.9em;
+    }
+    100% {
+        transform: scale(1.1);
+        color: white;
+        font-size: 1.4em;
+
+    }
+}
+
+#content_item:hover {
+    color: white;
+    transform: scale(1.1);
+    z-index: 999;
+    box-shadow: 0 0 15px #2196F3;
+    box-sizing: border-box;
+    background-image: url("../images/bj-hover.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#boxes {
+    width: 90%;
+    height: 85%;
+    margin-left: 5%;
+    margin-top: 64px;
+
+}
+
+#header_nav {
+    width: 100%;
+    height: 76px;
+    display: flex;
+    line-height: 76px;
+    font-size: 38px;
+    color: white;
+    flex-direction: row;
+}
+
+#unit {
+    font-weight: bold;
+    margin-left: 64px;
+    width: 152px;
+}
+
+#bark {
+    width: 108px;
+}
+
+#barkImg {
+    width: 40px;
+    height: 40px;
+}
+
+#unit, #bark {
+    cursor: pointer;
+}
+
+#cent_boxes {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 1%;
+    height: 90%;
+
+}
+
+#cent_boxes > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#left {
+    width: 35%;
+    height: 100%;
+
+}
+
+#table {
+    height: 80%;
+
+}
+
+#right {
+    height: 80%;
+    margin-left: 5%;
+    width: 60%;
+
+
+}
+
+#header {
+
+    height: 7%;
+    width: 100%;
+    border-bottom: 3px solid #5A6FC0;
+}
+
+#header > input {
+    margin-top: 9px;
+}
+
+#header > span {
+    font-size: 32px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: white;
+}
+
+#keyboard {
+    border: 1px;
+    color: white;
+    width: 100%;
+    height: 90%;
+    margin-top: 7%;
+
+}
+
+#result_box {
+    width: 100%;
+    height: 100%;
+    margin-top: 4%;
+
+
+}
+
+#keyboard > tbody > tr > td {
+    border: 1px solid #4C5DA3;
+    text-align: center;
+    border-radius: 5%;
+    height: 70px;
+    width: 70px;
+    color: #969ED0;
+    cursor: pointer;
+    font-size: 32px;
+}
+
+#keyboard > tbody > tr > td:hover {
+    border: 1px solid #828CFF;
+    text-align: center;
+    border-radius: 8%;
+    height: 50px;
+    background-color: #5361FC;
+    color: white;
+    box-shadow: 0 0 15px #2196F3;
+    transform: scale(1.1);
+    font-size: 32px;
+
+}
+
+
+
+#content_box1, #content_box2 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+#leftPage {
+    float: left;
+    transform: rotate(180deg);
+}
+
+#rightPage {
+    float: right;
+}
+
+#left_box {
+    width: 112%;
+    height: 32px;
+    margin-top: 10px;
+    line-height: 32px;
+    margin-left: -6%;
+    font-size: 32px;
+    z-index: 9999;
+}
+
+#content_box2 > div, #content_box1 > div {
+    width: 24%;
+    height: 90%;
+    font-size: 28px;
+    margin-left: 1%;
+    border-radius: 2%;
+
+}
+
+#content_box1 > div:hover {
+    font-size: 32px;
+    color: white;
+}
+
+#content_box2 > div:hover {
+    font-size: 32px;
+    color: white;
+}
+
+#content_icon > img {
+    margin-top: 10%;
+    width: 150px;
+}
+
+#content_item {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    text-align: center;
+    color: white;
+    border-radius: 3%;
+    background-image: url("../images/bj_default.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#content_icon {
+    width: 90%;
+    height: 240px;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    right: 0;
+}
+
+#total_title {
+    font-size: 24px;
+    margin-top: 5%;
+    color: #BFC8F9;
+}
+
+#content_item_title {
+    width: 100%;
+    height: 6%;
+    margin-top: 6%;
+    color: #BCC2D6;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+#content_item_title:hover {
+    color: white;
+}
+
+#query {
+    width: 80%;
+    font-size: 1.5em;
+    color: #9CACE0;
+    border: hidden;
+    background: transparent;
+}
+
+#load {
+    color: #7B86AF;
+    width: 25%;
+    font-size: 24px;
+    margin-top: 25%;
+    margin-left: 40%;
+    font-weight: bold;
+}
+
+#searchResult {
+    margin-left: 30px;
+    font-size: 24px;
+}
+
+#loadImg1 {
+
+    font-size: 70px;
+    color: #8799E9;
+    -webkit-animation-name: layui-rotate;
+    animation-name: layui-rotate;
+    -webkit-animation-duration: 1s;
+    animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear
+}
+
+@keyframes layui-rotate {
+    from {
+        transform: rotate(0)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+#media {
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+
+}
+#video1{
+
+    width: 100%;
+    height: 100%;
+}
+#quImg{
+    width: 100%;
+    height: 100%;
+
+}
+img{
+    cursor: pointer;
+}
+#audioMp3{
+
+
+    display: none;
+}
+

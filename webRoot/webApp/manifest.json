@@ -1,0 +1,327 @@
+{
+    "@platforms": ["android", "iPhone", "iPad"],
+    "id": "H562D6226",/*应用的标识，创建应用时自动生成，勿手动修改*/
+    "name": "我的App",/*应用名称，程序桌面图标名称*/
+    "version": {
+        "name": "1.0",/*应用版本名称*/
+        "code": ""
+    },
+    "description": "",/*应用描述信息*/
+    "icons": {
+        "72": "icon.png"
+    },
+    "launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+    "developer": {
+        "name": "",/*开发者名称*/
+        "email": "",/*开发者邮箱地址*/
+        "url": ""/*开发者个人主页地址*/
+    },
+    "permissions": {
+        "Messaging":{
+        	"description": "短彩邮件插件"
+        },
+        "Cache": {
+            "description": "管理应用缓存"
+        },
+        "Console": {
+            "description": "跟踪调试输出日志"
+        },
+        "Contacts": {
+            "description": "访问系统联系人信息"
+        },
+        "Events": {
+            "description": "应用扩展事件"
+        },
+        "Maps": {
+            "description": "管理地图插件"
+        },
+        "Speech": {
+            "description": "管理语音识别插件"
+        }
+    },
+    "plus": {
+        "splashscreen": {
+            "autoclose": true,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+            "waiting": true/*是否在程序启动界面显示等待雪花，true表示显示，false表示不显示。*/
+        },
+        "popGesture": "close",/*设置应用默认侧滑返回关闭Webview窗口，"none"为无侧滑返回功能，"hide"为侧滑隐藏Webview窗口。参考http://ask.dcloud.net.cn/article/102*/
+        "runmode": "normal",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+        "signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+        "distribute": {
+            "apple": {
+                "appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+                "mobileprovision": "",/*iOS应用打包配置文件*/
+                "password": "",/*iOS应用打包个人证书导入密码*/
+                "p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+                "devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+                "frameworks":[
+                ]/*调用Native.js调用原生Objective-c API需要引用的FrameWork，如需调用GameCenter，则添加"GameKit.framework"*/
+            },
+            "google": {
+                "packagename": "",/*Android应用包名，如io.dcloud.HelloH5*/
+                "keystore": "",/*Android应用打包使用的密钥库文件*/
+                "password": "",/*Android应用打包使用密钥库中证书的密码*/
+                "aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
+               "permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"]
+				/*使用Native.js调用原生安卓API需要使用到的系统权限*/
+            },
+            "orientation": ["landscape-primary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+            "icons": {
+                "ios": {
+                    "prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+                     /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+                    "iphone": {
+                        "normal": "", /*iPhone3/3GS程序图标，分辨率：57x57*/
+                        "retina": "", /*iPhone4程序图标，分辨率：114x114*/
+                         /*iPhone4S/5/6程序图标，分辨率：120x120*/
+			 /*iPhone6 Plus程序图标，分辨率：180x180*/
+                        "spotlight-normal": "", /*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
+                        "spotlight-retina": "", /*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
+                         /*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
+                        "settings-normal": "", /*iPhone4设置页面程序图标，分辨率：29x29*/
+                         /*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
+			"app@2x":"unpackage/res/icons/120x120.png","app@3x":"unpackage/res/icons/180x180.png","settings@3x":"unpackage/res/icons/87x87.png","settings@2x":"unpackage/res/icons/58x58.png","spotlight@2x":"unpackage/res/icons/80x80.png","spotlight@3x":"unpackage/res/icons/120x120.png","notification@3x":"unpackage/res/icons/60x60.png","notification@2x":"unpackage/res/icons/40x40.png" /*iPhone6Plus设置页面程序图标，分辨率：87x87*/
+                    },
+                    "ipad": {
+                        "normal": "", /*iPad普通屏幕程序图标，分辨率：72x72*/
+                        "retina": "", /*iPad高分屏程序图标，分辨率：144x144*/
+                         /*iPad iOS7程序图标，分辨率：76x76*/
+                         /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+                        "spotlight-normal": "", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+                        "spotlight-retina": "", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+                        /*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+                        /*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+                        /*iPad设置页面程序图标，分辨率：29x29*/
+                        "app":"unpackage/res/icons/76x76.png","app@2x":"unpackage/res/icons/152x152.png","settings":"unpackage/res/icons/29x29.png","proapp@2x":"unpackage/res/icons/167x167.png","spotlight":"unpackage/res/icons/40x40.png","settings@2x":"unpackage/res/icons/58x58.png","spotlight@2x":"unpackage/res/icons/80x80.png","notification":"unpackage/res/icons/20x20.png","notification@2x":"unpackage/res/icons/40x40.png" /*iPad高分屏设置页面程序图标，分辨率：58x58*/
+                    },"appstore":"unpackage/res/icons/1024x1024.png"
+                },
+                "android": {
+                    "mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+                    "ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+                    "hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+                    "xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+                    "xxhdpi": "unpackage/res/icons/144x144.png","xxxhdpi":"unpackage/res/icons/192x192.png"/*1080P 高分屏程序图标，分辨率：144x144*/
+                }
+            },
+            "splashscreen": {
+                "ios": {
+                    "iphone": {
+                        "default": "", /*iPhone3启动图片选，分辨率：320x480*/
+                        "retina35": "",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+                        "retina40": "",/*4.0 英寸设备(iPhone5/iPhone5s)启动图片，分辨率：640x1136*/
+                        "retina47": "",/*4.7 英寸设备(iPhone6)启动图片，分辨率：750x1334*/
+                        "retina55": "",/*5.5 英寸设备(iPhone6 Plus)启动图片，分辨率：1242x2208*/
+                        "retina55l": ""/*5.5 英寸设备(iPhone6 Plus)横屏启动图片，分辨率：2208x1242*/
+                    },
+                    "ipad": {
+                        "portrait": "", /*iPad竖屏启动图片，分辨率：768x1004*/
+                        "portrait-retina": "",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+                        "landscape": "", /*iPad横屏启动图片，分辨率：1024x748*/
+                        "landscape-retina": "E:/文档/图片/bg.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+                        "portrait7": "", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+                        "portrait-retina7": "E:/文档/图片/bg.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+                        "landscape7": "E:/文档/图片/bg1280.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+                        "landscape-retina7": "E:/文档/图片/bg.png"/*iPad iOS7高分屏横屏启动图片，分辨率：2048x1536*/
+                    }
+                },
+                "android": {
+                    "mdpi": "", /*普通屏启动图片，分辨率：240x282*/
+                    "ldpi": "", /*大屏启动图片，分辨率：320x442*/
+                    "hdpi": "E:/tu/800.png", /*高分屏启动图片，分辨率：480x762*/
+                    "xhdpi": "E:/tu/1280.png", /*720P高分屏启动图片，分辨率：720x1242*/
+                    "xxhdpi": "E:/tu/1920.png"/*1080P高分屏启动图片，分辨率：1080x1882*/
+                }
+            }
+        },"ads":{"rp":false,"splash":false,"push":false},"adid":""
+    },
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [],
+				"refer": [
+					"search.html",
+					"quku2.html"
+				],
+				"priority": 0
+			},
+			"quku2.html": {
+				"resources": [],
+				"refer": [
+					"index.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"static/layui/images/face/38.gif",
+				"static/layui/images/face/64.gif",
+				"static/layui/images/face/59.gif",
+				"static/layui/images/face/53.gif",
+				"static/layui/images/face/46.gif",
+				"static/layui/images/face/6.gif",
+				"static/font/iconfont.js",
+				"static/images/bj.png",
+				"static/layui/images/face/48.gif",
+				"static/images/card5-hover.png",
+				"static/font/iconfont.svg",
+				"static/font/download/font_904648_1nnqdt5rolx/iconfont.eot",
+				"static/layui/layui.all.js",
+				"static/images/card3.png",
+				"static/font/iconfont.css",
+				"static/images/02.png",
+				"static/images/bg.png",
+				"static/layui/images/face/51.gif",
+				"static/images/card3-hover.png",
+				"static/layui/images/face/4.gif",
+				"static/images/card4.png",
+				"static/images/arrow-lef.png",
+				"static/layui/lay/modules/carousel.js",
+				"static/images/search.png",
+				"static/layui/images/face/71.gif",
+				"static/layui/layui.js",
+				"static/images/01.png",
+				"static/layui/images/face/61.gif",
+				"static/layui/images/face/50.gif",
+				"static/layui/images/face/49.gif",
+				"static/css/style.css",
+				"static/layui/lay/modules/laytpl.js",
+				"static/images/vinyl.png",
+				"static/layui/images/face/18.gif",
+				"static/layui/images/face/52.gif",
+				"static/layui/images/face/16.gif",
+				"static/layui/images/face/19.gif",
+				"static/layui/images/face/68.gif",
+				"static/layui/images/face/23.gif",
+				"static/layui/lay/modules/layer.js",
+				"static/layui/images/face/45.gif",
+				"static/layui/font/iconfont.svg",
+				"static/layui/css/layui.mobile.css",
+				"static/font/download/font_904648_1nnqdt5rolx/iconfont.svg",
+				"static/images/icon-.png",
+				"static/images/music_1.png",
+				"static/layui/lay/modules/laydate.js",
+				"static/layui/css/modules/laydate/default/laydate.css",
+				"static/layui/images/face/57.gif",
+				"static/font/download/font_904648_1nnqdt5rolx/demo_unicode.html",
+				"static/layui/lay/modules/laypage.js",
+				"static/images/bj_default.png",
+				"static/layui/images/face/36.gif",
+				"static/images/Hippopx (6).jpg",
+				"static/layui/css/modules/layer/default/icon-ext.png",
+				"static/layui/images/face/54.gif",
+				"static/layui/images/face/22.gif",
+				"static/layui/css/modules/code.css",
+				"static/layui/images/face/60.gif",
+				"static/layui/images/face/21.gif",
+				"static/layui/css/modules/layer/default/icon.png",
+				"static/js/vue.min.js",
+				"static/layui/images/face/65.gif",
+				"static/images/card1-hover.png",
+				"static/js/jquery.min.js",
+				"static/images/viny.png",
+				"static/images/searc.png",
+				"static/images/quku.ico",
+				"static/layui/lay/modules/element.js",
+				"static/images/card2.png",
+				"static/layui/lay/modules/code.js",
+				"static/layui/lay/modules/layedit.js",
+				"static/layui/images/face/62.gif",
+				"static/layui/images/face/63.gif",
+				"static/layui/css/modules/layer/default/loading-1.gif",
+				"static/layui/images/face/24.gif",
+				"static/layui/images/face/26.gif",
+				"static/images/Hippopx (4).jpg",
+				"static/font/download/font_904648_1nnqdt5rolx/demo_symbol.html",
+				"static/font/download/font_904648_1nnqdt5rolx/iconfont.js",
+				"static/images/chevron-light-right.png",
+				"static/layui/images/face/7.gif",
+				"static/layui/font/iconfont.woff",
+				"static/layui/images/face/33.gif",
+				"static/font/download/font_904648_1nnqdt5rolx/iconfont.ttf",
+				"static/images/card5.png",
+				"static/layui/images/face/69.gif",
+				"static/layui/css/modules/layer/default/layer.css",
+				"static/layui/images/face/28.gif",
+				"static/layui/images/face/25.gif",
+				"static/font/iconfont.eot",
+				"static/images/bg.jpg",
+				"static/layui/images/face/12.gif",
+				"static/images/card6-hover.png",
+				"static/layui/css/modules/layer/default/loading-0.gif",
+				"static/layui/lay/modules/mobile.js",
+				"static/layui/images/face/39.gif",
+				"static/layui/images/face/13.gif",
+				"static/layui/images/face/32.gif",
+				"static/layui/images/face/55.gif",
+				"static/layui/images/face/27.gif",
+				"static/layui/images/face/2.gif",
+				"static/images/music.png",
+				"static/layui/images/face/37.gif",
+				"static/layui/lay/modules/form.js",
+				"static/layui/images/face/66.gif",
+				"static/font/download/font_904648_1nnqdt5rolx/demo_fontclass.html",
+				"static/css/public.css",
+				"static/layui/css/layui.css",
+				"static/js/config.js",
+				"static/layui/images/face/34.gif",
+				"static/font/iconfont.ttf",
+				"static/layui/images/face/40.gif",
+				"static/images/Hippopx (1).jpg",
+				"static/layui/images/face/47.gif",
+				"static/layui/lay/modules/upload.js",
+				"static/layui/images/face/44.gif",
+				"static/images/Hippopx (5).jpg",
+				"static/layui/images/face/15.gif",
+				"static/layui/lay/modules/flow.js",
+				"static/layui/images/face/56.gif",
+				"static/layui/images/face/17.gif",
+				"static/images/card2-hover.png",
+				"static/layui/images/face/1.gif",
+				"static/layui/images/face/8.gif",
+				"static/layui/images/face/20.gif",
+				"static/layui/images/face/0.gif",
+				"static/images/card6.png",
+				"static/layui/images/face/10.gif",
+				"static/font/iconfont.woff",
+				"static/layui/images/face/58.gif",
+				"static/images/icon_img.png",
+				"static/layui/images/face/31.gif",
+				"static/font/download/font_904648_1nnqdt5rolx/iconfont.woff",
+				"static/layui/lay/modules/jquery.js",
+				"static/layui/font/iconfont.eot",
+				"static/font/download.zip",
+				"static/layui/css/modules/layer/default/loading-2.gif",
+				"static/layui/images/face/41.gif",
+				"static/images/bj-hover.png",
+				"static/layui/images/face/11.gif",
+				"static/layui/images/face/70.gif",
+				"static/images/chevron-light-left.png",
+				"static/images/card1.png",
+				"static/layui/images/face/5.gif",
+				"static/layui/images/face/30.gif",
+				"static/layui/images/face/35.gif",
+				"static/images/zithe.png",
+				"static/font/download/font_904648_1nnqdt5rolx/iconfont.css",
+				"static/font/demo.css",
+				"static/layui/images/face/43.gif",
+				"static/images/user.png",
+				"static/images/card4-hover.png",
+				"static/layui/font/iconfont.ttf",
+				"static/layui/lay/modules/table.js",
+				"static/layui/images/face/67.gif",
+				"static/layui/images/face/42.gif",
+				"static/layui/images/face/9.gif",
+				"static/layui/lay/modules/tree.js",
+				"static/images/Hippopx (3).jpg",
+				"static/font/download/font_904648_1nnqdt5rolx/demo.css",
+				"static/layui/images/face/14.gif",
+				"static/layui/images/face/29.gif",
+				"static/images/Hippopx (2).jpg",
+				"static/layui/images/face/3.gif",
+				"static/layui/lay/modules/util.js"
+			]
+		}
+	},"fullscreen":true,
+	"unpackage":[]
+}

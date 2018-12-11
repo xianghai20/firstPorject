@@ -1,0 +1,13 @@
+{
+  "index.html": {
+    "refer": [
+      "search.html",
+      "quku2.html"
+    ]
+  },
+  "quku2.html": {
+    "refer": [
+      "index.html"
+    ]
+  }
+}

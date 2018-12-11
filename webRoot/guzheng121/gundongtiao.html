@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>原生JS自定义滚动条兼容IE6 - 素材牛（www.sucainiu.com）</title>
+    <style>
+
+        body {
+            height: 2000px;
+        }
+
+        #scroll-box {
+            width: 14px;
+            height: 200px;
+            background: #f7f7f7;
+            position: relative;
+            float: right;
+            border: 1px solid #eaeaea;
+            border-right: none;
+
+        }
+
+        #bar {
+            width: 8px;
+            height: 100px;
+            background: #d2d2d2;
+            position: absolute;
+            left: 2px;
+            top: 0;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+
+        #scroll-wrap {
+            width: 480px;
+            height: 200px;
+            border: 1px solid #e3e3e3;
+            float: left;
+            position: relative;
+            overflow: hidden;
+            word-break: break-all;
+        }
+
+        #scroll-content {
+            text-indent: 2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="scroll-box">
+    <div id="bar"></div>
+</div>
+<div id="scroll-wrap">
+    <div id="scroll-content">
+        <p>素材牛专注 Web 开发技术，分享最前沿的 Web 开发教程、资源和和素材，是面向前端开发人员、PHP初学者和设计师的学习交流平台。</p>
+        <p>
+            网站旨在提供一个前端开发工程师、PHP初学者交流平台，让更多的前端开发工程师、PHP初学者在这里获得知识、提高技能，建立一个良好的环境，共同更进步！或许这是我们同样的目标，因此需要得到大家的支持和鼓励，素材牛也会一如既往的坚持下去，成为您前进道路上的伙伴，一起努力！</p>
+        <p>素材牛专注 Web 开发技术，分享最前沿的 Web 开发教程、资源和和素材，是面向前端开发人员、PHP初学者和设计师的学习交流平台。</p>
+        <p>
+            网站旨在提供一个前端开发工程师、PHP初学者交流平台，让更多的前端开发工程师、PHP初学者在这里获得知识、提高技能，建立一个良好的环境，共同更进步！或许这是我们同样的目标，因此需要得到大家的支持和鼓励，素材牛也会一如既往的坚持下去，成为您前进道路上的伙伴，一起努力！</p>
+        <p>素材牛专注 Web 开发技术，分享最前沿的 Web 开发教程、资源和和素材，是面向前端开发人员、PHP初学者和设计师的学习交流平台。</p>
+        <p>
+            网站旨在提供一个前端开发工程师、PHP初学者交流平台，让更多的前端开发工程师、PHP初学者在这里获得知识、提高技能，建立一个良好的环境，共同更进步！或许这是我们同样的目标，因此需要得到大家的支持和鼓励，素材牛也会一如既往的坚持下去，成为您前进道路上的伙伴，一起努力！</p>
+        <p>素材牛专注 Web 开发技术，分享最前沿的 Web 开发教程、资源和和素材，是面向前端开发人员、PHP初学者和设计师的学习交流平台。</p>
+        <p>
+            网站旨在提供一个前端开发工程师、PHP初学者交流平台，让更多的前端开发工程师、PHP初学者在这里获得知识、提高技能，建立一个良好的环境，共同更进步！或许这是我们同样的目标，因此需要得到大家的支持和鼓励，素材牛也会一如既往的坚持下去，成为您前进道路上的伙伴，一起努力！</p>
+        <p>素材牛专注 Web 开发技术，分享最前沿的 Web 开发教程、资源和和素材，是面向前端开发人员、PHP初学者和设计师的学习交流平台。</p>
+        <p>
+            网站旨在提供一个前端开发工程师、PHP初学者交流平台，让更多的前端开发工程师、PHP初学者在这里获得知识、提高技能，建立一个良好的环境，共同更进步！或许这是我们同样的目标，因此需要得到大家的支持和鼓励，素材牛也会一如既往的坚持下去，成为您前进道路上的伙伴，一起努力！</p>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function _diysrcoll() {
+        // body...
+        var oBox = document.getElementById('scroll-box');
+        var oBar = document.getElementById('bar');
+        var oWrap = document.getElementById('scroll-wrap');
+        var oCon = document.getElementById('scroll-content');
+        var barTop = oBox.clientHeight - oBar.offsetHeight;
+        var contTop = oWrap.clientHeight - oCon.scrollHeight;
+        var iTop = 0;
+
+
+        oBar.onmousedown = function (ev) {
+
+            //æ»šåŠ¨æ¡
+            var ev = ev || event;
+            var disY = ev.clientY - this.offsetTop;
+
+            document.onmousemove = function (ev) {
+                var ev = ev || event;
+                iTop = ev.clientY - disY;
+
+                fn1(iTop);
+
+            };
+
+            document.onmouseup = function () {
+                document.onmousemove = document.onmouseup = null;
+            };
+
+            return false;
+        };
+
+        mouseScrollEvt(oBox, function () {
+            iTop -= 15;  // æ»šåŠ¨é€Ÿåº¦
+            fn1(iTop);
+
+        }, function () {
+            iTop += 15;
+            fn1(iTop);
+        });
+
+        mouseScrollEvt(oWrap, function () {
+            iTop -= 15;
+            fn1(iTop);
+
+        }, function () {
+            iTop += 15;
+            fn1(iTop);
+        });
+
+        function fn1() {
+
+            // æŽ§åˆ¶æœ€å¤§æ»šåŠ¨è·ç¦»
+            if (iTop < 0) iTop = 0;
+            if (iTop > oBox.clientHeight - oBar.offsetHeight)
+                iTop = oBox.clientHeight - oBar.offsetHeight;
+
+            oBar.style.top = iTop + 'px';
+            oCon.style.top = iTop / barTop * contTop + 'px';
+        }
+
+        function mouseScrollEvt(obj, upFn, downFn) {
+
+            // é¼ æ ‡æ»šåŠ¨äº‹ä»¶=
+            obj.onmousewheel = mouseScroll;
+            if (obj.addEventListener)
+                obj.addEventListener('DOMMouseScroll', mouseScroll, false);
+
+            function mouseScroll(ev) {
+                var ev = ev || event;
+                var bDown = true;  //true : å‘ä¸‹   false : å‘ä¸Š
+                if (ev.detail) {
+                    bDown = ev.detail < 0 ? false : true;
+                } else {
+                    bDown = ev.wheelDelta < 0 ? true : false;
+                }
+                if (bDown) {
+                    if (typeof downFn === 'function') downFn();
+                } else {
+                    if (typeof upFn === 'function') upFn();
+                }
+                if (ev.preventDefault) ev.preventDefault();
+                return false;
+            }
+        }
+    }
+
+    _diysrcoll()
+
+
+</script>
+
+
+</body>
+</html>
+
+

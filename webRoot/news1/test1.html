@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS按钮悬停动画</title>
+    <style>
+
+
+        @font-face {
+            font-family: "iconfont";
+            src: url('static/font/iconfont.eot'); /* IE9*/
+            src: url('static/font/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('static/font/iconfont.woff') format('woff'), /* chrome, firefox */ url('static/font/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url('static/font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            height: 100%;
+            margin: auto;
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            background-color: black;
+
+        }
+
+        #boxes {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            background-image: url("static/images/bg.jpg");
+            border-radius: 5%;
+        }
+
+        #yaun {
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            background-color: #3A7CD2;
+            margin-top: 10%;
+            text-align: center;
+            margin-left: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        #myicon {
+
+            color: white;
+            font-weight: bold;
+            position: absolute;
+
+        }
+
+        #yuanA {
+            width: 50%;
+            height: 50%;
+            border-radius: 50%;
+            background-color: #679FE7;
+            transform: translateY(-80%) translateX(80%);
+
+
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="boxes">
+    <div id="yaun">
+        <div id="yuanA"></div>
+
+        <i id="myicon" class="icon iconfont" style="font-size: 5em;">&#xe63f;</i>
+    </div>
+
+
+</div>
+</body>
+</html>

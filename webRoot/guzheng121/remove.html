@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移除单曲</title>
+    <link rel="stylesheet" href="static/css/public.css">
+    <style>
+        .removeBox {
+            margin-top: 37px;
+            margin-left: 69px;
+            width: 1782px;
+            height: 1006px;
+            background-image: linear-gradient(-134deg, #4F69D4 0%, #495DB2 100%);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header_nav {
+            margin-top: 80px;
+            margin-left: 140px;
+            font-size: 48px;
+            color: #FFFFFF;
+            line-height: 56px;
+        }
+
+        .content {
+            margin-top: 40px;
+            width: 100%;
+            height: 642px;
+            display: flex;
+            flex-direction: row;
+
+        }
+
+        .del_button {
+            margin-left: 140px;
+            margin-top: 20px;
+            width: 1542px;
+            height: 168px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .del_button > div {
+            width: 128px;
+            height: 68px;
+            margin-top: 36px;
+            margin-left: 36px;
+            line-height: 68px;
+            color: #FFFFFF;
+            background: rgba(255, 255, 255, 0.10);
+            border: 4px solid rgba(255, 255, 255, 0.20);
+            border-radius: 40px;
+        }
+
+        .del_button > div:hover {
+            background: #FFFFFF;
+            color: #5361FC;
+        }
+
+        .confirmTitle, .cancelTitle {
+            font-size: 32px;
+            text-align: center;
+            line-height: 68px;
+        }
+
+        .pageBox {
+            width: 120px;
+            height: 642px;
+            line-height: 642px;
+            text-align: center;
+        }
+
+        .pageBox > div {
+            width: 120px;
+        }
+
+        .contentBox {
+            width: 1543px;
+            height: 642px;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .contentBox > div {
+            width: 1543px;
+            height: 321px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        /*//box样式*/
+        .boxItem {
+            width: 257px;
+            height: 321px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+
+        }
+
+        .boxItemCover {
+            width: 217px;
+            height: 217px;
+            margin-top: 20px;
+            margin-left: 20px;
+            background-image: url("static/images/bj_default.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            transform: scale(1);
+        }
+
+        .boxItemCover:hover {
+            background-image: url("static/images/bj-hover.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            transform: scale(1.1);
+            border: 4px solid #828CFF;
+            box-shadow: 0 0 18px 6px rgba(130, 140, 255, 0.90);
+            border-radius: 8px;
+        }
+
+        #imgImg {
+            width: 137px;
+            height: 131px;
+            margin-left: 40px;
+            margin-top: 30px;
+        }
+
+        .code {
+            margin-top: 12px;
+            opacity: 0.7;
+            font-size: 24px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 36px;
+        }
+
+        .boxName {
+            margin-top: 16px;
+            opacity: 0.7;
+            font-size: 32px;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 60px;
+        }
+
+        #prePage, #rightPage {
+            display: none;
+
+        }
+
+        .imgPage {
+            width: 56px;
+            height: 56px;
+
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="removeBox" class="removeBox">
+    <div id="header_nav" class="header_nav">移除单曲</div>
+    <div id="contentBoxes" class="content">
+        <div id="load"><i id="loadImg" class="layui-icon layui-anim layui-anim-rotate layui-anim-loop">&#xe63d;</i>
+        </div>
+
+        <div id="leftBox" class="pageBox">
+            <div id="prePage" onclick="pPage()"><img class="imgPage" src="static/images/chevron-light-left.png"></div>
+        </div>
+        <div class="contentBox">
+
+            <div id="content_box1">
+
+            </div>
+            <div id="content_box2">
+
+            </div>
+        </div>
+        <div class="pageBox">
+            <div id="rightPage" onclick="nPage()"><img class="imgPage" src="static/images/chevron-light-right.png">
+            </div>
+        </div>
+    </div>
+
+    <div class="del_button">
+        <div id="Reconfirm" class="confirm">
+            <div class="confirmTitle">确认</div>
+        </div>
+        <div id="Recancel" class="cancel">
+            <div class="cancelTitle">取消</div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+<script type="text/javascript" src="static/js/jquery.min1.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
+<script type="text/javascript" src="static/js/page.js"></script>
+<script type="text/javascript">
+
+    //获取courseID
+    var url = document.location.toString();
+    var urlParmStr = url.slice(url.indexOf('?') + 1);
+    var arr = urlParmStr.split('&');
+    var activeId = arr[0].split("=")[1];//课件活动
+    var courseId = arr[1].split("=")[1];//课件
+    var getActiveDomain = config.interface.getActive;//获取课件活动列表
+    var global_page = 0;//当前页数
+    var global_numPage = "";//总页数
+    var globalResouce = "";//资源
+    var selectBox = new Array();//定义一个空数组，用来存储被选中的box
+
+
+    querySingle(courseId, activeId);
+    //取消操作
+    $("#Recancel").click(function () {
+        history.go(-1);
+
+    });
+
+    //查询单曲
+    function querySingle(course, active) {
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: getActiveDomain,
+            data: {
+                "action": "getModuleByCourse",
+                "courseId": course,
+            },
+            dataType: "json",
+            success: function (res) {
+
+                if (res.code == 0) {
+                    $dat = res.moduleList;
+                    $listNumber = $dat.length;//活动数量
+                    for ($i = 0; $i < $listNumber; $i++) {
+                        $course_id = $dat[$i].course_id;//活动id
+                        $activeId = $dat[$i].id;
+                        if ($activeId == active) {
+                            $resourceList = $dat[$i].resourceList;//资源
+                            $resourceNum = $resourceList.length;//曲目数量
+                            globalResouce = $resourceList;
+
+                            if ($resourceNum == 0) {
+                                history.go(-1);
+
+                            } else {
+
+                                showSong();
+
+                            }
+                            $("#pageCount").html("共" + $resourceNum + "条记录");
+
+
+                        }
+
+
+                    }
+
+
+                }
+
+
+            },
+            error: function (res) {
+
+            },
+
+        });
+
+
+    }
+
+    //分页
+
+
+    global_page = Number(global_page);
+
+    //下一页函数
+    function nPage() {
+
+        var currentPage = global_page + 1;
+        global_page = currentPage;
+        clearSonfg();
+        showSong();
+    }
+
+    //上一页的函数
+    function pPage() {
+        var currentPage = global_page - 1;
+        global_page = currentPage;
+        clearSonfg();
+        showSong();
+    }
+
+    //清除子节点
+    function clearSonfg() {
+
+        $("#content_box1").children().remove();
+        $("#content_box2").children().remove();
+
+    }
+
+
+    //分页函数
+    function showSong() {
+
+        var value = globalResouce;
+        $num = value.length;
+        $page = parseInt($num / 12);//页数
+        global_numPage = $page;
+        $n = global_page * 12;
+        $m = $n + (global_page + 1) * 6;
+        console.log($m);
+        if ($page > 0 && global_page == 0) {
+            $("#rightPage").css({"display": "block"});
+            $("#prePage").css({"display": "none"});
+
+        }
+        else if ($page == 0) {
+            $("#rightPage").css({"display": "none"});
+            $("#prePage").css({"display": "none"});
+        }
+        else if ($page == global_page) {
+            $("#rightPage").css({"display": "none"});
+            $("#prePage").css({"display": "block"});
+        }
+        else if (0 < $page < global_page) {
+            $("#rightPage").css({"display": "block"});
+            $("#prePage").css({"display": "block"});
+        }
+
+        for ($j = $n; $j < $n + 12; $j++) {
+
+            $numCode = value[$j].code;
+            $name = value[$j].name;
+            $type = value[$j].type;
+            $id = value[$j].id;
+            $selectId = "selectImg" + $id;
+            $boxesId = "boxesId" + $id;
+
+            selectBox.push($id);//将选中的box存储到selectBOx的数组中
+            if ($type === "1") {
+                $imgurl = imgPath + "icon-mp4.png";
+
+            }
+            else if ($type === "2") {
+                $imgurl = imgPath + "music_1.png";
+
+            }
+            else if ($type === "3") {
+                $imgurl = imgPath + "icon_img.png";
+            }
+            if ($numCode == null) {
+                $numCode = "未命名";
+            }
+            $box = $("<div id=\"" + $boxesId + "\" class='boxItem' onclick='select(\"" + $id + "\")'>\n" +
+                "                    <div id=\"boxItemCover\" class=\"boxItemCover\">\n" +
+                "                        <img id=\"" + $selectId + "\"  class=\"selectImg\"\n" +
+                "                           style=\"width: 80px;height: 80px;position: absolute;margin-left: 130px;margin-top: 0px\"\n" +
+                "                             src=\"static/images/minus-circle.png\"/>\n" +
+                "                        <img id=\"imgImg\" src=\"" + $imgurl + "\" >\n" +
+                "                        <div id=\"code\" class=\"code\">" + $numCode + "</div>\n" +
+                "                    </div>\n" +
+                "                    <div id=\"boxName\" class=\"boxName\">" + $name + "</div>\n" +
+                "                </div>");
+            if ($j < $m) {
+
+                $("#content_box1").append($box);
+            }
+            else {
+                $("#content_box2").append($box);
+
+            }
+
+
+        }
+
+
+    }
+
+
+    //点击选项
+    function select(id) {
+        $("#boxesId" + id).remove();
+        $weiZhi = selectBox.indexOf(id);
+        console.log("位置" + $weiZhi);
+        selectBox.splice($weiZhi, 1);//将取消选中的box从数组中删除
+        // selectBox.push(id);//将选中的box存储到selectBOx的数组中
+        console.log("取消这个" + id, "此时的数组为" + selectBox);
+    }
+
+    //确认移除的操作
+    $("#Reconfirm").click(function () {
+        if(selectBox.length==0){
+            alert("请选择移除的曲目");
+        }
+        else {
+            var box = JSON.stringify(selectBox);
+            $.ajax({
+                type: "get",
+                cache: "false",
+                url: getActiveDomain,
+                data: {
+                    "action": "updateResourceByModule",
+                    "resourceIds": box,
+                    "moduleId": activeId,
+                    "teacherId": global_teachId,
+                },
+                dataType: "json",
+                success: function (res) {
+                    if (res.code == 0) {
+
+
+                        alert("操作成功");
+                        history.go(-1);
+                    }
+
+                },
+                error: function (res) {
+
+                }
+
+            })
+
+        }
+
+
+    });
+
+</script>
+</html>

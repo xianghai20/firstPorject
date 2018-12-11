@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/layui/css/layui.css">
+    <link rel="stylesheet" href="static/css/public.css">
+    <link rel="stylesheet" href="static/css/videoCT.css">
+    <link rel="stylesheet" href="static/css/audio.css">
+    <link rel="stylesheet" href="static/css/newPopup.css">
+    <style type="text/css">
+
+        /*//新建样式，活动框架*/
+
+        #content {
+            margin-top: 44px;
+            height: 850px;
+
+        }
+
+        #pre_page, #next_page {
+            width: 100%;
+            height: 5%;
+
+        }
+
+        #active {
+            width: 100%;
+
+            height: 90%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #new_build {
+            width: 542px;
+            height: 756px;
+            background: #8799E9;
+            line-height: 756px;
+            text-align: center;
+            border-radius: 8.8px;
+            font-size: 38px;
+            color: #FFFFFF;
+
+        }
+
+        #new_build:hover {
+            background: #5361FC;
+            border: 4px solid #828CFF;
+            box-shadow: 0 0 18px 6px rgba(130, 140, 255, 0.90);
+            border-radius: 8.8px;
+        }
+
+        #addIcon {
+            width: 74px;
+            height: 74px;
+            font-size: 48px;
+            line-height: 74px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+<div id="boxes">
+    <div id="header_nav">
+        <div id="bark">
+            <img id="barkImg" src="static/images/arrow-lef.png"/>
+        </div>
+        <div id="unit"></div>
+
+    </div>
+
+    <div id="content">
+        <div id="pre_page">
+
+
+        </div>
+        <div id="active">
+            <div id="new_build" data-reveal-id="myModal" data-animation="fade">
+                <i class="layui-icon" id="addIcon">&#xe6b2;</i>
+
+                编辑活动
+
+            </div>
+
+
+        </div>
+        <div id="next_page"></div>
+
+
+    </div>
+
+
+</div>
+
+
+<!--//这里是弹出层-新建课件的弹出层-->
+<div id="myModal" class="reveal-modal">
+    <!--第三步-->
+    <div id="page_three" class="page_three">
+        <div id="course_title">编辑单曲<a id="step">第3步，共3步</a></div>
+        <div id="unit_a" style="margin-top: 44px">
+
+            <div id="title_node" style="color:  #94A3E2;background-color: transparent"
+                 class="layui-btn layui-btn-primary layui-btn-radius">单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" id="unitA-1" onclick="unit(-1)"
+                 style="background-color: #687DD5;color: white">全部
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(1)" id="unitA1">第一单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(2)" id="unitA2">第二单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(3)" id="unitA3">第三单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(4)" id="unitA4">第四单元
+            </div>
+            <div class="layui-btn layui-btn-primary layui-btn-radius" onclick="unit(5)" id="unitA5">第五单元
+            </div>
+
+        </div>
+        <div id="jie_shu" class="navBtn ">
+
+
+        </div>
+        <div id="lei_xin">
+
+
+        </div>
+        <div id="content_box">
+            <div id="leftPage" class="left_page">
+
+            </div>
+            <div id="result_box" class="result_box">
+                <div id="load"><i id="loadImg"
+                                  class="layui-icon layui-anim layui-anim-rotate layui-anim-loop">&#xe63d;</i>
+                </div>
+            </div>
+            <div id="rightPage" class="right_page">
+
+            </div>
+
+
+        </div>
+        <div id="footer"></div>
+
+
+    </div>
+    <!--第二步-->
+    <div id="page_two" class="page_two">
+
+        <div id="course_title">编辑活动描述<a id="step">第2步，共3步</a></div>
+        <div id="input_name">
+            <input type="text" style="font-size: 38px" maxlength="30" placeholder="请输入活动描述" id="describe" name=""/>
+        </div>
+        <div id="input_line"></div>
+        <div id="message"><a id="messageTwo"></a></div>
+    </div>
+    <!--第一步-->
+    <div id="page_one" class="page_one">
+
+        <div id="course_title">编辑活动名称<a id="step">第1步，共3步</a></div>
+        <div id="input_name">
+            <input type="text" style="font-size: 38px" maxlength="15" placeholder="请输入活动名称" id="course_name" name=""/>
+        </div>
+        <div id="input_line"></div>
+        <div id="message"><a id="messageOne"></a></div>
+    </div>
+    <!--按钮-->
+    <div id="div_but">
+        <button style="font-size: 32px;" id="confirm" class="layui-btn layui-btn-primary layui-btn-radius ">
+            下一步
+        </button>
+        <button style="  font-size: 32px;margin-left: 180px" id="pre_step"
+                class="layui-btn layui-btn-primary layui-btn-radius ">
+            上一步
+        </button>
+        <button style=" font-size: 32px;" id="cancel"
+                class="layui-btn layui-btn-primary layui-btn-radius close-reveal-modal">
+            取消
+        </button>
+
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="static/js/jquery.min1.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
+<script type="text/javascript" src="static/js/page.js"></script>
+<script type="text/javascript" src="static/layui/layui.all.js"></script>
+<script type="text/javascript" src="static/js/jquery.reveal.js"></script>
+<script type="text/javascript">
+    var url = document.location.toString();
+    var urlParmStr = url.slice(url.indexOf('?') + 1);
+    var arr = urlParmStr.split('&');
+    var activeId = arr[0].split("=")[1];//活动id
+    var courseId = arr[1].split("=")[1];//课件id
+    var activeName = arr[2].split("=")[1];//活动名称
+    var desc=arr[3].split("=")[1];//活动描述
+    desc=decodeURI(desc);
+    unit_title = decodeURI(activeName);//转码/解决办法:将解码方式unscape换为decodeURI
+    $("#course_name").val(unit_title);
+    $("#describe").val(desc);
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var getActiveDomain = config.interface.getActive;//获取课件活动列表
+    var addActive = config.interface.addActive;//添加课件活动
+    var global_avtiveName = "";//定义活动名称的变量
+    var global_activeDescribe = "";//定义活动描述的变量
+    var currentStep = 1;
+    var domain = config.interface.Domain; //配置节数，类型域名接口地址
+    var global_chapterId = -1;//定义初始单元值，全部
+    var library = config.interface.library; //配置列表数据接口地址
+    var selectBox = new Array();//定义一个空数组，用来存储被选中的box
+    var delUrl = config.interface.delActive;//删除配置
+    var addCourse = config.interface.addActive;//j接口地址
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $(document).ready(function () {
+        $("#bark").click(function () {
+            history.go(-1);
+        });
+        $("#unit").html(unit_title);
+
+
+
+
+    });
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    querySingle();
+
+
+
+    //查询单曲
+    function querySingle() {
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: getActiveDomain,
+            data: {
+                "action": "getModuleByCourse",
+                "courseId": courseId,
+            },
+            dataType: "json",
+            success: function (res) {
+
+                if (res.code == 0) {
+                    $dat = res.moduleList;
+                    $listNumber = $dat.length;//活动数量
+                    for ($i = 0; $i < $listNumber; $i++) {
+                        $course_id = $dat[$i].course_id;//活动id
+                        $activeId = $dat[$i].id;
+                        if ($activeId == activeId) {
+                            $resourceList = $dat[$i].resourceList;//资源
+                            $resourceNum = $resourceList.length;//曲目数量
+                            for($j=0;$j<$resourceNum;$j++){
+                                $resourceId=$resourceList[$j].id;
+
+
+                                selectBox.push($resourceId);//将选中的box存储到selectBOx的数组中
+                            }
+
+
+                        }
+
+
+                    }
+
+
+                }
+
+
+            },
+            error: function (res) {
+
+            },
+
+        });
+
+
+    }
+
+
+
+
+    ///
+    //取消函数
+    $("#cancel").click(function () {
+        $("#boxes").css({"opacity": "1"})
+    });
+
+    //下一步
+    $("#confirm").click(function () {
+
+        var ActiveName = document.getElementById("course_name").value;
+        var ActiveDescribe = document.getElementById("describe").value;
+        //判断是否输入活动名称
+        if (currentStep == 1 && ActiveName === "") {
+
+            $("#messageOne").html("<i class=\"layui-icon\">&#xe702;</i> " + "温馨提示：名称不能为空哦！");
+        }
+        else if (currentStep == 2 && ActiveDescribe === "") {
+            console.log(ActiveName);
+            $("#messageTwo").html("<i class=\"layui-icon\">&#xe702;</i> " + "温馨提示：活动描述不能为空哦！");
+
+        }
+        else {
+            global_avtiveName = ActiveName;
+            global_activeDescribe = ActiveDescribe;
+            console.log(global_avtiveName, global_activeDescribe);
+            currentStep = Number(currentStep) + 1;
+            console.log("您已经点击了下一步,当前第" + currentStep + "步");
+            step(currentStep);
+
+        }
+
+
+    });
+    //上一步
+    $("#pre_step").click(function () {
+        currentStep = Number(currentStep) - 1;
+        console.log("你点击了上一步，当前页面为第" + currentStep + "页");
+        step(currentStep);
+
+    });
+
+    //弹窗页面的步骤函数
+    function step(currentPage) {
+        //当页面为第一页的时候
+        if (currentStep == 1) {
+
+            console.log(currentStep);
+            //显示第一步
+            $("#page_one").css({"display": "block"});
+            //隐藏第二步
+            $("#page_two").css({"display": "none"});
+            //当第一步的时候去掉上一步
+            $("#pre_step").css("display", "none");
+            $("#cancel").css({"margin-left": "180px"});
+            $("#div_but").removeClass("div_but_three");
+
+
+        }
+        //当页面为第二页的时候
+        else if (currentStep == 2) {
+            console.log(currentStep);
+            //显示上一步的按钮
+            $("#confirm").html("下一步");
+            $("#pre_step").css("display", "block");
+            $("#cancel").css({"margin-left": "360px"});
+            $("#pre_step").css("margin-left", "180px");
+            $("#div_but").removeClass("div_but_three");
+            $("#confirm").css({"width": "144px"});
+            //显示第二步
+            $("#page_two").css({"display": "block"});
+            $("#page_one").css({"display": "none"});
+            //隐藏第三步与第一步，显示第二步
+            $("#page_three").css("display", "none");
+            $("#myModal").removeClass("reveal-modal1");
+            $("#myModal").addClass("reveal-modal");
+        }
+        //当前第三步
+        else if (currentStep == 3) {
+            console.log(currentStep);
+            //按钮样式
+            showTrack();
+            selectItemBox();
+            // $("#confirm").html("选择单曲0首，确认");
+
+            $("#div_but").addClass("div_but_three");
+            $("#pre_step").css("margin-left", "400px");
+            $("#cancel").css({"margin-left": "590px"});
+            //确认按钮
+            $("#confirm").css({"width": "360px"});
+            //隐藏第一步与第二步的样式
+            $("#page_one").css({"display": "none"});
+            $("#page_two").css({"display": "none"});
+            //显示第三步
+            $("#page_three").css("display", "block");
+            $("#myModal").removeClass("reveal-modal");
+            $("#myModal").addClass("reveal-modal1");
+
+            //清除类型与节数的子节点
+
+            clearNode();
+            //查询节数与类型
+            nodeType();
+
+            //确认添加
+
+
+        }
+        else if (currentPage == 4) {
+
+            addActive1();
+
+        }
+        else {
+            return false;
+        }
+
+
+    }
+
+    //确定修改的活动
+    function addActive1() {
+
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: addCourse,
+            data: {
+                "action": "editModule",
+                "teacherId": global_teachId,
+                "moduleId": activeId,
+                "title": global_avtiveName,
+                "desc": global_activeDescribe,
+            },
+            dataType: "json",
+            success: function (res) {
+                if (res.code == 0) {
+                    addSong();
+
+
+                }
+
+
+            },
+            error: function (res) {
+                layer.msg("添加失败！请稍后重试。");
+            },
+
+
+        });
+
+
+    }
+
+    //清除类型和节数的子节点，
+    function clearNode() {
+        $("#jie_shu").children().remove();
+        $("#lei_xin").children().remove();
+
+        $leiXing = $("      <div id=\"title_node\" style=\"color:  #94A3E2;background-color: transparent\"\n" +
+            "                 class=\"layui-btn layui-btn-primary layui-btn-radius\">类型\n" +
+            "            </div>");
+        $jieShu = $("     <div id=\"title_node\" style=\"color:  #94A3E2;background-color: transparent\"\n" +
+            "                 class=\"layui-btn layui-btn-primary layui-btn-radius\">节数\n" +
+            "            </div>");
+        $("#jie_shu").append($jieShu);
+        $("#lei_xin").append($leiXing);
+
+
+    }
+
+    //获取节数与类型
+    function nodeType() {
+        console.log(global_unitA, global_unit, global_category);
+        clearNode();
+        $.ajax({
+            type: 'get',
+            cache: 'false',
+            url: domain,
+            data: {
+                "action": "getFilterByChapter",
+                "chapterId": global_unitA,
+
+            },
+            dataType: 'json',
+            success: function (res) {
+                //当访问成功，显示数据
+                if (res.code === 0) {
+                    $dat = res.unit;
+                    $cat = res.category;
+                    $length = $dat.length;
+                    $typeL = $cat.length;
+                    $node = $("#jie_shu");
+
+                    //关于节数
+                    for ($i = 0; $i < $length; $i++) {
+                        $name = $dat[$i].name; //名称
+                        $title = $dat[$i].title; //标题
+                        $unit = $dat[$i].unit; //节数
+                        $unitName = "unit" + $unit;
+                        $nodeIdName = "nodeName" + $unit; //名称id名称
+                        $nodeIdTitle = "nodeTitle" + $unit; //标题id名称
+                        if ($unit == -1) {
+                            $li = $(" <div class=\"layui-btn layui-btn-primary layui-btn-radius\" style='background-color:#687DD5;color: white ' onclick= 'chapter(" + $unit + ")'  id=\"" + $unitName + "\">" +
+                                "<div id=\"" + $nodeIdTitle + "\">" + $title + "</div>" +
+                                "</div>");
+                        }
+                        else {
+                            $li = $(" <div class=\"layui-btn layui-btn-primary layui-btn-radius\" onclick= 'chapter(" + $unit + ")'  id=\"" + $unitName + "\">" +
+                                "<div id=\"" + $nodeIdTitle + "\">" + $title + "</div>" +
+                                "</div>");
+                        }
+
+
+                        $("#jie_shu").append($li);
+
+                        $footer = $(" <i class=\"icon iconfont\" style=\"color:#A3AEDC \">&#xe62f;</i>");
+
+                    }
+                    //关于类型
+                    for ($i = 0; $i < $typeL; $i++) {
+                        $category = $cat[$i].category; //类型
+                        $catName = $cat[$i].name; //类型名称
+                        $categoryNmae = "category" + $category;
+
+                        if ($category == -1) {
+
+                            $type = $(" <div  style='background-color:#687DD5;color: white ' class=\"layui-btn layui-btn-primary layui-btn-radius\" onclick='showCategory(" + $category + ")' id=\"" + $categoryNmae + "\" >" + $catName + "</div>");
+
+                        }
+                        else {
+                            $type = $(" <div  class=\"layui-btn layui-btn-primary layui-btn-radius\" onclick='showCategory(" + $category + ")' id=\"" + $categoryNmae + "\" >" + $catName + "</div>");
+
+                        }
+
+                        $("#lei_xin").append($type);
+
+                    }
+
+                }
+
+            },
+            error: function (res) {
+                console.log(res);
+            }
+
+        });    //查询节数和类型
+    }
+
+    //查询曲目单元
+    function unit(unit) {
+        console.log("点击单元的操作此时的单元为" + unit + "单元；" + "节数为" + global_unit + "节" + "类型为" + global_category);
+        if (global_unitA != unit) {
+            $("#unitA" + global_unitA).css({"background": "#455BB6", "color": "#8799E9"});
+            $("#unitA" + unit).css({"background-color": "#687DD5", "color": "white"});
+            $("#unit" + global_unit).css({"background": "#687DD5", "color": "white"});
+            $("#category" + global_category).css({"background-color": "#687DD5", "color": "white"});
+            global_unitA = unit;
+            global_category = -1;
+            global_unit = -1;
+        }
+
+        nodeType();
+        query();
+    }
+
+    //查询曲目节数
+    function chapter(node) {
+        console.log("点击单元的操作此时的单元为" + global_unitA + "单元；" + "节数为" + node + "节" + "类型为" + global_category);
+        if (global_unit != node) {
+            $("#unitA" + global_unitA).css({"background-color": "#687DD5", "color": "white"});
+            $("#unit" + global_unit).css({"background": "#455BB6", "color": "#8799E9"});
+            $("#unit" + node).css({"background-color": "#687DD5", "color": "white"});
+            $("#category" + global_category).css({"background-color": "#687DD5", "color": "white"});
+            global_unit = node;
+        }
+        query();
+    }
+
+    //查询曲目类型
+    function showCategory(category) {
+        if (global_category !== category) {
+            console.log("点击单元的操作此时的单元为" + global_unitA + "单元；" + "节数为" + global_unit + "节" + "类型为" + category);
+            $("#unitA" + global_unitA).css({"background-color": "#687DD5", "color": "white"});
+            $("#unit" + global_unit).css({"background": "#687DD5", "color": "white"});
+            $("#category" + global_category).css({"background": "#455BB6", "color": "#8799E9"});
+            $("#category" + category).css({"background-color": "#687DD5", "color": "white"});
+            global_category = category;
+        }
+        query();
+    }
+
+    //查询数据，曲目
+    function query() {
+        $("#result_box").children().remove();
+        $("#footer").children().remove();
+        //查询教学库数据
+        $.ajax({
+            type: 'get',
+            cache: 'false',
+            url: library,
+            data: {
+                action: 'getResourceByFilter',
+                chapterId: global_unitA,
+                unit: global_unit,
+                category: global_category,
+                page: global_currentPage,
+                pageSize: 6,
+
+            },
+            dataType: 'json',
+            beforeSend: function () {
+                $("#load").css("display", "block");
+                $("#leftPage").children().remove();
+                $("#rightPage").children().remove();
+            },
+            success: function (res) {
+                if (res.code === 0) {
+                    $("#load").css("display", "none");
+                    $totalPage = res.totalPage; //总页
+                    $dat = res.resource;
+                    $resLength = $dat.length;
+                    page($totalPage);
+
+
+                    if ($resLength === 0) {
+                        $("#load").css("display", "block");
+                        $("#load").html("捕获到0条记录！");
+
+
+                    } else {
+
+                        $("#content_box1").children().remove();
+                        $("#content_box2").children().remove();
+
+                        for ($i = 0; $i < $resLength; $i++) {
+
+                            $id = $dat[$i].id;
+                            $chapter = $dat[$i].chapter;
+                            $code = $dat[$i].code;
+                            $unit = $dat[$i].unit;
+                            $category = $dat[$i].category;
+                            $name = $dat[$i].name;
+                            $type = $dat[$i].type;
+                            $selectId = "selectImg" + $id;
+                            if ($type === "1") {
+                                $imgurl = imgPath + "icon-mp4.png";
+
+                            }
+                            else if ($type === "2") {
+                                $imgurl = imgPath + "music_1.png";
+
+                            }
+                            else if ($type === "3") {
+                                $imgurl = imgPath + "icon_img.png";
+                            }
+                            if($code==null){
+                                $code="";
+                            }
+
+
+                            $li = $("   <div class=\"box\" onclick='selectBoxes(\"" + $id + "\")'>\n" +
+                                "                    <div class=\"item_box\">\n" +
+                                "                        <img id=\"" + $selectId + "\"  class=\"select\"\n" +
+                                "                             style=\"width: 80px;height: 80px;position: absolute;margin-left: 130px;margin-top: 0px\"\n" +
+                                "                             src=\"static/images/check-circle.png\"/>\n" +
+                                "                        <img src=\"" + $imgurl + "\"/>\n" +
+                                "                        <div class=\"total_title\">" + $code + "</div>\n" +
+                                "\n" +
+                                "                    </div>\n" +
+                                "                    <div class=\"item_title\">" + $name + "</div>\n" +
+                                "                </div>");
+
+                            $("#result_box").append($li);
+
+
+                        }
+                        selectItemBox();
+                    }
+
+                }
+
+            },
+            error: function (res) {
+                console.log(res);
+                $("#load").html("数据请求出现异常啦");
+            }
+        });
+
+    }
+
+    //显示已经选中的box
+    function selectItemBox() {
+        $length = selectBox.length;
+        for ($i = 0; $i < $length; $i++) {
+            $boxId = selectBox[$i];
+            $("#selectImg" + $boxId).css({"display": "block"});
+        }
+
+
+    }
+
+    //获取课件活动的列表数据
+    console.log(global_teachId);
+
+
+    //在选中box曲目的函数
+    var selec = 1;
+    var global_id = "";
+
+    //显示已经选中的曲目函数
+    function showTrack() {
+        $count = selectBox.length;//获取曲目的数量
+        $("#confirm").html("选择单曲" + $count + "首，确认");
+        $("#confirm").css({"color": "#5361FC", "background": "#FFFFFF"});
+
+
+    }
+
+    function selectBoxes(id) {
+
+        var val = $.inArray(id, selectBox);
+        if (val >= 0) {
+            $weiZhi = selectBox.indexOf(id);
+            console.log("位置" + $weiZhi);
+            selectBox.splice($weiZhi, 1);//将取消选中的box从数组中删除
+            $("#selectImg" + id).css({"display": "none"});
+            console.log("删除这个" + id, "此时的数组为" + selectBox);
+            showTrack();
+
+        }
+        else {
+            $("#selectImg" + id).css({"display": "block"});
+            selectBox.push(id);//将选中的box存储到selectBOx的数组中
+            console.log("存储这个" + id, "此时的数组为" + selectBox);
+            showTrack();
+        }
+
+
+    }
+
+    //添加曲目
+    function addSong() {
+        var box = JSON.stringify(selectBox);
+        $.ajax({
+            type: "get",
+            cache: "false",
+            url: addCourse,
+            data: {
+                "action": "updateResourceByModule",
+                "resourceIds": box,
+                "moduleId": activeId,
+                "teacherId": global_teachId,
+
+            },
+            dataType: "json",
+            success: function (res) {
+                if (res.code == 0) {
+                    alert("编辑成功");
+                    window.location.href = "showActive1.html?courseId=" + courseId + "&title=" + activeName;
+                }
+
+            },
+            error: function (res) {
+
+            },
+
+        });
+
+
+    }
+
+
+</script>
+
+
+</html>
